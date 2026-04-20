@@ -1,4 +1,3 @@
-// Create a new component for the employee tab
 "use client"
 
 import { useState } from "react"
@@ -9,10 +8,10 @@ export function EmployeeTab() {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <div className="fixed bottom-0 right-8 z-10">
+    <div className="fixed bottom-0 right-6 z-30 print:hidden">
       <Link
         href="/admin/login"
-        className={`flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-medium py-1.5 px-3 rounded-t-md transition-all duration-300 shadow-md ${isHovered ? "pr-5" : ""}`}
+        className={`flex items-center gap-2 border border-border border-b-0 bg-background/80 backdrop-blur-md hover:bg-background text-muted-foreground hover:text-foreground text-xs font-medium py-1.5 px-3 rounded-t-lg transition-all duration-300 shadow-soft ${isHovered ? "pr-5" : ""}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

@@ -5,26 +5,28 @@ import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  // Avoid hydration mismatch by only rendering after component is mounted
   useEffect(() => {
     setMounted(true)
   }, [])
 
   if (!mounted) {
-    return <div className="w-9 h-9"></div> // Placeholder to avoid layout shift
+    return <div className="w-10 h-10" aria-hidden />
   }
+
+  const isDark = (resolvedTheme ?? theme) === "dark"
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
-      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background hover:border-foreground/30 transition-colors"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       type="button"
     >
-      {theme === "dark" ? <Sun className="h-5 w-5 text-brand-yellow" /> : <Moon className="h-5 w-5 text-gray-700" />}
+      <Sun className={`absolute h-4 w-4 transition-all ${isDark ? "opacity-0 scale-75 rotate-90" : "opacity-100 scale-100 rotate-0"}`} />
+      <Moon className={`absolute h-4 w-4 text-brand-yellow transition-all ${isDark ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-75 -rotate-90"}`} />
     </button>
   )
 }
