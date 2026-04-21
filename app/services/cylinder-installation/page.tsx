@@ -1,8 +1,99 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Check } from "lucide-react"
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Droplets,
+  Gauge,
+  ShieldCheck,
+  Zap,
+  BadgeCheck,
+  Timer,
+} from "lucide-react"
 import { Header } from "../../components/header"
 import { TopBar } from "../../components/top-bar"
+import { SiteFooter } from "../../components/site-footer"
+
+const brands = [
+  { src: "/images/megaflo-logo.png", alt: "Megaflo" },
+  { src: "/images/vaillant-logo-new.png", alt: "Vaillant" },
+  { src: "/images/gledhill-logo.png", alt: "Gledhill" },
+]
+
+const cylinderTypes = [
+  {
+    name: "Unvented cylinders",
+    copy: "Mains-pressure hot water to every outlet — strong showers upstairs, proper flow in the ensuite. Our speciality.",
+    points: ["G3 certified", "Mains pressure", "No cold tank needed"],
+  },
+  {
+    name: "Vented cylinders",
+    copy: "Gravity-fed from a cold water tank. A solid, cost-effective option for keeping an existing system going.",
+    points: ["Lower cost", "Simple parts", "Easy to maintain"],
+  },
+  {
+    name: "Heat pump cylinders",
+    copy: "Purpose-built cylinders with larger coils for heat pump systems — essential for efficient low-temp DHW.",
+    points: ["Low-temp optimised", "Larger coil surface", "MCS-ready"],
+  },
+]
+
+const benefits = [
+  {
+    icon: Gauge,
+    title: "Full mains pressure",
+    description: "No more weak upstairs showers. Unvented cylinders push hot water at mains PSI to every tap.",
+  },
+  {
+    icon: Droplets,
+    title: "Multiple outlets at once",
+    description: "Run a shower, kitchen tap and bath with no drop in pressure — properly sized for real households.",
+  },
+  {
+    icon: Zap,
+    title: "Better recovery time",
+    description: "Modern high-performance coils heat the cylinder faster — less waiting between showers.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "G3 certified engineers",
+    description: "Unvented work is regulated. We're properly qualified and sign every install off.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Building Reg compliant",
+    description: "Full Part G / G3 compliance with expansion, discharge and tundish done correctly.",
+  },
+  {
+    icon: Timer,
+    title: "Long-life stainless",
+    description: "Duplex stainless tanks with 25-year warranties on leading brands.",
+  },
+]
+
+const process = [
+  {
+    step: "1",
+    title: "Survey & sizing",
+    description: "We check incoming mains pressure, flow rate and bathroom count to size the cylinder properly.",
+  },
+  {
+    step: "2",
+    title: "Fixed quote",
+    description: "Cylinder, fittings, labour and certification — fully itemised in writing.",
+  },
+  {
+    step: "3",
+    title: "Clean install",
+    description: "Airing cupboard cleared, old cylinder out, new one plumbed — dust sheets throughout.",
+  },
+  {
+    step: "4",
+    title: "Test, certify, hand over",
+    description: "G3 pressure test, commissioning, Benchmark paperwork — you get the full pack.",
+  },
+]
 
 export default function CylinderInstallationPage() {
   return (
@@ -11,106 +102,119 @@ export default function CylinderInstallationPage() {
       <Header />
 
       <main className="flex-1">
-        <section className="relative h-[300px] md:h-[400px] overflow-hidden">
-          <Image
-            src="/placeholder.svg?height=400&width=1200&text=Cylinder+Installation"
-            alt="Cylinder Installation"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center">
-            <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Cylinder Installation</h1>
-              <p className="text-xl text-white max-w-2xl">
-                Professional installation of direct and indirect hot water cylinders for efficient water heating.
+        {/* ============ HERO ============ */}
+        <section className="page-hero">
+          <div className="relative container mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
+            <div className="max-w-3xl">
+              <span className="eyebrow border-white/15 bg-white/5 text-white/70">Cylinder installation</span>
+              <h1 className="display-xl mt-6 text-white">
+                Proper mains-pressure <span className="text-brand-yellow">hot water</span>, everywhere.
+              </h1>
+              <p className="lead mt-6 text-white/70 max-w-2xl">
+                Unvented, vented and heat pump cylinders from Megaflo, Vaillant and Gledhill — installed and
+                certified by G3-qualified engineers.
               </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link href="/get-a-quote" className="btn-primary">
+                  Get a fixed quote
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a href="tel:07712599254" className="btn-ghost-dark">
+                  Call 07712 599254
+                </a>
+              </div>
+
+              <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/70">
+                <span className="inline-flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 text-brand-yellow" />
+                  G3 certified
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Gauge className="h-4 w-4 text-brand-yellow" />
+                  Full mains pressure
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Timer className="h-4 w-4 text-brand-yellow" />
+                  25-year tank warranty
+                </span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+        {/* ============ OVERVIEW + TYPES ============ */}
+        <section className="section">
+          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Cylinder Installation Services</h2>
-              <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
-                At HH Plumbing and Gas, we specialize in the professional installation of hot water cylinders to ensure
-                your home has a reliable and efficient hot water supply. We offer both direct and indirect cylinder
-                options to suit your specific needs and property requirements.
-              </p>
-              <p className="text-lg mb-8 text-gray-700 dark:text-gray-300">
-                Our team of experienced engineers will help you choose the right cylinder type and size for your
-                property, ensuring optimal performance and energy efficiency.
+              <span className="eyebrow">What we install</span>
+              <h2 className="display-lg mt-4">
+                Three cylinder types, <span className="text-brand-yellow">all done properly.</span>
+              </h2>
+              <p className="lead mt-5">
+                The cylinder is the heart of your hot water. Get the sizing, pressure and controls right and you
+                won't think about it for years — that's exactly our goal.
               </p>
 
-              <h3 className="text-2xl font-semibold mb-4">Why Choose Us for Cylinder Installation?</h3>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Experienced and Gas Safe registered engineers",
-                  "Installation of leading cylinder brands",
-                  "Comprehensive system testing and commissioning",
-                  "Full compliance with building regulations",
-                  "Competitive pricing and transparent quotes",
-                  "Excellent aftercare and warranty support",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <Check className="h-5 w-5 text-brand-yellow mr-2 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-300">{item}</span>
-                  </li>
+              <div className="mt-8 grid gap-4">
+                {cylinderTypes.map((c) => (
+                  <div key={c.name} className="rounded-2xl border border-border bg-card p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-brand-yellow">
+                      {c.name}
+                    </p>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.copy}</p>
+                    <ul className="mt-3 flex flex-wrap gap-1.5">
+                      {c.points.map((p) => (
+                        <li
+                          key={p}
+                          className="rounded-full border border-border bg-foreground/[0.03] px-2.5 py-1 text-[11px] font-medium text-muted-foreground"
+                        >
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
-
-              <Link
-                href="/get-a-quote"
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-brand-yellow text-black hover:bg-opacity-90 transition-colors rounded-xl"
-              >
-                Get a quote
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </div>
             </div>
 
-            <div className="space-y-8">
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Direct Cylinders</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Direct cylinders heat water using an immersion heater that's fitted inside the cylinder. The immersion
-                  heater works like a kettle element, using electricity to heat the water.
-                </p>
-                <h4 className="font-medium mb-2">Benefits:</h4>
-                <ul className="space-y-2 mb-4">
-                  {[
-                    "Simpler installation process",
-                    "No need for a separate boiler",
-                    "Can be used with economy 7 electricity tariffs",
-                    "Good option for properties without gas supply",
-                    "Lower initial installation cost",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="h-1.5 w-1.5 bg-brand-yellow rounded-full mt-2 mr-2"></div>
-                      <span className="text-gray-700 dark:text-gray-300">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="rounded-3xl border border-border bg-card p-8">
+              <h3 className="text-lg font-semibold">Brands we install</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Stainless steel tanks with long manufacturer warranties — installed to Part G / G3.
+              </p>
+              <div className="mt-6 grid grid-cols-3 gap-3">
+                {brands.map((b) => (
+                  <div
+                    key={b.alt}
+                    className="flex items-center justify-center h-20 rounded-xl border border-border bg-background"
+                  >
+                    <Image
+                      src={b.src}
+                      alt={b.alt}
+                      width={100}
+                      height={50}
+                      className="object-contain max-h-10 w-auto opacity-80"
+                    />
+                  </div>
+                ))}
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Indirect Cylinders</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Indirect cylinders are heated by your central heating boiler through a coil inside the cylinder. The
-                  hot water from your boiler passes through this coil, which then heats the water in the cylinder.
-                </p>
-                <h4 className="font-medium mb-2">Benefits:</h4>
-                <ul className="space-y-2 mb-4">
+              <div className="mt-8 pt-6 border-t border-border">
+                <h4 className="text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                  Included as standard
+                </h4>
+                <ul className="mt-4 space-y-3">
                   {[
-                    "More energy-efficient when used with a modern boiler",
-                    "Faster water heating times",
-                    "Can be more economical to run than direct cylinders",
-                    "Ideal for properties with existing central heating systems",
-                    "Can be integrated with solar thermal systems for greater efficiency",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="h-1.5 w-1.5 bg-brand-yellow rounded-full mt-2 mr-2"></div>
-                      <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                    "Expansion vessel and PRV",
+                    "Tundish and discharge pipework",
+                    "Immersion heater and thermostat",
+                    "G3 commissioning certificate",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      <span className="text-sm text-muted-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -119,126 +223,97 @@ export default function CylinderInstallationPage() {
           </div>
         </section>
 
-        <section className="bg-gray-100 dark:bg-gray-900 py-16">
+        {/* ============ BENEFITS ============ */}
+        <section className="bg-foreground/[0.02] border-y border-border py-20 md:py-28">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">Our Cylinder Installation Process</h2>
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                {
-                  step: "1",
-                  title: "Initial Consultation",
-                  description:
-                    "We assess your hot water needs, property layout, and existing systems to recommend the best cylinder solution.",
-                },
-                {
-                  step: "2",
-                  title: "Detailed Quote",
-                  description:
-                    "We provide a comprehensive quote outlining all costs, cylinder specifications, and installation timeline.",
-                },
-                {
-                  step: "3",
-                  title: "Professional Installation",
-                  description:
-                    "Our Gas Safe registered engineers install your new cylinder with minimal disruption to your home.",
-                },
-                {
-                  step: "4",
-                  title: "Testing & Handover",
-                  description:
-                    "We thoroughly test the system, explain how to use it efficiently, and provide all necessary documentation.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-brand-yellow text-black rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                    {item.step}
+            <div className="max-w-2xl mx-auto text-center mb-14">
+              <span className="eyebrow">Why it matters</span>
+              <h2 className="display-lg mt-4">A better cylinder = a better shower.</h2>
+              <p className="lead mt-4">
+                The difference between a weak trickle and a spa-grade shower usually isn't the showerhead.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {benefits.map((b) => {
+                const Icon = b.icon
+                return (
+                  <div
+                    key={b.title}
+                    className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                  >
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300">{item.description}</p>
-                </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ PROCESS ============ */}
+        <section className="section">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto text-center mb-14">
+              <span className="eyebrow">How it works</span>
+              <h2 className="display-lg mt-4">Sized, installed, certified.</h2>
+            </div>
+
+            <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {process.map((p) => (
+                <li key={p.step} className="relative rounded-2xl border border-border bg-card p-6">
+                  <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
+                    Step {p.step}
+                  </span>
+                  <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
+                </li>
               ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* ============ CTA ============ */}
+        <section className="section">
+          <div className="container mx-auto px-4">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-60"
+                style={{
+                  background: "radial-gradient(600px circle at 20% 20%, rgba(255,214,10,0.18), transparent 55%)",
+                }}
+              />
+              <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
+                <div>
+                  <span className="eyebrow border-white/15 bg-white/5 text-white/70">Ready for stronger flow?</span>
+                  <h2 className="display-lg mt-4 text-white">Get a fixed cylinder quote.</h2>
+                  <p className="lead mt-4 text-white/70 max-w-xl">
+                    Tell us about your home and bathrooms — we'll recommend the right size and send a fixed price.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
+                  <Link href="/get-a-quote" className="btn-primary">
+                    Start quote
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+                  >
+                    All services
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-black text-white py-12 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-bold text-lg mb-4">HH Plumbing and Gas</h3>
-              <p className="text-sm text-gray-300 max-w-xs">
-                Professional plumbing and gas services with a commitment to quality and customer satisfaction.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="/services/boiler-installations" className="text-gray-300 hover:text-brand-yellow">
-                    Boiler Installations
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/heat-pump-installations" className="text-gray-300 hover:text-brand-yellow">
-                    Heat Pump Installations
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/underfloor-heating-installation"
-                    className="text-gray-300 hover:text-brand-yellow"
-                  >
-                    Underfloor Heating Installation
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/cylinder-installation" className="text-gray-300 hover:text-brand-yellow">
-                    Cylinder Installation
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="/get-a-quote" className="text-gray-300 hover:text-brand-yellow">
-                    Get a Quote
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact-us" className="text-gray-300 hover:text-brand-yellow">
-                    Contact Us
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Contact</h4>
-              <address className="not-italic text-sm text-gray-300 space-y-2">
-                <p>2 Broomfield Road</p>
-                <p>LONDON</p>
-                <p>London</p>
-                <p>W13 9AP</p>
-                <p className="pt-2">
-                  <a href="tel:07712599254" className="hover:text-brand-yellow">
-                    07712 599254
-                  </a>
-                </p>
-                <p>
-                  <a href="mailto:info@hhplumbing.com" className="hover:text-brand-yellow">
-                    info@hhplumbing.com
-                  </a>
-                </p>
-              </address>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-6 text-sm text-gray-400">
-            <p>© {new Date().getFullYear()} HH Plumbing and Gas. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
