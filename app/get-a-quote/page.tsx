@@ -927,33 +927,61 @@ export default function GetAQuote() {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex justify-between items-center mb-6">
-                  <button onClick={handleBack} className="text-black hover:text-gray-700 flex items-center">
-                    <ArrowLeft className="h-5 w-5 mr-1" />
+                <div className="mb-8 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      Step 4 of 5
+                    </p>
+                    <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">Select a model</h2>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Each model is a great fit — the price shown is a starting point.
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleBack}
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                  >
+                    <ArrowLeft className="h-3.5 w-3.5" />
                     Back
                   </button>
-                  <h2 className="text-xl font-semibold">Select a model</h2>
-                  <div className="w-16"></div> {/* Spacer for alignment */}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {getModelOptions().map((model) => (
-                    <div
-                      key={model.id}
-                      className={`border-2 rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col items-center card-hover ${
-                        selectedModel === model.id ? "border-brand-yellow bg-gray-50" : "border-gray-200"
-                      }`}
-                      onClick={() => handleModelSelect(model.id)}
-                    >
-                      <div className="flex flex-col items-center">
-                        <h3 className="font-medium text-center text-lg mb-2">{model.name}</h3>
-                        <p className="text-sm text-gray-600 text-center mb-3">{model.description}</p>
-                        <p className="font-medium text-center">
-                          Starting from <span className="text-brand-yellow">£{model.startingPrice}</span>
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                  {getModelOptions().map((model) => {
+                    const isSelected = selectedModel === model.id
+                    return (
+                      <button
+                        key={model.id}
+                        type="button"
+                        className={`group relative rounded-2xl border p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                          isSelected
+                            ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
+                            : "border-border bg-card hover:border-foreground/20"
+                        }`}
+                        onClick={() => handleModelSelect(model.id)}
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <h3 className="text-lg font-semibold tracking-tight">{model.name}</h3>
+                            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                              {model.description}
+                            </p>
+                          </div>
+                          {isSelected && (
+                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-yellow text-black shrink-0">
+                              <Check className="h-4 w-4" />
+                            </span>
+                          )}
+                        </div>
+                        <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
+                          <span className="text-xs text-muted-foreground">Starting from</span>
+                          <span className="text-lg font-bold">
+                            £{model.startingPrice.toLocaleString()}
+                          </span>
+                        </div>
+                      </button>
+                    )
+                  })}
                 </div>
               </motion.div>
             )}
@@ -966,50 +994,91 @@ export default function GetAQuote() {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex justify-between items-center mb-6">
-                  <button onClick={handleBack} className="text-black hover:text-gray-700 flex items-center">
-                    <ArrowLeft className="h-5 w-5 mr-1" />
+                <div className="mb-8 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      Step 5 of 5
+                    </p>
+                    <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">Your details</h2>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Last step — leave your contact info and we'll send a fixed-price quote shortly.
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleBack}
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                  >
+                    <ArrowLeft className="h-3.5 w-3.5" />
                     Back
                   </button>
-                  <h2 className="text-xl font-semibold">Your Details</h2>
-                  <div className="w-16"></div> {/* Spacer for alignment */}
                 </div>
 
-                <div className="bg-gray-50 border border-brand-yellow p-5 rounded-lg mb-8">
-                  <h3 className="font-semibold text-lg mb-3">Quote Summary</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">Service</p>
-                      <p className="font-medium">{serviceTypes.find((s) => s.id === selectedService)?.name}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">Type</p>
-                      <p className="font-medium">{getTypeOptions().find((t) => t.id === selectedType)?.name}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">Brand</p>
-                      <p className="font-medium">{getAvailableBrands().find((b) => b.id === selectedBrand)?.name}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">Model</p>
-                      <p className="font-medium">{getModelOptions().find((m) => m.id === selectedModel)?.name}</p>
-                    </div>
+                <div className="mb-8 rounded-2xl border border-brand-yellow/50 bg-brand-yellow/5 p-6">
+                  <div className="flex items-center gap-2 mb-5">
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-yellow text-black">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                    <h3 className="font-semibold tracking-tight">Quote summary</h3>
                   </div>
+                  <dl className="grid grid-cols-2 md:grid-cols-4 gap-5">
+                    <div>
+                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                        Service
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold">
+                        {serviceTypes.find((s) => s.id === selectedService)?.name}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                        Type
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold">
+                        {getTypeOptions().find((t) => t.id === selectedType)?.name}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                        Brand
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold">
+                        {getAvailableBrands().find((b) => b.id === selectedBrand)?.name}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                        Model
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold">
+                        {getModelOptions().find((m) => m.id === selectedModel)?.name}
+                      </dd>
+                    </div>
+                  </dl>
                   {startingPrice && (
-                    <div className="mt-4 pt-4 border-t border-gray-200">
-                      <p className="font-semibold text-lg">
-                        Starting from <span className="text-brand-yellow">£{startingPrice}</span>
-                      </p>
+                    <div className="mt-5 flex items-center justify-between border-t border-brand-yellow/40 pt-4">
+                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                        Starting from
+                      </span>
+                      <span className="text-2xl font-extrabold">
+                        £{startingPrice.toLocaleString()}
+                      </span>
                     </div>
                   )}
                 </div>
 
-                <form onSubmit={handleSubmit} className="bg-white p-5 rounded-lg border border-gray-200">
-                  <h3 className="font-semibold text-lg mb-4">Contact Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                <form
+                  onSubmit={handleSubmit}
+                  className="rounded-2xl border border-border bg-card p-6 md:p-8"
+                >
+                  <h3 className="text-lg font-semibold tracking-tight">Contact information</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    We only use these details to send your quote — nothing more.
+                  </p>
+
+                  <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Full Name
+                      <label htmlFor="name" className="block text-xs font-semibold text-muted-foreground mb-1.5">
+                        Full name
                       </label>
                       <input
                         type="text"
@@ -1018,12 +1087,12 @@ export default function GetAQuote() {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address
+                      <label htmlFor="email" className="block text-xs font-semibold text-muted-foreground mb-1.5">
+                        Email address
                       </label>
                       <input
                         type="email"
@@ -1032,12 +1101,12 @@ export default function GetAQuote() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                        Phone Number
+                      <label htmlFor="phone" className="block text-xs font-semibold text-muted-foreground mb-1.5">
+                        Phone number
                       </label>
                       <input
                         type="tel"
@@ -1046,11 +1115,11 @@ export default function GetAQuote() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
                       />
                     </div>
                     <div>
-                      <label htmlFor="postcode" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="postcode" className="block text-xs font-semibold text-muted-foreground mb-1.5">
                         Postcode
                       </label>
                       <input
@@ -1060,11 +1129,11 @@ export default function GetAQuote() {
                         value={formData.postcode}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
                       />
                     </div>
                     <div className="md:col-span-2">
-                      <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="address" className="block text-xs font-semibold text-muted-foreground mb-1.5">
                         Address
                       </label>
                       <input
@@ -1074,26 +1143,34 @@ export default function GetAQuote() {
                         value={formData.address}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
                       />
                     </div>
                   </div>
 
-                  <div className="flex justify-end">
+                  <div className="mt-8 flex flex-col-reverse sm:flex-row items-stretch sm:items-center sm:justify-between gap-3 border-t border-border pt-6">
+                    <p className="text-xs text-muted-foreground">
+                      By submitting you agree to be contacted by HH Plumbing &amp; Gas about your quote.
+                    </p>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn-primary px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? "Submitting..." : "Submit Quote Request"}
+                      {isSubmitting ? "Submitting..." : "Submit quote request"}
+                      {!isSubmitting && <ArrowRight className="h-4 w-4" />}
                     </button>
                   </div>
                 </form>
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
-      </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
     </div>
   )
 }
