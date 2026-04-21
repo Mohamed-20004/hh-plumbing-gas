@@ -1,8 +1,85 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Check, Leaf, Zap, Thermometer, Home, Shield } from "lucide-react"
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Leaf,
+  Zap,
+  Thermometer,
+  Home,
+  Shield,
+  ShieldCheck,
+  BadgePoundSterling,
+} from "lucide-react"
 import { Header } from "../../components/header"
 import { TopBar } from "../../components/top-bar"
+import { SiteFooter } from "../../components/site-footer"
+
+const brands = [
+  { src: "/images/vaillant-logo-new.png", alt: "Vaillant" },
+  { src: "/images/mitsubishi-electric-logo.png", alt: "Mitsubishi Electric" },
+  { src: "/images/daikin-logo.png", alt: "Daikin" },
+  { src: "/images/baxi-logo.png", alt: "Baxi" },
+  { src: "/images/nibe-logo.png", alt: "NIBE" },
+  { src: "/images/samsung-logo.png", alt: "Samsung" },
+]
+
+const benefits = [
+  {
+    icon: Leaf,
+    title: "Up to 75% lower emissions",
+    description: "Electric-driven heat swap replaces gas combustion — a huge cut in your home's carbon footprint.",
+  },
+  {
+    icon: Zap,
+    title: "300–400% efficient",
+    description: "A heat pump delivers 3–4 kWh of heat for every 1 kWh of electricity it uses.",
+  },
+  {
+    icon: Thermometer,
+    title: "Heating + cooling",
+    description: "Most air-source models reverse in summer to act as an efficient cooler. Year-round comfort.",
+  },
+  {
+    icon: Home,
+    title: "15–20 year lifespan",
+    description: "Robust kit from Vaillant, Mitsubishi and Daikin — double the lifespan of some boilers.",
+  },
+  {
+    icon: Shield,
+    title: "Quiet, compact units",
+    description: "Modern outdoor units run well below 45 dB — quieter than a fridge.",
+  },
+  {
+    icon: BadgePoundSterling,
+    title: "£7,500 BUS grant",
+    description: "We handle the Boiler Upgrade Scheme paperwork so you claim the full grant towards your install.",
+  },
+]
+
+const process = [
+  {
+    step: "1",
+    title: "Home survey & heat-loss",
+    description: "MCS-style heat-loss calculation to size the unit and check emitter compatibility.",
+  },
+  {
+    step: "2",
+    title: "System design & quote",
+    description: "We design the full system — unit, cylinder, pipework, controls — and send a fixed itemised quote.",
+  },
+  {
+    step: "3",
+    title: "BUS grant + install",
+    description: "We apply for the £7,500 grant on your behalf, then install with minimal disruption.",
+  },
+  {
+    step: "4",
+    title: "Commission & MCS certify",
+    description: "Commissioned, balanced and certified — ready to claim your grant and run for years.",
+  },
+]
 
 export default function HeatPumpInstallationsPage() {
   return (
@@ -11,304 +88,215 @@ export default function HeatPumpInstallationsPage() {
       <Header />
 
       <main className="flex-1">
-        <section className="relative h-[300px] md:h-[400px] overflow-hidden">
-          <Image
-            src="/placeholder.svg?height=400&width=1200&text=Heat+Pump+Installations"
-            alt="Heat Pump Installations"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center">
-            <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Heat Pump Installations</h1>
-              <p className="text-xl text-white max-w-2xl">
-                Expert installation of energy-efficient heat pump systems for sustainable heating and cooling.
+        {/* ============ HERO ============ */}
+        <section className="page-hero">
+          <div className="relative container mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
+            <div className="max-w-3xl">
+              <span className="eyebrow border-white/15 bg-white/5 text-white/70">Heat pump installations</span>
+              <h1 className="display-xl mt-6 text-white">
+                Low-carbon heating, <span className="text-brand-yellow">£7,500 off</span>, MCS certified.
+              </h1>
+              <p className="lead mt-6 text-white/70 max-w-2xl">
+                Air and ground source heat pumps from Vaillant, Mitsubishi and Daikin — designed, installed and
+                grant-claimed by one trusted team.
               </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link href="/get-a-quote" className="btn-primary">
+                  Get a fixed quote
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a href="tel:07712599254" className="btn-ghost-dark">
+                  Call 07712 599254
+                </a>
+              </div>
+
+              <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/70">
+                <span className="inline-flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 text-brand-yellow" />
+                  MCS certified
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <BadgePoundSterling className="h-4 w-4 text-brand-yellow" />
+                  £7,500 BUS grant handled
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Leaf className="h-4 w-4 text-brand-yellow" />
+                  A++ efficiency
+                </span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+        {/* ============ OVERVIEW + BRANDS ============ */}
+        <section className="section">
+          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Heat Pump Installation Services</h2>
-              <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
-                At HH Plumbing and Gas, we specialize in the professional installation of heat pump systems that provide
-                efficient, sustainable heating and cooling for your property. Our team of experienced engineers is fully
-                qualified to install both air source and ground source heat pumps.
-              </p>
-              <p className="text-lg mb-8 text-gray-700 dark:text-gray-300">
-                Heat pumps are an environmentally friendly alternative to traditional heating systems, extracting heat
-                from the air or ground to warm your home efficiently, even in colder temperatures.
+              <span className="eyebrow">What we install</span>
+              <h2 className="display-lg mt-4">
+                Air source, ground source <br />
+                <span className="text-brand-yellow">or hybrid retrofit.</span>
+              </h2>
+              <p className="lead mt-5">
+                We specify heat pumps around your actual heat loss, radiators and hot water habits — not a
+                one-size-fits-all package. That's why our systems keep running efficiently in real British winters.
               </p>
 
-              <h3 className="text-2xl font-semibold mb-4">Why Choose Us for Heat Pump Installation?</h3>
-              <ul className="space-y-3 mb-8">
+              <ul className="mt-8 space-y-3">
                 {[
-                  "Experienced and qualified heat pump installers",
-                  "Extensive experience with leading heat pump brands",
-                  "Comprehensive system design and planning",
-                  "Expert advice on the most suitable system for your property",
-                  "Full installation, commissioning, and aftercare",
-                  "Assistance with available grants and incentives",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <Check className="h-5 w-5 text-brand-yellow mr-2 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                  "MCS-style heat-loss calculation included",
+                  "Radiator/emitter check — upgrades only if genuinely needed",
+                  "Buffer and cylinder sizing tailored to household demand",
+                  "Smart weather-compensating controls",
+                  "BUS grant paperwork handled end-to-end",
+                  "Commissioning + MCS certification on completion",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <Check className="h-3 w-3" />
+                    </span>
+                    <span className="text-sm text-muted-foreground">{item}</span>
                   </li>
                 ))}
               </ul>
-
-              <Link
-                href="/get-a-quote"
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-brand-yellow text-black hover:bg-opacity-90 transition-colors rounded-xl"
-              >
-                Get a quote
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
             </div>
 
-            <div className="space-y-8">
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Air Source Heat Pumps</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Air source heat pumps extract heat from the outside air and transfer it to your home's heating system.
-                  They can operate efficiently even when outdoor temperatures are as low as -15°C.
-                </p>
-                <h4 className="font-medium mb-2">Benefits:</h4>
-                <ul className="space-y-2 mb-4">
-                  {[
-                    "Lower installation costs compared to ground source heat pumps",
-                    "Easier and less disruptive installation process",
-                    "Can provide both heating and cooling",
-                    "Reduced carbon emissions compared to gas or oil heating",
-                    "Lower running costs than traditional heating systems",
-                    "Minimal maintenance requirements",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="h-1.5 w-1.5 bg-brand-yellow rounded-full mt-2 mr-2"></div>
-                      <span className="text-gray-700 dark:text-gray-300">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="rounded-3xl border border-border bg-card p-8">
+              <h3 className="text-lg font-semibold">Brands we install</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                We're partnered with leading heat pump manufacturers for premium kit and extended warranties.
+              </p>
+              <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {brands.map((b) => (
+                  <div
+                    key={b.alt}
+                    className="flex items-center justify-center h-20 rounded-xl border border-border bg-background"
+                  >
+                    <Image
+                      src={b.src}
+                      alt={b.alt}
+                      width={100}
+                      height={50}
+                      className="object-contain max-h-10 w-auto opacity-80"
+                    />
+                  </div>
+                ))}
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Brands We Install</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  We are approved installers for leading heat pump manufacturers, ensuring you get the highest quality
-                  equipment with proper installation.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="flex justify-center items-center p-4 bg-white dark:bg-gray-700 rounded-lg">
-                    <Image
-                      src="/images/vaillant-logo.png"
-                      alt="Vaillant"
-                      width={100}
-                      height={50}
-                      className="object-contain h-12"
-                    />
-                  </div>
-                  <div className="flex justify-center items-center p-4 bg-white dark:bg-gray-700 rounded-lg">
-                    <Image
-                      src="/images/mitsubishi-electric-logo.png"
-                      alt="Mitsubishi Electric"
-                      width={180}
-                      height={50}
-                      className="object-contain h-10"
-                    />
-                  </div>
-                  <div className="flex justify-center items-center p-4 bg-white dark:bg-gray-700 rounded-lg">
-                    <Image
-                      src="/images/daikin-logo.png"
-                      alt="Daikin"
-                      width={100}
-                      height={50}
-                      className="object-contain h-12"
-                    />
-                  </div>
+              <div className="mt-8 pt-6 border-t border-border grid sm:grid-cols-2 gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                    Air source
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Most homes. Low install cost and minimal disruption.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                    Ground source
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Higher efficiency where ground access is available.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-gray-100 dark:bg-gray-900 py-16">
+        {/* ============ BENEFITS ============ */}
+        <section className="bg-foreground/[0.02] border-y border-border py-20 md:py-28">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">Benefits of Heat Pump Systems</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: <Leaf className="h-8 w-8 text-brand-yellow" />,
-                  title: "Environmentally Friendly",
-                  description:
-                    "Heat pumps produce significantly lower carbon emissions than traditional heating systems, helping reduce your carbon footprint.",
-                },
-                {
-                  icon: <Zap className="h-8 w-8 text-brand-yellow" />,
-                  title: "Energy Efficiency",
-                  description:
-                    "Heat pumps can be 300-400% efficient, meaning they can produce 3-4 units of heat for every unit of electricity used.",
-                },
-                {
-                  icon: <Thermometer className="h-8 w-8 text-brand-yellow" />,
-                  title: "Year-Round Comfort",
-                  description:
-                    "Many heat pump systems can provide both heating in winter and cooling in summer, offering year-round climate control.",
-                },
-                {
-                  icon: <Home className="h-8 w-8 text-brand-yellow" />,
-                  title: "Long Lifespan",
-                  description:
-                    "Heat pumps typically last 15-20 years, longer than many traditional heating systems, providing excellent long-term value.",
-                },
-                {
-                  icon: <Shield className="h-8 w-8 text-brand-yellow" />,
-                  title: "Low Maintenance",
-                  description:
-                    "Heat pumps require minimal maintenance compared to combustion-based heating systems, with just annual check-ups recommended.",
-                },
-                {
-                  icon: <Check className="h-8 w-8 text-brand-yellow" />,
-                  title: "Government Incentives",
-                  description:
-                    "Various government schemes and incentives are available to help offset the cost of installing heat pump systems.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-                  <div className="mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300">{item.description}</p>
-                </div>
-              ))}
+            <div className="max-w-2xl mx-auto text-center mb-14">
+              <span className="eyebrow">Why heat pumps</span>
+              <h2 className="display-lg mt-4">The case is stronger than ever.</h2>
+              <p className="lead mt-4">
+                Grant support, rising gas prices and improved kit mean most homes save money from day one.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {benefits.map((b) => {
+                const Icon = b.icon
+                return (
+                  <div
+                    key={b.title}
+                    className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                  >
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.description}</p>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold mb-12 text-center">Our Heat Pump Installation Process</h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              {
-                step: "1",
-                title: "Initial Assessment",
-                description:
-                  "We assess your property, current heating system, and energy requirements to determine the most suitable heat pump solution.",
-              },
-              {
-                step: "2",
-                title: "System Design",
-                description:
-                  "Our experts design a bespoke heat pump system tailored to your property's specific needs and your heating requirements.",
-              },
-              {
-                step: "3",
-                title: "Professional Installation",
-                description:
-                  "Our qualified engineers install your heat pump system with minimal disruption to your property.",
-              },
-              {
-                step: "4",
-                title: "Commissioning & Handover",
-                description:
-                  "We thoroughly test and commission the system, provide comprehensive guidance on operation, and ensure everything works perfectly.",
-              },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-brand-yellow text-black rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  {item.step}
+        {/* ============ PROCESS ============ */}
+        <section className="section">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto text-center mb-14">
+              <span className="eyebrow">How it works</span>
+              <h2 className="display-lg mt-4">From survey to MCS certificate.</h2>
+            </div>
+
+            <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {process.map((p) => (
+                <li key={p.step} className="relative rounded-2xl border border-border bg-card p-6">
+                  <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
+                    Step {p.step}
+                  </span>
+                  <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* ============ CTA ============ */}
+        <section className="section">
+          <div className="container mx-auto px-4">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-60"
+                style={{
+                  background: "radial-gradient(600px circle at 20% 20%, rgba(255,214,10,0.18), transparent 55%)",
+                }}
+              />
+              <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
+                <div>
+                  <span className="eyebrow border-white/15 bg-white/5 text-white/70">Ready to go low-carbon?</span>
+                  <h2 className="display-lg mt-4 text-white">See if a heat pump fits your home.</h2>
+                  <p className="lead mt-4 text-white/70 max-w-xl">
+                    Send us a few details — we'll come back with honest guidance and a fixed quote,
+                    grant-adjusted.
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-700 dark:text-gray-300">{item.description}</p>
+                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
+                  <Link href="/get-a-quote" className="btn-primary">
+                    Start quote
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+                  >
+                    All services
+                  </Link>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-black text-white py-12 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-bold text-lg mb-4">HH Plumbing and Gas</h3>
-              <p className="text-sm text-gray-300 max-w-xs">
-                Professional plumbing and gas services with a commitment to quality and customer satisfaction.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="/services/boiler-installations" className="text-gray-300 hover:text-brand-yellow">
-                    Boiler Installations
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/heat-pump-installations" className="text-gray-300 hover:text-brand-yellow">
-                    Heat Pump Installations
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/underfloor-heating-installation"
-                    className="text-gray-300 hover:text-brand-yellow"
-                  >
-                    Underfloor Heating Installation
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/cylinder-installation" className="text-gray-300 hover:text-brand-yellow">
-                    Cylinder Installation
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="/about-us" className="text-gray-300 hover:text-brand-yellow">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/get-a-quote" className="text-gray-300 hover:text-brand-yellow">
-                    Get a Quote
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact-us" className="text-gray-300 hover:text-brand-yellow">
-                    Contact Us
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Contact</h4>
-              <address className="not-italic text-sm text-gray-300 space-y-2">
-                <p>2 Broomfield Road</p>
-                <p>LONDON</p>
-                <p>London</p>
-                <p>W13 9AP</p>
-                <p className="pt-2">
-                  <a href="tel:07712599254" className="hover:text-brand-yellow">
-                    07712 599254
-                  </a>
-                </p>
-                <p>
-                  <a href="mailto:info@hhplumbing.com" className="hover:text-brand-yellow">
-                    info@hhplumbing.com
-                  </a>
-                </p>
-              </address>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-6 text-sm text-gray-400">
-            <p>© {new Date().getFullYear()} HH Plumbing and Gas. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
