@@ -4,7 +4,10 @@ import type React from "react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
-import { Home, ArrowLeft, Star } from "lucide-react"
+import { ArrowLeft, Star, Check, ArrowRight } from "lucide-react"
+import { Header } from "../components/header"
+import { TopBar } from "../components/top-bar"
+import { SiteFooter } from "../components/site-footer"
 import {
   CombiBoilerIcon,
   StandardBoilerIcon,
@@ -639,80 +642,85 @@ export default function GetAQuote() {
     }
   }
 
+  const progressSteps = [
+    { id: 1, label: "Service" },
+    { id: 2, label: "Type" },
+    { id: 3, label: "Brand" },
+    { id: 4, label: "Model" },
+    { id: 5, label: "Details" },
+  ]
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      {/* Back to Home Button */}
-      <div className="mb-8">
-        <Link
-          href="/"
-          className="inline-flex items-center px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-md transition-colors"
-        >
-          <Home className="h-4 w-4 mr-2" />
-          Back to Home
-        </Link>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <TopBar />
+      <Header />
 
-      <h1 className="text-3xl font-bold text-center mb-8">Get a Quote</h1>
-
-      <div className="max-w-5xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
-        {/* Progress Steps */}
-        <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 border-b border-gray-200 dark:border-gray-700">
-          <div className="flex justify-between">
-            <div className={`flex flex-col items-center ${step >= 1 ? "text-black" : "text-gray-400"}`}>
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 ${
-                  step >= 1 ? "bg-brand-yellow text-black" : "bg-gray-200"
-                }`}
-              >
-                1
-              </div>
-              <span className="text-xs">Service</span>
-            </div>
-            <div className={`flex flex-col items-center ${step >= 2 ? "text-black" : "text-gray-400"}`}>
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 ${
-                  step >= 2 ? "bg-brand-yellow text-black" : "bg-gray-200"
-                }`}
-              >
-                2
-              </div>
-              <span className="text-xs">Type</span>
-            </div>
-            <div className={`flex flex-col items-center ${step >= 3 ? "text-black" : "text-gray-400"}`}>
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 ${
-                  step >= 3 ? "bg-brand-yellow text-black" : "bg-gray-200"
-                }`}
-              >
-                3
-              </div>
-              <span className="text-xs">Brand</span>
-            </div>
-            <div className={`flex flex-col items-center ${step >= 4 ? "text-black" : "text-gray-400"}`}>
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 ${
-                  step >= 4 ? "bg-brand-yellow text-black" : "bg-gray-200"
-                }`}
-              >
-                4
-              </div>
-              <span className="text-xs">Model</span>
-            </div>
-            <div className={`flex flex-col items-center ${step >= 5 ? "text-black" : "text-gray-400"}`}>
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 ${
-                  step >= 5 ? "bg-brand-yellow text-black" : "bg-gray-200"
-                }`}
-              >
-                5
-              </div>
-              <span className="text-xs">Details</span>
+      <main className="flex-1">
+        {/* Hero */}
+        <section className="relative overflow-hidden">
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-radial-yellow" />
+          <div className="relative container mx-auto px-4 pt-12 md:pt-16 pb-10">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Back to Home
+            </Link>
+            <div className="mt-6 max-w-3xl">
+              <span className="eyebrow">Free no-obligation quote</span>
+              <h1 className="display-lg mt-4">
+                Get your <span className="gradient-text-yellow">tailored quote</span> in minutes.
+              </h1>
+              <p className="lead mt-4 max-w-2xl">
+                Answer a few quick questions and we'll send a fixed, itemised quote with manufacturer-approved
+                options.
+              </p>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Content */}
-        <div className="p-6">
+        {/* Quote card */}
+        <section className="container mx-auto px-4 pb-20 md:pb-28">
+          <div className="mx-auto max-w-5xl rounded-3xl border border-border bg-card shadow-lift overflow-hidden">
+            {/* Progress Steps */}
+            <div className="relative bg-foreground/[0.02] border-b border-border px-6 md:px-10 py-6">
+              <div className="relative flex items-center justify-between gap-2">
+                <div aria-hidden className="absolute top-4 left-[10%] right-[10%] h-px bg-border" />
+                <div
+                  aria-hidden
+                  className="absolute top-4 left-[10%] h-px bg-brand-yellow transition-all duration-500"
+                  style={{ width: `${Math.max(0, ((step - 1) / 4) * 80)}%` }}
+                />
+                {progressSteps.map((s) => {
+                  const active = step >= s.id
+                  const current = step === s.id
+                  return (
+                    <div key={s.id} className="relative z-10 flex flex-col items-center gap-2">
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                          active
+                            ? "bg-brand-yellow text-black shadow-[0_6px_18px_-8px_rgba(255,214,10,0.9)]"
+                            : "bg-background border border-border text-muted-foreground"
+                        } ${current ? "ring-4 ring-brand-yellow/20" : ""}`}
+                      >
+                        {step > s.id ? <Check className="h-4 w-4" /> : s.id}
+                      </div>
+                      <span
+                        className={`text-[11px] font-semibold tracking-wide transition-colors ${
+                          active ? "text-foreground" : "text-muted-foreground"
+                        }`}
+                      >
+                        {s.label}
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-6 md:p-10">
           <AnimatePresence mode="wait">
             {step === 1 && (
               <motion.div
@@ -722,19 +730,38 @@ export default function GetAQuote() {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                <h2 className="text-xl font-semibold mb-6">What service do you need?</h2>
+                <div className="mb-8">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    Step 1 of 5
+                  </p>
+                  <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">
+                    What service do you need?
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Pick a category and we'll tailor the options from there.
+                  </p>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {serviceTypes.map((service) => (
-                    <div
+                    <button
                       key={service.id}
-                      className={`border-2 rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col items-center card-hover ${
-                        selectedService === service.id ? "border-brand-yellow bg-gray-50" : "border-gray-200"
+                      type="button"
+                      className={`group relative flex flex-col items-center rounded-2xl border p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                        selectedService === service.id
+                          ? "border-brand-yellow bg-brand-yellow/5"
+                          : "border-border bg-card hover:border-foreground/20"
                       }`}
                       onClick={() => handleServiceSelect(service.id)}
                     >
-                      <div className="w-24 h-24 mb-4 text-gray-700">{service.icon}</div>
-                      <h3 className="font-medium text-center">{service.name}</h3>
-                    </div>
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-2xl bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                        <div className="h-14 w-14">{service.icon}</div>
+                      </div>
+                      <h3 className="font-semibold tracking-tight">{service.name}</h3>
+                      <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground group-hover:text-foreground">
+                        Select
+                        <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                      </span>
+                    </button>
                   ))}
                 </div>
               </motion.div>
@@ -748,43 +775,69 @@ export default function GetAQuote() {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex justify-between items-center mb-6">
-                  <button onClick={handleBack} className="text-black hover:text-gray-700 flex items-center">
-                    <ArrowLeft className="h-5 w-5 mr-1" />
+                <div className="mb-8 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      Step 2 of 5
+                    </p>
+                    <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">
+                      What type of {selectedService.split("-")[0]} do you need?
+                    </h2>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Not sure? Tap the info icon on each card for a quick rundown.
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleBack}
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                  >
+                    <ArrowLeft className="h-3.5 w-3.5" />
                     Back
                   </button>
-                  <h2 className="text-xl font-semibold">What type of {selectedService.split("-")[0]} do you need?</h2>
-                  <div className="w-16"></div> {/* Spacer for alignment */}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {getTypeOptions().map((typeOption) => (
                     <div
                       key={typeOption.id}
-                      className={`border-2 rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col items-center card-hover relative ${
-                        selectedType === typeOption.id ? "border-brand-yellow bg-gray-50" : "border-gray-200"
+                      className={`group relative rounded-2xl border p-7 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center ${
+                        selectedType === typeOption.id
+                          ? "border-brand-yellow bg-brand-yellow/5"
+                          : "border-border bg-card hover:border-foreground/20"
                       }`}
                       onClick={() => handleTypeSelect(typeOption.id)}
                     >
-                      <div className="w-24 h-24 mb-4 text-gray-700">{typeOption.icon}</div>
-                      <h3 className="font-medium text-center mb-2">{typeOption.name}</h3>
                       <button
-                        className="text-gray-500 hover:text-black mt-2"
+                        type="button"
+                        className="absolute top-3 right-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-border bg-background text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
                         onClick={(e) => {
                           e.stopPropagation()
                           toggleTooltip(typeOption.id)
                         }}
+                        aria-label={`More info about ${typeOption.name}`}
                       >
                         <InfoIcon />
                       </button>
 
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-2xl bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                        <div className="h-14 w-14">{typeOption.icon}</div>
+                      </div>
+                      <h3 className="font-semibold tracking-tight text-center">{typeOption.name}</h3>
+                      <p className="mt-2 text-xs text-muted-foreground text-center">
+                        from <span className="font-semibold text-foreground">£{typeOption.startingPrice}</span>
+                      </p>
+
                       {showTooltip === typeOption.id && (
-                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg p-3 z-10">
-                          <p className="text-sm text-gray-600">{typeOption.description}</p>
-                          <p className="text-sm font-medium mt-2">
-                            Starting from <span className="text-brand-yellow">£{typeOption.startingPrice}</span>
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-60 rounded-xl border border-border bg-popover p-4 text-left shadow-lift z-20">
+                          <p className="text-xs text-muted-foreground leading-relaxed">{typeOption.description}</p>
+                          <p className="mt-3 text-xs font-semibold">
+                            Starting from{" "}
+                            <span className="text-brand-yellow">£{typeOption.startingPrice}</span>
                           </p>
-                          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-3 h-3 bg-white border-r border-b border-gray-200"></div>
+                          <div
+                            aria-hidden
+                            className="absolute bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 h-3 w-3 rotate-45 border-r border-b border-border bg-popover"
+                          />
                         </div>
                       )}
                     </div>
@@ -801,50 +854,67 @@ export default function GetAQuote() {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex justify-between items-center mb-6">
-                  <button onClick={handleBack} className="text-black hover:text-gray-700 flex items-center">
-                    <ArrowLeft className="h-5 w-5 mr-1" />
+                <div className="mb-8 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      Step 3 of 5
+                    </p>
+                    <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">Select a brand</h2>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      We're approved installers for every brand listed.
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleBack}
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                  >
+                    <ArrowLeft className="h-3.5 w-3.5" />
                     Back
                   </button>
-                  <h2 className="text-xl font-semibold">Select a brand</h2>
-                  <div className="w-16"></div> {/* Spacer for alignment */}
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {getAvailableBrands().map((brand) => (
-                    <div
-                      key={brand.id}
-                      className={`border-2 rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col items-center card-hover relative ${
-                        selectedBrand === brand.id
-                          ? "border-brand-yellow bg-gray-50"
-                          : brand.recommended
-                            ? "border-brand-yellow border-2"
-                            : "border-gray-200"
-                      }`}
-                      onClick={() => handleBrandSelect(brand.id)}
-                    >
-                      {brand.recommended && (
-                        <div className="absolute -top-3 -right-3 bg-brand-yellow text-black text-xs font-bold px-3 py-1 rounded-full flex items-center shadow-md">
-                          <Star className="h-3 w-3 mr-1 fill-current" />
-                          Recommended
-                        </div>
-                      )}
-                      <div className="flex flex-col items-center h-full">
-                        <div className="w-full h-20 flex items-center justify-center mb-4">
+                  {getAvailableBrands().map((brand) => {
+                    const isSelected = selectedBrand === brand.id
+                    return (
+                      <button
+                        key={brand.id}
+                        type="button"
+                        className={`group relative rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center text-center ${
+                          isSelected
+                            ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
+                            : brand.recommended
+                              ? "border-brand-yellow/60 bg-card"
+                              : "border-border bg-card hover:border-foreground/20"
+                        }`}
+                        onClick={() => handleBrandSelect(brand.id)}
+                      >
+                        {brand.recommended && (
+                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 rounded-full bg-brand-yellow text-black text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 shadow-[0_6px_18px_-8px_rgba(255,214,10,0.9)]">
+                            <Star className="h-3 w-3 fill-current" />
+                            Recommended
+                          </div>
+                        )}
+                        <div className="relative h-16 w-full flex items-center justify-center mb-4">
                           <img
                             src={brand.logo || "/placeholder.svg"}
                             alt={brand.name}
                             className="max-h-full max-w-full object-contain"
-                            style={{ background: "transparent" }}
                           />
                         </div>
-                        <h3 className="font-medium text-center">{brand.name}</h3>
-                        <p className="text-sm text-gray-600 mt-2 text-center">
-                          Starting from <span className="text-brand-yellow">£{brand.startingPrice}</span>
+                        <h3 className="font-semibold tracking-tight">{brand.name}</h3>
+                        <p className="mt-2 text-xs text-muted-foreground">
+                          from{" "}
+                          <span className="font-semibold text-foreground">£{brand.startingPrice}</span>
                         </p>
-                      </div>
-                    </div>
-                  ))}
+                        {isSelected && (
+                          <span className="absolute top-3 right-3 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-yellow text-black">
+                            <Check className="h-3.5 w-3.5" />
+                          </span>
+                        )}
+                      </button>
+                    )
+                  })}
                 </div>
               </motion.div>
             )}
