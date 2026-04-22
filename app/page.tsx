@@ -142,7 +142,7 @@ export default function Home() {
                 </Link>
                 <a
                   href="tel:07712599254"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 backdrop-blur px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+                  className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/5 backdrop-blur px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
                 >
                   <Phone className="h-4 w-4" />
                   Call 07712 599254
@@ -242,7 +242,7 @@ export default function Home() {
                   <Link
                     key={service.href}
                     href={service.href}
-                    className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:border-brand-yellow/40"
+                    className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:border-brand-yellow/40"
                   >
                     <div className="relative aspect-[5/3] overflow-hidden bg-foreground/[0.04]">
                       <Image
@@ -355,7 +355,7 @@ export default function Home() {
                       <Image src="/images/gas-safe-logo.png" alt="Gas Safe" fill className="object-contain" />
                     </div>
                   </div>
-                  <div className="relative mt-8 aspect-[5/4] rounded-2xl overflow-hidden border border-white/10">
+                  <div className="relative mt-8 aspect-[5/4] rounded-lg overflow-hidden border border-white/10">
                     <Image
                       src="/images/gas-safe-register.png"
                       alt="Gas Safe Registered · 630695"
@@ -424,7 +424,7 @@ export default function Home() {
               ].map((t) => (
                 <figure
                   key={t.name}
-                  className="flex flex-col rounded-3xl border border-border bg-card p-8 shadow-soft"
+                  className="flex flex-col rounded-lg border border-border bg-card p-8 shadow-soft"
                 >
                   <div className="flex mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -463,7 +463,7 @@ export default function Home() {
               {steps.map((step, i) => (
                 <li
                   key={step.title}
-                  className="relative rounded-2xl border border-border bg-card p-6 shadow-soft"
+                  className="relative rounded-lg border border-border bg-card p-6 shadow-soft"
                 >
                   <div className="flex items-center justify-between">
                     <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-yellow text-black font-bold text-sm">
@@ -497,7 +497,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="divide-y divide-border rounded-3xl border border-border bg-card overflow-hidden">
+            <div className="divide-y divide-border rounded-lg border border-border bg-card overflow-hidden">
               {[
                 {
                   q: "How much does a new boiler cost installed?",
@@ -545,7 +545,7 @@ export default function Home() {
 
         {/* =================== EMERGENCY CTA BANNER =================== */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
+          <div className="relative overflow-hidden rounded-lg border border-border bg-brand-black text-white p-10 md:p-16">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-60"
@@ -570,14 +570,14 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
                 <a
                   href="tel:07712599254"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow text-black px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-glow"
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-brand-yellow text-black px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-[#E6BE00]"
                 >
                   <Phone className="h-4 w-4" />
                   Call 07712 599254
                 </a>
                 <Link
                   href="/contact-us"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
                 >
                   Other ways to reach us
                 </Link>
