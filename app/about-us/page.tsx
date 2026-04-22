@@ -108,14 +108,14 @@ export default function AboutUsPage() {
               </p>
 
               <div className="mt-10 grid sm:grid-cols-2 gap-4">
-                <div className="rounded-2xl border border-border bg-card p-5">
+                <div className="rounded-lg border border-border bg-card p-5">
                   <ShieldCheck className="h-6 w-6 text-brand-yellow" />
                   <p className="mt-4 font-semibold">Gas Safe Registered</p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Register number 630695 — every gas job is safe, legal and certified.
                   </p>
                 </div>
-                <div className="rounded-2xl border border-border bg-card p-5">
+                <div className="rounded-lg border border-border bg-card p-5">
                   <Award className="h-6 w-6 text-brand-yellow" />
                   <p className="mt-4 font-semibold">Manufacturer Approved</p>
                   <p className="mt-1 text-sm text-muted-foreground">
@@ -139,7 +139,7 @@ export default function AboutUsPage() {
                   aria-hidden
                   className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
                 />
-                <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6 rounded-2xl border border-white/15 bg-black/60 backdrop-blur-md p-5 text-white">
+                <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6 rounded-lg border border-white/15 bg-black/60 backdrop-blur-md p-5 text-white">
                   <div className="flex items-center gap-4">
                     <div className="relative h-12 w-12 shrink-0 rounded-xl bg-white p-1.5">
                       <Image
@@ -179,7 +179,7 @@ export default function AboutUsPage() {
                 return (
                   <div
                     key={i}
-                    className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
                   >
                     <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
                       <Icon className="h-5 w-5" />
@@ -196,7 +196,7 @@ export default function AboutUsPage() {
         {/* ============== CTA ============== */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
+            <div className="relative overflow-hidden rounded-lg border border-border bg-brand-black text-white p-10 md:p-16">
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 opacity-60"

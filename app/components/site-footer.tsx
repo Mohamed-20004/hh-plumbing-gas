@@ -18,7 +18,7 @@ export function SiteFooter() {
 
       <div className="relative container mx-auto px-4 pt-20 pb-10">
         {/* CTA band */}
-        <div className="mb-16 rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-12 backdrop-blur-sm">
+        <div className="mb-16 rounded-lg border border-white/10 bg-white/[0.03] p-8 md:p-12 backdrop-blur-sm">
           <div className="grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
             <div>
               <span className="eyebrow border-white/15 bg-white/5 text-white/70">Ready when you are</span>

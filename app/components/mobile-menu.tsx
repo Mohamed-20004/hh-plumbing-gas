@@ -69,7 +69,7 @@ export function MobileMenu() {
                 href={link.href}
                 onClick={closeMenu}
                 className={cn(
-                  "flex items-center justify-between py-4 px-4 rounded-2xl text-lg font-semibold transition-colors",
+                  "flex items-center justify-between py-4 px-4 rounded-lg text-lg font-semibold transition-colors",
                   pathname === link.href
                     ? "bg-brand-yellow text-black"
                     : "hover:bg-foreground/[0.04]",
@@ -80,7 +80,7 @@ export function MobileMenu() {
               </Link>
             ))}
 
-            <div className="mt-2 rounded-2xl border border-border overflow-hidden">
+            <div className="mt-2 rounded-lg border border-border overflow-hidden">
               <button
                 onClick={() => setIsServicesExpanded(!isServicesExpanded)}
                 className="flex w-full items-center justify-between px-4 py-4 text-lg font-semibold"

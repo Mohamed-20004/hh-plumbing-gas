@@ -177,7 +177,7 @@ export default function BoilerInstallationsPage() {
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-border bg-card p-8">
+            <div className="rounded-lg border border-border bg-card p-8">
               <h3 className="text-lg font-semibold">Brands we install</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Approved installer status lets us offer extended warranties, best-in-class pricing and
@@ -235,7 +235,7 @@ export default function BoilerInstallationsPage() {
                 return (
                   <div
                     key={b.title}
-                    className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
                   >
                     <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
                       <Icon className="h-5 w-5" />
@@ -261,7 +261,7 @@ export default function BoilerInstallationsPage() {
               {process.map((p) => (
                 <li
                   key={p.step}
-                  className="relative rounded-2xl border border-border bg-card p-6"
+                  className="relative rounded-lg border border-border bg-card p-6"
                 >
                   <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
                     Step {p.step}
@@ -277,7 +277,7 @@ export default function BoilerInstallationsPage() {
         {/* ============ CTA ============ */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
+            <div className="relative overflow-hidden rounded-lg border border-border bg-brand-black text-white p-10 md:p-16">
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 opacity-60"

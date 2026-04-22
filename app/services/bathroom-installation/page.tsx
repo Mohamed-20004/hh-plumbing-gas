@@ -176,7 +176,7 @@ export default function BathroomInstallationPage() {
 
             <div className="grid md:grid-cols-2 gap-5">
               {packages.map((pkg) => (
-                <div key={pkg.name} className="rounded-3xl border border-border bg-card p-8">
+                <div key={pkg.name} className="rounded-lg border border-border bg-card p-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-yellow">
                     {pkg.name}
                   </p>
@@ -214,7 +214,7 @@ export default function BathroomInstallationPage() {
                 return (
                   <div
                     key={b.title}
-                    className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
                   >
                     <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
                       <Icon className="h-5 w-5" />
@@ -238,7 +238,7 @@ export default function BathroomInstallationPage() {
 
             <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
               {process.map((p) => (
-                <li key={p.step} className="relative rounded-2xl border border-border bg-card p-6">
+                <li key={p.step} className="relative rounded-lg border border-border bg-card p-6">
                   <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
                     Step {p.step}
                   </span>
@@ -253,7 +253,7 @@ export default function BathroomInstallationPage() {
         {/* ============ CTA ============ */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
+            <div className="relative overflow-hidden rounded-lg border border-border bg-brand-black text-white p-10 md:p-16">
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 opacity-60"

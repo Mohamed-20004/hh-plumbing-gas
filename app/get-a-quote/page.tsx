@@ -682,7 +682,7 @@ export default function GetAQuote() {
 
         {/* Quote card */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-border bg-card shadow-lift overflow-hidden">
+          <div className="mx-auto max-w-5xl rounded-lg border border-border bg-card shadow-lift overflow-hidden">
             {/* Progress Steps */}
             <div className="relative bg-foreground/[0.02] border-b border-border px-6 md:px-10 py-6">
               <div className="relative flex items-center justify-between gap-2">
@@ -746,14 +746,14 @@ export default function GetAQuote() {
                     <button
                       key={service.id}
                       type="button"
-                      className={`group relative flex flex-col items-center rounded-2xl border p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                      className={`group relative flex flex-col items-center rounded-lg border p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
                         selectedService === service.id
                           ? "border-brand-yellow bg-brand-yellow/5"
                           : "border-border bg-card hover:border-foreground/20"
                       }`}
                       onClick={() => handleServiceSelect(service.id)}
                     >
-                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-2xl bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
                         <div className="h-14 w-14">{service.icon}</div>
                       </div>
                       <h3 className="font-semibold tracking-tight">{service.name}</h3>
@@ -800,7 +800,7 @@ export default function GetAQuote() {
                   {getTypeOptions().map((typeOption) => (
                     <div
                       key={typeOption.id}
-                      className={`group relative rounded-2xl border p-7 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center ${
+                      className={`group relative rounded-lg border p-7 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center ${
                         selectedType === typeOption.id
                           ? "border-brand-yellow bg-brand-yellow/5"
                           : "border-border bg-card hover:border-foreground/20"
@@ -819,7 +819,7 @@ export default function GetAQuote() {
                         <InfoIcon />
                       </button>
 
-                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-2xl bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
                         <div className="h-14 w-14">{typeOption.icon}</div>
                       </div>
                       <h3 className="font-semibold tracking-tight text-center">{typeOption.name}</h3>
@@ -880,7 +880,7 @@ export default function GetAQuote() {
                       <button
                         key={brand.id}
                         type="button"
-                        className={`group relative rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center text-center ${
+                        className={`group relative rounded-lg border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center text-center ${
                           isSelected
                             ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
                             : brand.recommended
@@ -953,7 +953,7 @@ export default function GetAQuote() {
                       <button
                         key={model.id}
                         type="button"
-                        className={`group relative rounded-2xl border p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                        className={`group relative rounded-lg border p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
                           isSelected
                             ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
                             : "border-border bg-card hover:border-foreground/20"
@@ -1013,7 +1013,7 @@ export default function GetAQuote() {
                   </button>
                 </div>
 
-                <div className="mb-8 rounded-2xl border border-brand-yellow/50 bg-brand-yellow/5 p-6">
+                <div className="mb-8 rounded-lg border border-brand-yellow/50 bg-brand-yellow/5 p-6">
                   <div className="flex items-center gap-2 mb-5">
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-yellow text-black">
                       <Check className="h-3.5 w-3.5" />
@@ -1068,7 +1068,7 @@ export default function GetAQuote() {
 
                 <form
                   onSubmit={handleSubmit}
-                  className="rounded-2xl border border-border bg-card p-6 md:p-8"
+                  className="rounded-lg border border-border bg-card p-6 md:p-8"
                 >
                   <h3 className="text-lg font-semibold tracking-tight">Contact information</h3>
                   <p className="mt-1 text-sm text-muted-foreground">

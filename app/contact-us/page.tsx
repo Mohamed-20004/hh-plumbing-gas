@@ -31,7 +31,7 @@ export default function ContactUsPage() {
 
         {/* ============ CALL PANEL ============ */}
         <section className="container mx-auto px-4 pb-16">
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-yellow p-10 md:p-14 text-black">
+          <div className="relative overflow-hidden rounded-lg border border-border bg-brand-yellow p-10 md:p-14 text-black">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-60"
@@ -72,21 +72,21 @@ export default function ContactUsPage() {
               </div>
 
               <ul className="grid gap-3 text-sm">
-                <li className="flex items-start gap-3 rounded-2xl border border-black/15 bg-white/40 backdrop-blur-sm p-4">
+                <li className="flex items-start gap-3 rounded-lg border border-black/15 bg-white/40 backdrop-blur-sm p-4">
                   <Clock className="h-5 w-5 mt-0.5" />
                   <div>
                     <p className="font-semibold">Mon – Fri</p>
                     <p className="text-black/70">8AM – 6PM</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3 rounded-2xl border border-black/15 bg-white/40 backdrop-blur-sm p-4">
+                <li className="flex items-start gap-3 rounded-lg border border-black/15 bg-white/40 backdrop-blur-sm p-4">
                   <Clock className="h-5 w-5 mt-0.5" />
                   <div>
                     <p className="font-semibold">Saturday</p>
                     <p className="text-black/70">9AM – 4PM</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3 rounded-2xl border border-black/15 bg-white/40 backdrop-blur-sm p-4">
+                <li className="flex items-start gap-3 rounded-lg border border-black/15 bg-white/40 backdrop-blur-sm p-4">
                   <ShieldCheck className="h-5 w-5 mt-0.5" />
                   <div>
                     <p className="font-semibold">Sunday &amp; out of hours</p>
@@ -101,7 +101,7 @@ export default function ContactUsPage() {
         {/* ============ CONTACT GRID ============ */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
           <div className="grid md:grid-cols-3 gap-5">
-            <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
                 <Mail className="h-5 w-5" />
               </div>
@@ -119,7 +119,7 @@ export default function ContactUsPage() {
               <p className="mt-3 text-xs text-muted-foreground">Response within 24 hours.</p>
             </div>
 
-            <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
                 <MapPin className="h-5 w-5" />
               </div>
@@ -134,7 +134,7 @@ export default function ContactUsPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
                 <Instagram className="h-5 w-5" />
               </div>

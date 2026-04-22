@@ -120,7 +120,7 @@ export function Navigation() {
           </button>
 
           {isServicesOpen && (
-            <div className="absolute left-1/2 -translate-x-1/2 mt-4 w-[420px] rounded-2xl border border-border bg-popover text-popover-foreground shadow-lift z-50 overflow-hidden animate-fade-up">
+            <div className="absolute left-1/2 -translate-x-1/2 mt-4 w-[420px] rounded-lg border border-border bg-popover text-popover-foreground shadow-lift z-50 overflow-hidden animate-fade-up">
               <div className="p-2">
                 {serviceLinks.map((service) => {
                   const active = pathname === service.href

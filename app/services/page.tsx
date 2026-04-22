@@ -117,7 +117,7 @@ export default function ServicesPage() {
                 <Link
                   key={service.title}
                   href={service.link}
-                  className="group relative flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:border-brand-yellow/40"
+                  className="group relative flex flex-col rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:border-brand-yellow/40"
                 >
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
                     <Icon className="h-5 w-5" />
@@ -154,21 +154,21 @@ export default function ServicesPage() {
         {/* ============ TRUST BAND ============ */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
           <div className="grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <ShieldCheck className="h-6 w-6 text-brand-yellow" />
               <p className="mt-4 font-semibold">Gas Safe Registered</p>
               <p className="mt-1 text-sm text-muted-foreground">
                 Register 630695 — every gas job safe, legal and certified.
               </p>
             </div>
-            <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <Clock className="h-6 w-6 text-brand-yellow" />
               <p className="mt-4 font-semibold">24/7 Emergency Cover</p>
               <p className="mt-1 text-sm text-muted-foreground">
                 Leaks, breakdowns or no heat — we answer out of hours.
               </p>
             </div>
-            <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <ArrowUpRight className="h-6 w-6 text-brand-yellow" />
               <p className="mt-4 font-semibold">Manufacturer Approved</p>
               <p className="mt-1 text-sm text-muted-foreground">
@@ -181,7 +181,7 @@ export default function ServicesPage() {
         {/* ============ CTA ============ */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
+            <div className="relative overflow-hidden rounded-lg border border-border bg-brand-black text-white p-10 md:p-16">
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 opacity-60"
