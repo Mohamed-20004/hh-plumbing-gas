@@ -476,6 +476,52 @@ export default function Home() {
           </div>
         </section>
 
+        {/* =================== FULL-BLEED EDITORIAL =================== */}
+        <section className="relative h-[60vh] min-h-[460px] md:min-h-[560px] w-full overflow-hidden bg-brand-black">
+          <Image
+            src="/images/modern-bathroom.jpeg"
+            alt="HH Plumbing and Gas — recent install"
+            fill
+            priority={false}
+            className="object-cover opacity-70"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.85) 100%)",
+            }}
+          />
+          <div className="relative h-full container mx-auto px-4 flex flex-col justify-end pb-12 md:pb-16">
+            <div className="max-w-2xl text-white">
+              <span className="eyebrow border-white/20 bg-white/5 text-white/80">Recent work</span>
+              <h2 className="display-lg mt-4 text-white">
+                Built to last. <span className="text-brand-yellow">Finished beautifully.</span>
+              </h2>
+              <p className="lead mt-4 text-white/75 max-w-xl">
+                Every install is signed off against manufacturer spec — pressure-tested, certified and tidied
+                before we leave. See what a job done properly looks like.
+              </p>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow text-black px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-glow"
+                >
+                  Explore our services
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/about-us"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 backdrop-blur px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+                >
+                  Meet the team
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* =================== PROCESS =================== */}
         <section className="section">
           <div className="container mx-auto px-4">
