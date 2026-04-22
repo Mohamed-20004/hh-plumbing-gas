@@ -1,8 +1,88 @@
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, Check, Clock, Shield, PenToolIcon as Tool, AlertTriangle, PhoneCall } from "lucide-react"
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Clock,
+  Shield,
+  PenToolIcon as Tool,
+  AlertTriangle,
+  PhoneCall,
+  Flame,
+  Droplet,
+  ShieldCheck,
+  Timer,
+} from "lucide-react"
 import { Header } from "../../components/header"
 import { TopBar } from "../../components/top-bar"
+import { SiteFooter } from "../../components/site-footer"
+
+const plumbingIssues = [
+  "Burst or leaking pipes",
+  "Blocked toilets, sinks and drains",
+  "Water heater failures",
+  "Leaking taps and fixtures",
+  "Active flooding",
+  "Frozen pipes in winter",
+  "Sewer line backups",
+  "Pump failures",
+]
+
+const heatingIssues = [
+  "Boiler breakdowns",
+  "Central heating failures",
+  "Suspected gas leaks",
+  "Carbon monoxide concerns",
+  "Radiator leaks",
+  "Faulty thermostats",
+  "Circulator pump failures",
+  "No hot water",
+]
+
+const process = [
+  {
+    icon: PhoneCall,
+    step: "1",
+    title: "Call 07712 599254",
+    description: "Tell us what's happening — we'll talk you through immediate safety steps and dispatch.",
+  },
+  {
+    icon: Timer,
+    step: "2",
+    title: "Fast arrival",
+    description: "Gas Safe engineers en route with fully stocked vans — most central London call-outs inside 90 minutes.",
+  },
+  {
+    icon: Tool,
+    step: "3",
+    title: "Diagnose & fix",
+    description: "Fixed-fee diagnosis, then a clear quote for the repair. Most fixed on the spot.",
+  },
+  {
+    icon: Shield,
+    step: "4",
+    title: "Make-safe & advise",
+    description: "If a full repair needs ordered parts, we'll make the property safe and schedule the follow-up.",
+  },
+]
+
+const preventPlumbing = [
+  "Know where your main stop valve is",
+  "Don't pour fats or oils down drains",
+  "Use drain guards for hair and debris",
+  "Only flush toilet paper",
+  "Fix small leaks promptly",
+  "Insulate pipes in cold areas",
+]
+
+const preventHeating = [
+  "Annual boiler service — on time",
+  "Bleed radiators when they're cool at the top",
+  "Keep system pressure between 1.0–1.5 bar",
+  "Test CO detectors monthly",
+  "Keep boiler area clear of clutter",
+  "Consider a smart thermostat",
+]
 
 export default function EmergencyRepairsPage() {
   return (
@@ -11,298 +91,234 @@ export default function EmergencyRepairsPage() {
       <Header />
 
       <main className="flex-1">
-        <section className="relative h-[300px] md:h-[400px] overflow-hidden">
-          <Image
-            src="/placeholder.svg?height=400&width=1200&text=Emergency+Plumbing+Repairs"
-            alt="Emergency Plumbing Repairs"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center">
-            <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Emergency Repairs</h1>
-              <p className="text-xl text-white max-w-2xl">
-                Fast, reliable emergency plumbing and heating repairs available 24/7.
+        {/* ============ HERO ============ */}
+        <section className="page-hero">
+          <div className="relative container mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
+            <div className="max-w-3xl">
+              <span className="eyebrow border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow">
+                24/7 Emergency
+              </span>
+              <h1 className="display-xl mt-6 text-white">
+                Leaks, no heat, breakdowns — <span className="text-brand-yellow">we'll be there fast</span>.
+              </h1>
+              <p className="lead mt-6 text-white/70 max-w-2xl">
+                Gas Safe registered engineers, fully stocked vans, and a fixed-fee diagnosis. Call any time — we
+                answer around the clock.
               </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a href="tel:07712599254" className="btn-primary">
+                  <PhoneCall className="h-4 w-4" />
+                  Call 07712 599254
+                </a>
+                <Link href="/contact-us" className="btn-ghost-dark">
+                  Contact form
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+
+              <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/70">
+                <span className="inline-flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 text-brand-yellow" />
+                  Gas Safe · 630695
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-brand-yellow" />
+                  24/7 dispatch
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Tool className="h-4 w-4 text-brand-yellow" />
+                  Fixed-fee diagnosis
+                </span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Our Emergency Repair Services</h2>
-              <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
-                At HH Plumbing and Gas, we understand that plumbing and heating emergencies can happen at any time.
-                That's why we offer a comprehensive emergency repair service to quickly resolve issues and minimize
-                damage to your property.
-              </p>
-              <p className="text-lg mb-8 text-gray-700 dark:text-gray-300">
-                Our team of experienced engineers is available 24/7 to respond to emergencies, equipped with the tools
-                and expertise to handle a wide range of plumbing and heating issues.
-              </p>
-
-              <div className="bg-brand-yellow/10 border-l-4 border-brand-yellow p-4 mb-8">
-                <div className="flex items-start">
-                  <AlertTriangle className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">Emergency Hotline</h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      For immediate assistance with plumbing or heating emergencies, call our 24/7 emergency number:
-                    </p>
-                    <a
-                      href="tel:07712599254"
-                      className="text-xl font-bold mt-2 inline-block hover:text-brand-yellow transition-colors"
-                    >
-                      07712 599254
-                    </a>
-                  </div>
+        {/* ============ EMERGENCY BANNER ============ */}
+        <section className="container mx-auto px-4 -mt-10 relative z-10">
+          <div className="rounded-3xl border border-brand-yellow/40 bg-brand-yellow p-6 md:p-8 text-black shadow-lift">
+            <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+              <div className="flex items-start gap-4">
+                <AlertTriangle className="h-8 w-8 shrink-0" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em]">If you smell gas</p>
+                  <p className="mt-1 font-semibold">
+                    Leave the property, open windows on your way out and call the National Gas Emergency line on
+                    0800 111 999. Then call us.
+                  </p>
                 </div>
               </div>
-
-              <h3 className="text-2xl font-semibold mb-4">Why Choose Us for Emergency Repairs?</h3>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "24/7 emergency response service",
-                  "Fast arrival times",
-                  "Experienced and Gas Safe registered engineers",
-                  "Fully equipped vans to handle most repairs on the spot",
-                  "Transparent pricing with no hidden charges",
-                  "Temporary solutions when immediate full repairs aren't possible",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <Check className="h-5 w-5 text-brand-yellow mr-2 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-300">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                href="/contact-us"
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-brand-yellow text-black hover:bg-opacity-90 transition-colors"
+              <a
+                href="tel:07712599254"
+                className="md:ml-auto inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
-                Contact Us
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="space-y-8">
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Plumbing Emergencies We Handle</h3>
-                <ul className="space-y-2 mb-4">
-                  {[
-                    "Burst or leaking pipes",
-                    "Blocked toilets, sinks, and drains",
-                    "Water heater failures",
-                    "Leaking taps and fixtures",
-                    "Flooding issues",
-                    "Frozen pipes in winter",
-                    "Sewer line backups",
-                    "Water pump failures",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="h-1.5 w-1.5 bg-brand-yellow rounded-full mt-2 mr-2"></div>
-                      <span className="text-gray-700 dark:text-gray-300">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Heating Emergencies We Handle</h3>
-                <ul className="space-y-2 mb-4">
-                  {[
-                    "Boiler breakdowns",
-                    "Central heating failures",
-                    "Gas leaks (requiring immediate attention)",
-                    "Carbon monoxide concerns",
-                    "Radiator leaks",
-                    "Thermostat malfunctions",
-                    "Pump failures",
-                    "No hot water",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="h-1.5 w-1.5 bg-brand-yellow rounded-full mt-2 mr-2"></div>
-                      <span className="text-gray-700 dark:text-gray-300">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <PhoneCall className="h-4 w-4" />
+                Call us now
+              </a>
             </div>
           </div>
         </section>
 
-        <section className="bg-gray-100 dark:bg-gray-900 py-16">
+        {/* ============ ISSUES WE HANDLE ============ */}
+        <section className="section">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">Our Emergency Response Process</h2>
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                {
-                  icon: <PhoneCall className="h-8 w-8 text-brand-yellow" />,
-                  title: "Call Our Emergency Line",
-                  description:
-                    "Contact our 24/7 emergency number. Our team will ask about your emergency to prepare appropriately.",
-                },
-                {
-                  icon: <Clock className="h-8 w-8 text-brand-yellow" />,
-                  title: "Rapid Response",
-                  description: "We'll dispatch the nearest available engineer to your location as quickly as possible.",
-                },
-                {
-                  icon: <Tool className="h-8 w-8 text-brand-yellow" />,
-                  title: "Assessment & Repair",
-                  description:
-                    "Our engineer will assess the situation, explain what's needed, and carry out the necessary repairs.",
-                },
-                {
-                  icon: <Shield className="h-8 w-8 text-brand-yellow" />,
-                  title: "Follow-up & Prevention",
-                  description:
-                    "After resolving the emergency, we'll advise on preventing similar issues in the future.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-                  <div className="mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300">{item.description}</p>
-                </div>
-              ))}
+            <div className="max-w-2xl mx-auto text-center mb-14">
+              <span className="eyebrow">What we fix</span>
+              <h2 className="display-lg mt-4">From trickle leaks to total breakdowns.</h2>
+              <p className="lead mt-4">
+                Fully equipped vans handle most repairs on the spot. If we need parts, we'll make safe and return.
+              </p>
             </div>
-          </div>
-        </section>
 
-        <section className="container mx-auto px-4 py-16">
-          <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
-            <h2 className="text-3xl font-bold mb-6 text-center">Emergency Prevention Tips</h2>
-            <p className="text-lg mb-8 text-center text-gray-700 dark:text-gray-300">
-              While we're always ready to help with emergencies, here are some tips to help prevent common plumbing and
-              heating issues:
-            </p>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Plumbing Prevention</h3>
-                <ul className="space-y-3">
-                  {[
-                    "Know where your main water shut-off valve is located",
-                    "Don't pour fats, oils, or grease down drains",
-                    "Use drain guards to catch hair and debris",
-                    "Avoid flushing anything other than toilet paper",
-                    "Check for leaks regularly and fix them promptly",
-                    "Insulate pipes in cold areas to prevent freezing",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <Check className="h-5 w-5 text-brand-yellow mr-2 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300">{item}</span>
+            <div className="grid md:grid-cols-2 gap-5">
+              <div className="rounded-3xl border border-border bg-card p-8">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+                  <Droplet className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold">Plumbing emergencies</h3>
+                <ul className="mt-5 grid sm:grid-cols-2 gap-2">
+                  {plumbingIssues.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      <span className="text-sm text-muted-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Heating Prevention</h3>
-                <ul className="space-y-3">
-                  {[
-                    "Schedule annual boiler and heating system maintenance",
-                    "Bleed radiators regularly to remove air pockets",
-                    "Maintain proper pressure in your heating system",
-                    "Install carbon monoxide detectors and check them regularly",
-                    "Keep boiler and heating areas clear of obstructions",
-                    "Consider a smart thermostat to monitor your system",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <Check className="h-5 w-5 text-brand-yellow mr-2 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300">{item}</span>
+
+              <div className="rounded-3xl border border-border bg-card p-8">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+                  <Flame className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold">Heating & gas emergencies</h3>
+                <ul className="mt-5 grid sm:grid-cols-2 gap-2">
+                  {heatingIssues.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      <span className="text-sm text-muted-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============ PROCESS ============ */}
+        <section className="bg-foreground/[0.02] border-y border-border py-20 md:py-28">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto text-center mb-14">
+              <span className="eyebrow">How we respond</span>
+              <h2 className="display-lg mt-4">Four steps from call to fix.</h2>
+            </div>
+
+            <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {process.map((p) => {
+                const Icon = p.icon
+                return (
+                  <li
+                    key={p.step}
+                    className="relative rounded-2xl border border-border bg-card p-6"
+                  >
+                    <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
+                      Step {p.step}
+                    </span>
+                    <div className="mt-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-4 text-lg font-semibold tracking-tight">{p.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
+                  </li>
+                )
+              })}
+            </ol>
+          </div>
+        </section>
+
+        {/* ============ PREVENTION TIPS ============ */}
+        <section className="section">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto text-center mb-14">
+              <span className="eyebrow">Prevention</span>
+              <h2 className="display-lg mt-4">Small habits, fewer call-outs.</h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-5">
+              <div className="rounded-3xl border border-border bg-card p-8">
+                <h3 className="text-lg font-semibold">Plumbing prevention</h3>
+                <ul className="mt-5 space-y-3">
+                  {preventPlumbing.map((tip) => (
+                    <li key={tip} className="flex items-start gap-3">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      <span className="text-sm text-muted-foreground">{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-3xl border border-border bg-card p-8">
+                <h3 className="text-lg font-semibold">Heating prevention</h3>
+                <ul className="mt-5 space-y-3">
+                  {preventHeating.map((tip) => (
+                    <li key={tip} className="flex items-start gap-3">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      <span className="text-sm text-muted-foreground">{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============ CTA ============ */}
+        <section className="section">
+          <div className="container mx-auto px-4">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-60"
+                style={{
+                  background: "radial-gradient(600px circle at 20% 20%, rgba(255,214,10,0.18), transparent 55%)",
+                }}
+              />
+              <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
+                <div>
+                  <span className="eyebrow border-white/15 bg-white/5 text-white/70">Need help right now?</span>
+                  <h2 className="display-lg mt-4 text-white">We're on the phone 24/7.</h2>
+                  <p className="lead mt-4 text-white/70 max-w-xl">
+                    One call reaches a Gas Safe registered engineer — not a call centre. We'll get you safely back
+                    on.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
+                  <a href="tel:07712599254" className="btn-primary">
+                    <PhoneCall className="h-4 w-4" />
+                    Call 07712 599254
+                  </a>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+                  >
+                    All services
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-black text-white py-12 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-bold text-lg mb-4">HH Plumbing and Gas</h3>
-              <p className="text-sm text-gray-300 max-w-xs">
-                Professional plumbing and gas services with a commitment to quality and customer satisfaction.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="/services/boiler-installations" className="text-gray-300 hover:text-brand-yellow">
-                    Boiler Installations
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/heat-pump-installations" className="text-gray-300 hover:text-brand-yellow">
-                    Heat Pump Installations
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/underfloor-heating-installation"
-                    className="text-gray-300 hover:text-brand-yellow"
-                  >
-                    Underfloor Heating Installation
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/cylinder-installation" className="text-gray-300 hover:text-brand-yellow">
-                    Cylinder Installation
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="/about-us" className="text-gray-300 hover:text-brand-yellow">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/get-a-quote" className="text-gray-300 hover:text-brand-yellow">
-                    Get a Quote
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact-us" className="text-gray-300 hover:text-brand-yellow">
-                    Contact Us
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Contact</h4>
-              <address className="not-italic text-sm text-gray-300 space-y-2">
-                <p>2 Broomfield Road</p>
-                <p>LONDON</p>
-                <p>London</p>
-                <p>W13 9AP</p>
-                <p className="pt-2">
-                  <a href="tel:07712599254" className="hover:text-brand-yellow">
-                    07712 599254
-                  </a>
-                </p>
-                <p>
-                  <a href="mailto:info@hhplumbing.com" className="hover:text-brand-yellow">
-                    info@hhplumbing.com
-                  </a>
-                </p>
-              </address>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-6 text-sm text-gray-400">
-            <p>© {new Date().getFullYear()} HH Plumbing and Gas. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
