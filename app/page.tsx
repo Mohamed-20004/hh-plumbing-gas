@@ -35,24 +35,48 @@ const services = [
     href: "/services/boiler-installations",
     icon: Flame,
     desc: "Combi, system and regular boilers from Worcester, Vaillant, Baxi and more.",
+    image: "/placeholder.svg?height=600&width=800&text=Boiler+install",
+    price: "from £1,800",
   },
   {
     title: "Heat Pump Installations",
     href: "/services/heat-pump-installations",
     icon: Thermometer,
     desc: "Air and ground source heat pumps for efficient, low-carbon heating.",
+    image: "/placeholder.svg?height=600&width=800&text=Heat+pump",
+    price: "£7,500 BUS grant",
   },
   {
     title: "Underfloor Heating",
     href: "/services/underfloor-heating-installation",
     icon: Droplet,
     desc: "Wet and electric systems designed to replace radiators and save energy.",
+    image: "/placeholder.svg?height=600&width=800&text=Underfloor+heating",
+    price: "Wet or electric",
   },
   {
     title: "Cylinder Installation",
     href: "/services/cylinder-installation",
     icon: Wrench,
     desc: "Direct and indirect hot water cylinders, including unvented Megaflo systems.",
+    image: "/placeholder.svg?height=600&width=800&text=Hot+water+cylinder",
+    price: "Unvented specialists",
+  },
+  {
+    title: "Bathroom Installation",
+    href: "/services/bathroom-installation",
+    icon: Droplet,
+    desc: "Full bathroom renovations — design, plumbing, tiling and electrics under one roof.",
+    image: "/images/modern-bathroom.jpeg",
+    price: "Design-led",
+  },
+  {
+    title: "Emergency Repairs",
+    href: "/services/emergency-repairs",
+    icon: Wrench,
+    desc: "Leaks, boiler breakdowns, no heat or hot water — 24/7 Gas Safe response across London.",
+    image: "/placeholder.svg?height=600&width=800&text=Emergency+repairs",
+    price: "24/7 call-out",
   },
 ]
 
@@ -92,32 +116,16 @@ export default function Home() {
           <div className="relative container mx-auto px-4 pt-16 md:pt-24 pb-20 md:pb-28">
             <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 items-center">
               <div className="animate-fade-up">
-                <span className="eyebrow">Gas Safe registered · London</span>
+                <span className="eyebrow">Trusted London heating engineers</span>
 
-                <h1 className="display-xl mt-6">
-                  Plumbing &amp; gas,{" "}
-                  <span className="relative inline-block">
-                    <span className="gradient-text-yellow">engineered right</span>
-                    <svg
-                      aria-hidden
-                      className="absolute -bottom-2 left-0 w-full"
-                      viewBox="0 0 300 12"
-                      fill="none"
-                    >
-                      <path
-                        d="M2 8C70 3 140 3 298 8"
-                        stroke="#FFD60A"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>{" "}
-                  the first time.
+                <h1 className="display-xl mt-6 text-balance">
+                  Heating your home,{" "}
+                  <span className="gradient-text-yellow">done properly</span>.
                 </h1>
 
                 <p className="lead mt-6 max-w-xl text-pretty">
-                  We design and install boilers, heat pumps, underfloor heating and hot water systems across
-                  London — with certified engineers, manufacturer-approved parts and a fixed-price promise.
+                  Gas Safe engineers designing and installing boilers, heat pumps, cylinders and complete bathrooms
+                  across London — fixed prices, clean finishes, manufacturer-approved warranties.
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -198,6 +206,29 @@ export default function Home() {
           </div>
         </section>
 
+        {/* =================== TRUST STATS BAND =================== */}
+        <section className="relative bg-brand-black text-white">
+          <div className="container mx-auto px-4 py-14 md:py-16">
+            <dl className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center">
+              {[
+                { value: "1,200+", label: "Homes installed" },
+                { value: "4.9★", label: "Average customer rating" },
+                { value: "12 yrs", label: "Manufacturer warranty" },
+                { value: "24/7", label: "Emergency cover" },
+              ].map((s) => (
+                <div key={s.label} className="flex flex-col items-center">
+                  <dt className="order-2 mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+                    {s.label}
+                  </dt>
+                  <dd className="order-1 text-4xl md:text-5xl font-extrabold tracking-tight">
+                    <span className="text-brand-yellow">{s.value}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
         {/* =================== PARTNER MARQUEE =================== */}
         <section className="py-10 md:py-14 border-y border-border bg-foreground/[0.02]">
           <div className="container mx-auto px-4">
@@ -236,28 +267,41 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {services.map((service) => {
                 const Icon = service.icon
                 return (
                   <Link
                     key={service.href}
                     href={service.href}
-                    className="group relative flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lift"
+                    className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:border-brand-yellow/40"
                   >
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-yellow to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-                    />
-                    <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
-                      <Icon className="h-5 w-5" />
+                    <div className="relative aspect-[5/3] overflow-hidden bg-foreground/[0.04]">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        aria-hidden
+                        className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+                      />
+                      <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-brand-yellow text-black px-3 py-1 text-xs font-semibold">
+                        <Icon className="h-3.5 w-3.5" />
+                        {service.price}
+                      </span>
                     </div>
-                    <h3 className="text-lg font-semibold tracking-tight">{service.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
-                    <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold">
-                      Learn more
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </span>
+                    <div className="flex flex-col flex-1 p-6">
+                      <h3 className="text-xl font-semibold tracking-tight">{service.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
+                      <span className="mt-6 inline-flex items-center justify-between text-sm font-semibold">
+                        <span>Learn more</span>
+                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-brand-yellow group-hover:bg-brand-yellow group-hover:text-black">
+                          <ArrowUpRight className="h-4 w-4" />
+                        </span>
+                      </span>
+                    </div>
                   </Link>
                 )
               })}
@@ -367,6 +411,71 @@ export default function Home() {
           </div>
         </section>
 
+        {/* =================== TESTIMONIALS =================== */}
+        <section className="section bg-foreground/[0.02] border-y border-border">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+              <div className="max-w-2xl">
+                <span className="eyebrow">What customers say</span>
+                <h2 className="display-lg mt-4">
+                  <span className="text-brand-yellow">Kind words</span> from London homes.
+                </h2>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-brand-yellow text-brand-yellow" />
+                  ))}
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-semibold text-foreground">4.9</span> from local customers
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-5">
+              {[
+                {
+                  quote:
+                    "Swapped our ancient boiler for a new Vaillant — engineers were spotless, finished in a day, and the quote was exactly what I paid.",
+                  name: "Sarah K.",
+                  area: "Ealing · Boiler replacement",
+                },
+                {
+                  quote:
+                    "Full bathroom refit from first meeting to final silicone. Tidy, professional, on time. Would absolutely recommend.",
+                  name: "David M.",
+                  area: "Hammersmith · Bathroom renovation",
+                },
+                {
+                  quote:
+                    "Called them in an emergency at 10pm on a Sunday. Someone was at the door within the hour and had the heating back on.",
+                  name: "Priya S.",
+                  area: "Fulham · Emergency call-out",
+                },
+              ].map((t) => (
+                <figure
+                  key={t.name}
+                  className="flex flex-col rounded-3xl border border-border bg-card p-8 shadow-soft"
+                >
+                  <div className="flex mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />
+                    ))}
+                  </div>
+                  <blockquote className="text-base leading-relaxed text-foreground/90 flex-1">
+                    &ldquo;{t.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-6 pt-6 border-t border-border">
+                    <p className="font-semibold">{t.name}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{t.area}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* =================== PROCESS =================== */}
         <section className="section">
           <div className="container mx-auto px-4">
@@ -399,6 +508,70 @@ export default function Home() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        {/* =================== FAQ =================== */}
+        <section className="section">
+          <div className="container mx-auto px-4 grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
+            <div>
+              <span className="eyebrow">Frequently asked</span>
+              <h2 className="display-lg mt-4">
+                Answers before <br />
+                <span className="text-brand-yellow">you book.</span>
+              </h2>
+              <p className="lead mt-5 max-w-md">
+                Can't find what you're looking for? Call us on{" "}
+                <a href="tel:07712599254" className="font-semibold underline underline-offset-4 decoration-brand-yellow">
+                  07712 599254
+                </a>{" "}
+                — we're happy to talk it through.
+              </p>
+            </div>
+
+            <div className="divide-y divide-border rounded-3xl border border-border bg-card overflow-hidden">
+              {[
+                {
+                  q: "How much does a new boiler cost installed?",
+                  a: "Most combi boiler swaps start from £1,800 installed, with higher-output or system boilers from around £2,400. Every quote is fixed, itemised and includes parts, labour, a magnetic filter and warranty registration.",
+                },
+                {
+                  q: "Are you Gas Safe registered?",
+                  a: "Yes — we're Gas Safe registered (register number 630695). Every gas job is signed off and you'll receive Benchmark documentation on completion.",
+                },
+                {
+                  q: "Do you install heat pumps and handle the BUS grant?",
+                  a: "Yes. We install air and ground source heat pumps from Vaillant, Mitsubishi and Daikin, and we handle the £7,500 Boiler Upgrade Scheme grant application on your behalf.",
+                },
+                {
+                  q: "How long does a boiler installation take?",
+                  a: "Most straightforward combi replacements are completed in a single day. A system change (new cylinder, re-piped) typically takes 2–3 days.",
+                },
+                {
+                  q: "What warranty do you offer?",
+                  a: "Manufacturer warranties of up to 12 years on leading brands, plus our own workmanship guarantee on every installation.",
+                },
+                {
+                  q: "Do you cover emergencies out of hours?",
+                  a: "Yes — 24/7 Gas Safe emergency response across central, west and greater London. Call 07712 599254 any time.",
+                },
+              ].map((item) => (
+                <details key={item.q} className="group">
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 list-none transition-colors hover:bg-foreground/[0.02]">
+                    <span className="font-semibold text-base">{item.q}</span>
+                    <span
+                      aria-hidden
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-open:bg-brand-yellow group-open:border-brand-yellow group-open:text-black group-open:rotate-45"
+                    >
+                      <span className="text-lg leading-none">+</span>
+                    </span>
+                  </summary>
+                  <div className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed">
+                    {item.a}
+                  </div>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 
