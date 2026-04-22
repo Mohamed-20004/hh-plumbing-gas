@@ -101,105 +101,73 @@ export default function Home() {
       <Header />
 
       <main className="flex-1">
-        {/* =================== HERO =================== */}
-        <section className="relative overflow-hidden">
-          {/* Backdrop */}
-          <div
+        {/* =================== HERO (full-screen image) =================== */}
+        <section className="relative min-h-[92svh] w-full overflow-hidden bg-brand-black">
+          <Image
+            src="/images/modern-bathroom.jpeg"
+            alt=""
+            fill
+            priority
+            className="object-cover"
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-radial-yellow"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-grid-faint dark:bg-grid-dark bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 40%, rgba(10,10,10,0.92) 100%)",
+            }}
           />
 
-          <div className="relative container mx-auto px-4 pt-16 md:pt-24 pb-20 md:pb-28">
-            <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 items-center">
-              <div className="animate-fade-up">
-                <span className="eyebrow">Trusted London heating engineers</span>
+          <div className="relative h-full container mx-auto px-4 pt-20 md:pt-28 pb-14 md:pb-20 flex flex-col justify-end min-h-[inherit]">
+            <div className="max-w-3xl text-white animate-fade-up">
+              <span className="eyebrow border-white/20 bg-white/5 text-white/80">
+                Trusted London heating engineers
+              </span>
 
-                <h1 className="display-xl mt-6 text-balance">
-                  Heating your home,{" "}
-                  <span className="gradient-text-yellow">done properly</span>.
-                </h1>
+              <h1 className="display-xl mt-6 text-balance text-white">
+                Heating your home, <span className="text-brand-yellow">done properly</span>.
+              </h1>
 
-                <p className="lead mt-6 max-w-xl text-pretty">
-                  Gas Safe engineers designing and installing boilers, heat pumps, cylinders and complete bathrooms
-                  across London — fixed prices, clean finishes, manufacturer-approved warranties.
-                </p>
+              <p className="lead mt-6 max-w-xl text-white/80 text-pretty">
+                Gas Safe engineers designing and installing boilers, heat pumps, cylinders and complete bathrooms
+                across London — fixed prices, clean finishes, manufacturer-approved warranties.
+              </p>
 
-                <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <Link href="/get-a-quote" className="btn-primary group">
-                    Get a free quote
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
-                  <a href="tel:07712599254" className="btn-secondary">
-                    <Phone className="h-4 w-4" />
-                    Call 07712 599254
-                  </a>
-                </div>
-
-                {/* Trust row */}
-                <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <div className="flex -space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />
-                      ))}
-                    </div>
-                    <span className="font-medium text-foreground">5.0</span>
-                    <span>from local customers</span>
-                  </div>
-                  <span className="hidden sm:inline h-4 w-px bg-border" aria-hidden />
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="h-4 w-4 text-brand-yellow" />
-                    Gas Safe · 630695
-                  </div>
-                  <span className="hidden sm:inline h-4 w-px bg-border" aria-hidden />
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-brand-yellow" />
-                    24/7 emergency response
-                  </div>
-                </div>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link href="/get-a-quote" className="btn-primary group">
+                  Get a free quote
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+                <a
+                  href="tel:07712599254"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 backdrop-blur px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+                >
+                  <Phone className="h-4 w-4" />
+                  Call 07712 599254
+                </a>
               </div>
 
-              {/* Image frame */}
-              <div className="relative animate-fade-up [animation-delay:120ms]">
-                <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-brand-yellow/20 blur-2xl" aria-hidden />
-                <div className="relative aspect-[4/5] lg:aspect-[5/6] rounded-[2rem] overflow-hidden border border-border bg-background shadow-lift">
-                  <Image
-                    src="/images/modern-bathroom.jpeg"
-                    alt="Modern bathroom installation by HH Plumbing and Gas"
-                    fill
-                    priority
-                    className="object-cover"
-                  />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
-                  />
-                  {/* Floating callout card */}
-                  <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6 rounded-2xl border border-white/15 bg-black/60 backdrop-blur-md p-4 text-white">
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-brand-yellow">Recent project</p>
-                        <p className="mt-1 font-semibold">Complete bathroom refit · W13</p>
-                      </div>
-                      <Link
-                        href="/services/bathroom-installation"
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-yellow text-black transition-transform hover:-translate-y-0.5"
-                        aria-label="See bathroom installation details"
-                      >
-                        <ArrowUpRight className="h-4 w-4" />
-                      </Link>
-                    </div>
+              <div className="mt-10 flex flex-wrap items-center gap-6 text-sm">
+                <div className="flex items-center gap-2 text-white/80">
+                  <div className="flex -space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />
+                    ))}
                   </div>
-
-                  {/* Badge */}
-                  <div className="absolute left-4 top-4 md:left-6 md:top-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur px-3 py-1 text-xs font-medium text-white">
-                    <ShieldCheck className="h-3.5 w-3.5 text-brand-yellow" />
-                    Manufacturer approved
-                  </div>
+                  <span className="font-semibold text-white">5.0</span>
+                  <span className="text-white/60">from local customers</span>
+                </div>
+                <span className="hidden sm:inline h-4 w-px bg-white/20" aria-hidden />
+                <div className="flex items-center gap-2 text-white/80">
+                  <ShieldCheck className="h-4 w-4 text-brand-yellow" />
+                  Gas Safe · 630695
+                </div>
+                <span className="hidden sm:inline h-4 w-px bg-white/20" aria-hidden />
+                <div className="flex items-center gap-2 text-white/80">
+                  <Clock className="h-4 w-4 text-brand-yellow" />
+                  24/7 emergency response
                 </div>
               </div>
             </div>
@@ -472,52 +440,6 @@ export default function Home() {
                   </figcaption>
                 </figure>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* =================== FULL-BLEED EDITORIAL =================== */}
-        <section className="relative h-[60vh] min-h-[460px] md:min-h-[560px] w-full overflow-hidden bg-brand-black">
-          <Image
-            src="/images/modern-bathroom.jpeg"
-            alt="HH Plumbing and Gas — recent install"
-            fill
-            priority={false}
-            className="object-cover opacity-70"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.85) 100%)",
-            }}
-          />
-          <div className="relative h-full container mx-auto px-4 flex flex-col justify-end pb-12 md:pb-16">
-            <div className="max-w-2xl text-white">
-              <span className="eyebrow border-white/20 bg-white/5 text-white/80">Recent work</span>
-              <h2 className="display-lg mt-4 text-white">
-                Built to last. <span className="text-brand-yellow">Finished beautifully.</span>
-              </h2>
-              <p className="lead mt-4 text-white/75 max-w-xl">
-                Every install is signed off against manufacturer spec — pressure-tested, certified and tidied
-                before we leave. See what a job done properly looks like.
-              </p>
-              <div className="mt-7 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/services"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow text-black px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-glow"
-                >
-                  Explore our services
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/about-us"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 backdrop-blur px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
-                >
-                  Meet the team
-                </Link>
-              </div>
             </div>
           </div>
         </section>
