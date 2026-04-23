@@ -16,6 +16,7 @@ import {
 import { Header } from "../../components/header"
 import { TopBar } from "../../components/top-bar"
 import { SiteFooter } from "../../components/site-footer"
+import { ContactCTA } from "../../components/contact-cta"
 
 const plumbingIssues = [
   "Burst or leaking pipes",
@@ -279,43 +280,11 @@ export default function EmergencyRepairsPage() {
           </div>
         </section>
 
-        {/* ============ CTA ============ */}
-        <section className="section">
-          <div className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-lg border border-border bg-brand-black text-white p-10 md:p-16">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 opacity-60"
-                style={{
-                  background: "radial-gradient(600px circle at 20% 20%, rgba(255,214,10,0.18), transparent 55%)",
-                }}
-              />
-              <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
-                <div>
-                  <span className="eyebrow border-white/15 bg-white/5 text-white/70">Need help right now?</span>
-                  <h2 className="display-lg mt-4 text-white">We're on the phone 24/7.</h2>
-                  <p className="lead mt-4 text-white/70 max-w-xl">
-                    One call reaches a Gas Safe registered engineer — not a call centre. We'll get you safely back
-                    on.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                  <a href="tel:07712599254" className="btn-primary">
-                    <PhoneCall className="h-4 w-4" />
-                    Call 07712 599254
-                  </a>
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    All services
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ContactCTA
+          eyebrow="Need help right now?"
+          heading="We're on the phone 24/7."
+          subhead="One call reaches a Gas Safe registered engineer — not a call centre. We'll get you safely back on."
+        />
       </main>
 
       <SiteFooter />

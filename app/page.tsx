@@ -16,6 +16,7 @@ import {
 import { Header } from "./components/header"
 import { TopBar } from "./components/top-bar"
 import { SiteFooter } from "./components/site-footer"
+import { ContactCTA } from "./components/contact-cta"
 
 const partnerLogos = [
   { src: "/images/vaillant-logo-new.png", alt: "Vaillant" },
@@ -543,48 +544,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =================== EMERGENCY CTA BANNER =================== */}
-        <section className="container mx-auto px-4 pb-20 md:pb-28">
-          <div className="relative overflow-hidden rounded-lg border border-border bg-brand-black text-white p-10 md:p-16">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 opacity-60"
-              style={{
-                background:
-                  "radial-gradient(600px circle at 100% 0%, rgba(255,214,10,0.22), transparent 55%), radial-gradient(500px circle at 0% 100%, rgba(255,214,10,0.10), transparent 55%)",
-              }}
-            />
-            <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
-              <div>
-                <span className="inline-flex items-center gap-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">
-                  <Clock className="h-3 w-3" />
-                  24/7 emergency
-                </span>
-                <h2 className="display-md mt-4 text-white">
-                  No heat, no hot water, or a leak?
-                </h2>
-                <p className="mt-3 max-w-lg text-white/70">
-                  Speak to a Gas Safe registered engineer right now — no call centres, no gatekeepers.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                <a
-                  href="tel:07712599254"
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-brand-yellow text-black px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-[#E6BE00]"
-                >
-                  <Phone className="h-4 w-4" />
-                  Call 07712 599254
-                </a>
-                <Link
-                  href="/contact-us"
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
-                >
-                  Other ways to reach us
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ContactCTA />
       </main>
 
       <SiteFooter />

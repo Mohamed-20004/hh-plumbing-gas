@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Phone, Mail, MapPin, Instagram, ArrowRight } from "lucide-react"
+import { Phone, Mail, MapPin, Instagram } from "lucide-react"
 import { TikTokIcon } from "./icons/tiktok-icon"
 
 export function SiteFooter() {
@@ -7,42 +7,7 @@ export function SiteFooter() {
 
   return (
     <footer className="relative overflow-hidden bg-brand-black text-white">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60"
-        style={{
-          background:
-            "radial-gradient(800px circle at 0% 0%, rgba(255,214,10,0.12), transparent 55%), radial-gradient(600px circle at 100% 100%, rgba(255,214,10,0.06), transparent 55%)",
-        }}
-      />
-
-      <div className="relative container mx-auto px-4 pt-20 pb-10">
-        {/* CTA band */}
-        <div className="mb-16 rounded-lg border border-white/10 bg-white/[0.03] p-8 md:p-12 backdrop-blur-sm">
-          <div className="grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
-            <div>
-              <span className="eyebrow border-white/15 bg-white/5 text-white/70">Ready when you are</span>
-              <h2 className="display-md mt-4 text-white">
-                Planning a new system? Get a tailored quote in minutes.
-              </h2>
-              <p className="lead mt-3 text-white/70 max-w-xl">
-                Gas Safe registered engineers, manufacturer-approved installs, and transparent pricing — from
-                first call to final handover.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-              <Link href="/get-a-quote" className="btn-primary group">
-                Get a free quote
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
-              <a href="tel:07712599254" className="btn-ghost-dark">
-                <Phone className="h-4 w-4" />
-                07712 599254
-              </a>
-            </div>
-          </div>
-        </div>
-
+      <div className="relative container mx-auto px-4 pt-16 pb-10">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-5">
