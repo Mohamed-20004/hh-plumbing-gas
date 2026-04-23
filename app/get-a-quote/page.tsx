@@ -693,7 +693,7 @@ export default function GetAQuote() {
                       <div
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
                           active
-                            ? "bg-brand-yellow text-black shadow-[0_6px_18px_-8px_rgba(255,214,10,0.9)]"
+                            ? "bg-brand-yellow text-black "
                             : "bg-background border border-border text-muted-foreground"
                         } ${current ? "ring-4 ring-brand-yellow/20" : ""}`}
                       >
@@ -741,12 +741,12 @@ export default function GetAQuote() {
                       type="button"
                       className={`group relative flex flex-col items-center rounded-lg border p-7 text-center transition-all duration-300 ${
                         selectedService === service.id
-                          ? "border-brand-yellow bg-brand-yellow/5"
-                          : "border-border bg-card hover:border-foreground/20"
+                          ? "border-foreground bg-foreground/[0.04]"
+                          : "border-border bg-card hover:border-foreground/30"
                       }`}
                       onClick={() => handleServiceSelect(service.id)}
                     >
-                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-brand-yellow/10 text-brand-yellow group-hover:bg-foreground group-hover:text-background transition-colors">
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-foreground/[0.06] text-foreground/80 group-hover:bg-foreground group-hover:text-background transition-colors">
                         <div className="h-14 w-14">{service.icon}</div>
                       </div>
                       <h3 className="font-semibold tracking-tight">{service.name}</h3>
@@ -782,7 +782,7 @@ export default function GetAQuote() {
                   </div>
                   <button
                     onClick={handleBack}
-                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" />
                     Back
@@ -795,8 +795,8 @@ export default function GetAQuote() {
                       key={typeOption.id}
                       className={`group relative rounded-lg border p-7 cursor-pointer transition-all duration-300 flex flex-col items-center ${
                         selectedType === typeOption.id
-                          ? "border-brand-yellow bg-brand-yellow/5"
-                          : "border-border bg-card hover:border-foreground/20"
+                          ? "border-foreground bg-foreground/[0.04]"
+                          : "border-border bg-card hover:border-foreground/30"
                       }`}
                       onClick={() => handleTypeSelect(typeOption.id)}
                     >
@@ -812,7 +812,7 @@ export default function GetAQuote() {
                         <InfoIcon />
                       </button>
 
-                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-brand-yellow/10 text-brand-yellow group-hover:bg-foreground group-hover:text-background transition-colors">
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-foreground/[0.06] text-foreground/80 group-hover:bg-foreground group-hover:text-background transition-colors">
                         <div className="h-14 w-14">{typeOption.icon}</div>
                       </div>
                       <h3 className="font-semibold tracking-tight text-center">{typeOption.name}</h3>
@@ -859,7 +859,7 @@ export default function GetAQuote() {
                   </div>
                   <button
                     onClick={handleBack}
-                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" />
                     Back
@@ -875,15 +875,15 @@ export default function GetAQuote() {
                         type="button"
                         className={`group relative rounded-lg border p-6 transition-all duration-300 flex flex-col items-center text-center ${
                           isSelected
-                            ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
+                            ? "border-foreground bg-foreground/[0.04]"
                             : brand.recommended
-                              ? "border-brand-yellow/60 bg-card"
-                              : "border-border bg-card hover:border-foreground/20"
+                              ? "border-foreground/30 bg-card"
+                              : "border-border bg-card hover:border-foreground/30"
                         }`}
                         onClick={() => handleBrandSelect(brand.id)}
                       >
                         {brand.recommended && (
-                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 rounded-full bg-brand-yellow text-black text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 shadow-[0_6px_18px_-8px_rgba(255,214,10,0.9)]">
+                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 rounded-sm bg-brand-yellow text-black text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 ">
                             <Star className="h-3 w-3 fill-current" />
                             Recommended
                           </div>
@@ -901,7 +901,7 @@ export default function GetAQuote() {
                           <span className="font-semibold text-foreground">£{brand.startingPrice}</span>
                         </p>
                         {isSelected && (
-                          <span className="absolute top-3 right-3 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-yellow text-black">
+                          <span className="absolute top-3 right-3 inline-flex h-6 w-6 items-center justify-center rounded-md bg-foreground text-background">
                             <Check className="h-3.5 w-3.5" />
                           </span>
                         )}
@@ -932,7 +932,7 @@ export default function GetAQuote() {
                   </div>
                   <button
                     onClick={handleBack}
-                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" />
                     Back
@@ -948,8 +948,8 @@ export default function GetAQuote() {
                         type="button"
                         className={`group relative rounded-lg border p-6 text-left transition-all duration-300 ${
                           isSelected
-                            ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
-                            : "border-border bg-card hover:border-foreground/20"
+                            ? "border-foreground bg-foreground/[0.04]"
+                            : "border-border bg-card hover:border-foreground/30"
                         }`}
                         onClick={() => handleModelSelect(model.id)}
                       >
@@ -961,7 +961,7 @@ export default function GetAQuote() {
                             </p>
                           </div>
                           {isSelected && (
-                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-yellow text-black shrink-0">
+                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-foreground text-background shrink-0">
                               <Check className="h-4 w-4" />
                             </span>
                           )}
@@ -999,16 +999,16 @@ export default function GetAQuote() {
                   </div>
                   <button
                     onClick={handleBack}
-                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" />
                     Back
                   </button>
                 </div>
 
-                <div className="mb-8 rounded-lg border border-brand-yellow/50 bg-brand-yellow/5 p-6">
+                <div className="mb-8 rounded-lg border border-border bg-foreground/[0.02] p-6">
                   <div className="flex items-center gap-2 mb-5">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-yellow text-black">
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-foreground text-background">
                       <Check className="h-3.5 w-3.5" />
                     </span>
                     <h3 className="font-semibold tracking-tight">Quote summary</h3>
@@ -1048,7 +1048,7 @@ export default function GetAQuote() {
                     </div>
                   </dl>
                   {startingPrice && (
-                    <div className="mt-5 flex items-center justify-between border-t border-brand-yellow/40 pt-4">
+                    <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
                       <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                         Starting from
                       </span>
@@ -1080,7 +1080,7 @@ export default function GetAQuote() {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                     <div>
@@ -1094,7 +1094,7 @@ export default function GetAQuote() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                     <div>
@@ -1108,7 +1108,7 @@ export default function GetAQuote() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                     <div>
@@ -1122,7 +1122,7 @@ export default function GetAQuote() {
                         value={formData.postcode}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                     <div className="md:col-span-2">
@@ -1136,7 +1136,7 @@ export default function GetAQuote() {
                         value={formData.address}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                   </div>
