@@ -670,7 +670,7 @@ export default function GetAQuote() {
             <div className="mt-6 max-w-3xl">
               <span className="eyebrow">Free no-obligation quote</span>
               <h1 className="display-lg mt-4">
-                Get your <span className="gradient-text-yellow">tailored quote</span> in minutes.
+                Get your <span className="text-foreground">tailored quote</span> in minutes.
               </h1>
               <p className="lead mt-4 max-w-2xl">
                 Answer a few quick questions and we'll send a fixed, itemised quote with manufacturer-approved
@@ -746,14 +746,14 @@ export default function GetAQuote() {
                     <button
                       key={service.id}
                       type="button"
-                      className={`group relative flex flex-col items-center rounded-lg border p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                      className={`group relative flex flex-col items-center rounded-lg border p-7 text-center transition-all duration-300 ${
                         selectedService === service.id
                           ? "border-brand-yellow bg-brand-yellow/5"
                           : "border-border bg-card hover:border-foreground/20"
                       }`}
                       onClick={() => handleServiceSelect(service.id)}
                     >
-                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-brand-yellow/10 text-brand-yellow group-hover:bg-foreground group-hover:text-background transition-colors">
                         <div className="h-14 w-14">{service.icon}</div>
                       </div>
                       <h3 className="font-semibold tracking-tight">{service.name}</h3>
@@ -800,7 +800,7 @@ export default function GetAQuote() {
                   {getTypeOptions().map((typeOption) => (
                     <div
                       key={typeOption.id}
-                      className={`group relative rounded-lg border p-7 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center ${
+                      className={`group relative rounded-lg border p-7 cursor-pointer transition-all duration-300 flex flex-col items-center ${
                         selectedType === typeOption.id
                           ? "border-brand-yellow bg-brand-yellow/5"
                           : "border-border bg-card hover:border-foreground/20"
@@ -819,7 +819,7 @@ export default function GetAQuote() {
                         <InfoIcon />
                       </button>
 
-                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-brand-yellow/10 text-brand-yellow group-hover:bg-foreground group-hover:text-background transition-colors">
                         <div className="h-14 w-14">{typeOption.icon}</div>
                       </div>
                       <h3 className="font-semibold tracking-tight text-center">{typeOption.name}</h3>
@@ -832,7 +832,7 @@ export default function GetAQuote() {
                           <p className="text-xs text-muted-foreground leading-relaxed">{typeOption.description}</p>
                           <p className="mt-3 text-xs font-semibold">
                             Starting from{" "}
-                            <span className="text-brand-yellow">£{typeOption.startingPrice}</span>
+                            £{typeOption.startingPrice}
                           </p>
                           <div
                             aria-hidden
@@ -880,7 +880,7 @@ export default function GetAQuote() {
                       <button
                         key={brand.id}
                         type="button"
-                        className={`group relative rounded-lg border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center text-center ${
+                        className={`group relative rounded-lg border p-6 transition-all duration-300 flex flex-col items-center text-center ${
                           isSelected
                             ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
                             : brand.recommended
@@ -953,7 +953,7 @@ export default function GetAQuote() {
                       <button
                         key={model.id}
                         type="button"
-                        className={`group relative rounded-lg border p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                        className={`group relative rounded-lg border p-6 text-left transition-all duration-300 ${
                           isSelected
                             ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
                             : "border-border bg-card hover:border-foreground/20"

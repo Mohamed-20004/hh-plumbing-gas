@@ -111,7 +111,7 @@ export default function BoilerInstallationsPage() {
             <div className="max-w-3xl">
               <span className="eyebrow border-white/15 bg-white/5 text-white/70">Boiler installations</span>
               <h1 className="display-xl mt-6 text-white">
-                New boiler, <span className="text-brand-yellow">fitted right</span>, from £1,800.
+                New boiler, fitted right, from £1,800.
               </h1>
               <p className="lead mt-6 text-white/70 max-w-2xl">
                 Gas Safe registered engineers, manufacturer-approved installs and up to 12-year warranties on
@@ -151,7 +151,7 @@ export default function BoilerInstallationsPage() {
             <div>
               <span className="eyebrow">What we install</span>
               <h2 className="display-lg mt-4">
-                Combi, system or regular — <span className="text-brand-yellow">sized for your home.</span>
+                Combi, system or regular — sized for your home.
               </h2>
               <p className="lead mt-5">
                 We specify every install from scratch — no generic packages. That means your new boiler is sized
@@ -168,7 +168,7 @@ export default function BoilerInstallationsPage() {
                   "Manufacturer warranty registered for you",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                    <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                       <Check className="h-3 w-3" />
                     </span>
                     <span className="text-sm text-muted-foreground">{item}</span>
@@ -235,9 +235,9 @@ export default function BoilerInstallationsPage() {
                 return (
                   <div
                     key={b.title}
-                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
                   >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>

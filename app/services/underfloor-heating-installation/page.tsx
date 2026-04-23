@@ -103,7 +103,7 @@ export default function UnderfloorHeatingPage() {
             <div className="max-w-3xl">
               <span className="eyebrow border-white/15 bg-white/5 text-white/70">Underfloor heating</span>
               <h1 className="display-xl mt-6 text-white">
-                Warm floors, <span className="text-brand-yellow">cleaner rooms</span>, lower bills.
+                Warm floors, cleaner rooms, lower bills.
               </h1>
               <p className="lead mt-6 text-white/70 max-w-2xl">
                 Wet and electric underfloor heating installed by specialists — from single-room retrofits to
@@ -143,7 +143,7 @@ export default function UnderfloorHeatingPage() {
             <div>
               <span className="eyebrow">What we install</span>
               <h2 className="display-lg mt-4">
-                Two systems, <span className="text-brand-yellow">tailored to your room.</span>
+                Two systems, tailored to your room.
               </h2>
               <p className="lead mt-5">
                 Underfloor heating isn't one size fits all. We'll walk through your floor build-up, heat loss and
@@ -153,7 +153,7 @@ export default function UnderfloorHeatingPage() {
               <div className="mt-8 grid gap-4">
                 {systems.map((s) => (
                   <div key={s.name} className="rounded-lg border border-border bg-card p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-brand-yellow">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                       {s.name}
                     </p>
                     <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.copy}</p>
@@ -206,7 +206,7 @@ export default function UnderfloorHeatingPage() {
                     "Commissioning certificate",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{item}</span>
@@ -235,9 +235,9 @@ export default function UnderfloorHeatingPage() {
                 return (
                   <div
                     key={b.title}
-                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
                   >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>

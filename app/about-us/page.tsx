@@ -68,7 +68,7 @@ export default function AboutUsPage() {
             <div className="max-w-3xl">
               <span className="eyebrow border-white/15 bg-white/5 text-white/70">About HH Plumbing &amp; Gas</span>
               <h1 className="display-xl mt-6 text-white">
-                Craft, care and <span className="text-brand-yellow">clean installs</span> — for London homes.
+                Craft, care and clean installs — for London homes.
               </h1>
               <p className="lead mt-6 text-white/70 max-w-2xl">
                 We're a small team of Gas Safe registered engineers building a reputation for reliable plumbing,
@@ -95,7 +95,7 @@ export default function AboutUsPage() {
               <span className="eyebrow">Who we are</span>
               <h2 className="display-lg mt-4">
                 Local expertise. <br />
-                <span className="text-brand-yellow">Manufacturer-grade install.</span>
+                Manufacturer-grade install.
               </h2>
               <p className="lead mt-5">
                 HH Plumbing and Gas is a trusted provider of professional plumbing and heating services across
@@ -150,7 +150,7 @@ export default function AboutUsPage() {
                       />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-yellow">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                         Certified
                       </p>
                       <p className="font-semibold">Gas Safe Register · 630695</p>
@@ -179,9 +179,9 @@ export default function AboutUsPage() {
                 return (
                   <div
                     key={i}
-                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
                   >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-5 text-lg font-semibold tracking-tight">{item.title}</h3>

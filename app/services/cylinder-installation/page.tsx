@@ -108,7 +108,7 @@ export default function CylinderInstallationPage() {
             <div className="max-w-3xl">
               <span className="eyebrow border-white/15 bg-white/5 text-white/70">Cylinder installation</span>
               <h1 className="display-xl mt-6 text-white">
-                Proper mains-pressure <span className="text-brand-yellow">hot water</span>, everywhere.
+                Proper mains-pressure hot water, everywhere.
               </h1>
               <p className="lead mt-6 text-white/70 max-w-2xl">
                 Unvented, vented and heat pump cylinders from Megaflo, Vaillant and Gledhill — installed and
@@ -148,7 +148,7 @@ export default function CylinderInstallationPage() {
             <div>
               <span className="eyebrow">What we install</span>
               <h2 className="display-lg mt-4">
-                Three cylinder types, <span className="text-brand-yellow">all done properly.</span>
+                Three cylinder types, all done properly.
               </h2>
               <p className="lead mt-5">
                 The cylinder is the heart of your hot water. Get the sizing, pressure and controls right and you
@@ -158,7 +158,7 @@ export default function CylinderInstallationPage() {
               <div className="mt-8 grid gap-4">
                 {cylinderTypes.map((c) => (
                   <div key={c.name} className="rounded-lg border border-border bg-card p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-brand-yellow">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                       {c.name}
                     </p>
                     <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.copy}</p>
@@ -211,7 +211,7 @@ export default function CylinderInstallationPage() {
                     "G3 commissioning certificate",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{item}</span>
@@ -240,9 +240,9 @@ export default function CylinderInstallationPage() {
                 return (
                   <div
                     key={b.title}
-                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
                   >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>

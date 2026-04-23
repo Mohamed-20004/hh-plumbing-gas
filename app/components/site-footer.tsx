@@ -23,7 +23,7 @@ export function SiteFooter() {
             <div>
               <span className="eyebrow border-white/15 bg-white/5 text-white/70">Ready when you are</span>
               <h2 className="display-md mt-4 text-white">
-                Planning a new system? <span className="text-brand-yellow">Get a tailored quote</span> in minutes.
+                Planning a new system? Get a tailored quote in minutes.
               </h2>
               <p className="lead mt-3 text-white/70 max-w-xl">
                 Gas Safe registered engineers, manufacturer-approved installs, and transparent pricing — from
@@ -60,7 +60,7 @@ export function SiteFooter() {
                 href="https://www.instagram.com/hhplumbingandgas"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 hover:text-brand-yellow hover:border-brand-yellow/40 transition-colors"
+                className="h-10 w-10 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 hover:text-brand-yellow transition-colors"
                 aria-label="Follow us on Instagram"
               >
                 <Instagram className="h-4 w-4" />
@@ -69,7 +69,7 @@ export function SiteFooter() {
                 href="https://www.tiktok.com/@hussainhachem1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 hover:text-brand-yellow hover:border-brand-yellow/40 transition-colors"
+                className="h-10 w-10 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 hover:text-brand-yellow transition-colors"
                 aria-label="Follow us on TikTok"
               >
                 <TikTokIcon className="h-4 w-4" />

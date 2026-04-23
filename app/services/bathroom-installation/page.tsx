@@ -128,7 +128,7 @@ export default function BathroomInstallationPage() {
             <div className="max-w-3xl">
               <span className="eyebrow border-white/15 bg-white/5 text-white/70">Bathroom installation</span>
               <h1 className="display-xl mt-6 text-white">
-                A bathroom you'll love to <span className="text-brand-yellow">start the day in</span>.
+                A bathroom you'll love to start the day in.
               </h1>
               <p className="lead mt-6 text-white/70 max-w-2xl">
                 Design-led bathroom renovations and updates across London. One team, one timeline, one
@@ -177,14 +177,14 @@ export default function BathroomInstallationPage() {
             <div className="grid md:grid-cols-2 gap-5">
               {packages.map((pkg) => (
                 <div key={pkg.name} className="rounded-lg border border-border bg-card p-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-yellow">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                     {pkg.name}
                   </p>
                   <p className="mt-3 text-base text-muted-foreground leading-relaxed">{pkg.copy}</p>
                   <ul className="mt-6 grid sm:grid-cols-2 gap-3">
                     {pkg.points.map((p) => (
                       <li key={p} className="flex items-start gap-2">
-                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                           <Check className="h-3 w-3" />
                         </span>
                         <span className="text-sm text-muted-foreground">{p}</span>
@@ -214,9 +214,9 @@ export default function BathroomInstallationPage() {
                 return (
                   <div
                     key={b.title}
-                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
                   >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>

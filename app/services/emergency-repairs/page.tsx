@@ -99,7 +99,7 @@ export default function EmergencyRepairsPage() {
                 24/7 Emergency
               </span>
               <h1 className="display-xl mt-6 text-white">
-                Leaks, no heat, breakdowns — <span className="text-brand-yellow">we'll be there fast</span>.
+                Leaks, no heat, breakdowns — we'll be there fast.
               </h1>
               <p className="lead mt-6 text-white/70 max-w-2xl">
                 Gas Safe registered engineers, fully stocked vans, and a fixed-fee diagnosis. Call any time — we
@@ -173,14 +173,14 @@ export default function EmergencyRepairsPage() {
 
             <div className="grid md:grid-cols-2 gap-5">
               <div className="rounded-lg border border-border bg-card p-8">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
                   <Droplet className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">Plumbing emergencies</h3>
                 <ul className="mt-5 grid sm:grid-cols-2 gap-2">
                   {plumbingIssues.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{item}</span>
@@ -190,14 +190,14 @@ export default function EmergencyRepairsPage() {
               </div>
 
               <div className="rounded-lg border border-border bg-card p-8">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
                   <Flame className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">Heating & gas emergencies</h3>
                 <ul className="mt-5 grid sm:grid-cols-2 gap-2">
                   {heatingIssues.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{item}</span>
@@ -228,7 +228,7 @@ export default function EmergencyRepairsPage() {
                     <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
                       Step {p.step}
                     </span>
-                    <div className="mt-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+                    <div className="mt-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-4 text-lg font-semibold tracking-tight">{p.title}</h3>
@@ -254,7 +254,7 @@ export default function EmergencyRepairsPage() {
                 <ul className="mt-5 space-y-3">
                   {preventPlumbing.map((tip) => (
                     <li key={tip} className="flex items-start gap-3">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{tip}</span>
@@ -267,7 +267,7 @@ export default function EmergencyRepairsPage() {
                 <ul className="mt-5 space-y-3">
                   {preventHeating.map((tip) => (
                     <li key={tip} className="flex items-start gap-3">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{tip}</span>

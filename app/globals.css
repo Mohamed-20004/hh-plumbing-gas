@@ -159,7 +159,7 @@
     @apply py-16 md:py-24;
   }
   .eyebrow {
-    @apply inline-block text-xs font-semibold uppercase tracking-[0.22em] text-brand-yellow;
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground;
   }
 
   /* ------ Typography ------ */

@@ -19,7 +19,7 @@ export default function ContactUsPage() {
             <div className="max-w-3xl">
               <span className="eyebrow">We're here to help</span>
               <h1 className="display-xl mt-6">
-                Get in touch with <span className="gradient-text-yellow">our team</span>.
+                Get in touch with <span className="text-foreground">our team</span>.
               </h1>
               <p className="lead mt-6 max-w-2xl">
                 Fast, friendly and local. Call for urgent work, drop an email for quotes, or slide into our
@@ -102,7 +102,7 @@ export default function ContactUsPage() {
         <section className="container mx-auto px-4 pb-20 md:pb-28">
           <div className="grid md:grid-cols-3 gap-5">
             <div className="rounded-lg border border-border bg-card p-6">
-              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
                 <Mail className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-lg font-semibold">Email us</h3>
@@ -120,7 +120,7 @@ export default function ContactUsPage() {
             </div>
 
             <div className="rounded-lg border border-border bg-card p-6">
-              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
                 <MapPin className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-lg font-semibold">Our base</h3>
@@ -135,7 +135,7 @@ export default function ContactUsPage() {
             </div>
 
             <div className="rounded-lg border border-border bg-card p-6">
-              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
                 <Instagram className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-lg font-semibold">Follow along</h3>

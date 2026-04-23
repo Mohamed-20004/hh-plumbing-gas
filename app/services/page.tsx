@@ -86,7 +86,7 @@ export default function ServicesPage() {
             <div className="max-w-3xl">
               <span className="eyebrow">Plumbing, heating &amp; gas</span>
               <h1 className="display-xl mt-6">
-                Every service, <span className="gradient-text-yellow">one trusted team</span>.
+                Every service, <span className="text-foreground">one trusted team</span>.
               </h1>
               <p className="lead mt-6 max-w-2xl">
                 From a single boiler swap to a full bathroom refit — Gas Safe registered engineers handling every
@@ -117,13 +117,13 @@ export default function ServicesPage() {
                 <Link
                   key={service.title}
                   href={service.link}
-                  className="group relative flex flex-col rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:border-brand-yellow/40"
+                  className="group relative flex flex-col rounded-lg border border-border bg-card p-6 transition-all duration-300"
                 >
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="mt-5 text-lg font-semibold tracking-tight">{service.title}</h3>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-brand-yellow">
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                     {service.tagline}
                   </p>
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{service.description}</p>
@@ -141,7 +141,7 @@ export default function ServicesPage() {
 
                   <div className="mt-6 pt-6 border-t border-border flex items-center justify-between">
                     <span className="text-sm font-semibold">Learn more</span>
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-brand-yellow group-hover:bg-brand-yellow group-hover:text-black">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
                       <ArrowUpRight className="h-4 w-4" />
                     </span>
                   </div>

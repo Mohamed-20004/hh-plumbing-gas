@@ -127,7 +127,7 @@ export default function Home() {
               </span>
 
               <h1 className="display-xl mt-6 text-balance text-white">
-                Heating your home, <span className="text-brand-yellow">done properly</span>.
+                Heating your home, done properly.
               </h1>
 
               <p className="lead mt-6 max-w-xl text-white/80 text-pretty">
@@ -189,7 +189,7 @@ export default function Home() {
                     {s.label}
                   </dt>
                   <dd className="order-1 text-4xl md:text-5xl font-extrabold tracking-tight">
-                    <span className="text-brand-yellow">{s.value}</span>
+                    {s.value}
                   </dd>
                 </div>
               ))}
@@ -226,7 +226,7 @@ export default function Home() {
                 <span className="eyebrow">What we do</span>
                 <h2 className="display-lg mt-4">
                   Quality installs for every part of{" "}
-                  <span className="text-brand-yellow">your home system</span>.
+                  your home system.
                 </h2>
               </div>
               <p className="lead max-w-md">
@@ -242,7 +242,7 @@ export default function Home() {
                   <Link
                     key={service.href}
                     href={service.href}
-                    className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:border-brand-yellow/40"
+                    className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all duration-300"
                   >
                     <div className="relative aspect-[5/3] overflow-hidden bg-foreground/[0.04]">
                       <Image
@@ -265,7 +265,7 @@ export default function Home() {
                       <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
                       <span className="mt-6 inline-flex items-center justify-between text-sm font-semibold">
                         <span>Learn more</span>
-                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-brand-yellow group-hover:bg-brand-yellow group-hover:text-black">
+                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
                           <ArrowUpRight className="h-4 w-4" />
                         </span>
                       </span>
@@ -308,7 +308,7 @@ export default function Home() {
                 <span className="eyebrow border-white/15 bg-white/5 text-white/70">Quality you can trust</span>
                 <h2 className="display-lg mt-4 text-white">
                   Certified engineers. <br />
-                  <span className="text-brand-yellow">Zero shortcuts.</span>
+                  Zero shortcuts.
                 </h2>
                 <p className="lead mt-5 text-white/70 max-w-lg">
                   Every installation is carried out by Gas Safe registered engineers using manufacturer-approved
@@ -368,7 +368,7 @@ export default function Home() {
                       <div key={stat.label}>
                         <dt className="text-xs uppercase tracking-[0.18em] text-white/50">{stat.label}</dt>
                         <dd className="mt-1 text-2xl font-bold">
-                          <span className="text-brand-yellow">{stat.value}</span>
+                          {stat.value}
                         </dd>
                       </div>
                     ))}
@@ -386,7 +386,7 @@ export default function Home() {
               <div className="max-w-2xl">
                 <span className="eyebrow">What customers say</span>
                 <h2 className="display-lg mt-4">
-                  <span className="text-brand-yellow">Kind words</span> from London homes.
+                  Kind words from London homes.
                 </h2>
               </div>
               <div className="flex items-center gap-3">
@@ -486,7 +486,7 @@ export default function Home() {
               <span className="eyebrow">Frequently asked</span>
               <h2 className="display-lg mt-4">
                 Answers before <br />
-                <span className="text-brand-yellow">you book.</span>
+                you book.
               </h2>
               <p className="lead mt-5 max-w-md">
                 Can't find what you're looking for? Call us on{" "}
