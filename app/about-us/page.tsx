@@ -13,7 +13,6 @@ import {
   Clock,
 } from "lucide-react"
 import { Header } from "../components/header"
-import { TopBar } from "../components/top-bar"
 import { SiteFooter } from "../components/site-footer"
 import { ContactCTA } from "../components/contact-cta"
 
@@ -59,7 +58,6 @@ const values = [
 export default function AboutUsPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <TopBar />
       <Header />
 
       <main className="flex-1">

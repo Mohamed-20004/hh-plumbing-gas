@@ -11,7 +11,6 @@ import {
   ShieldCheck,
   Clock,
 } from "lucide-react"
-import { TopBar } from "../components/top-bar"
 import { Header } from "../components/header"
 import { SiteFooter } from "../components/site-footer"
 import { ContactCTA } from "../components/contact-cta"
@@ -76,7 +75,6 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <TopBar />
       <Header />
 
       <main className="flex-1">

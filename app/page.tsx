@@ -14,7 +14,6 @@ import {
   Phone,
 } from "lucide-react"
 import { Header } from "./components/header"
-import { TopBar } from "./components/top-bar"
 import { SiteFooter } from "./components/site-footer"
 import { ContactCTA } from "./components/contact-cta"
 
@@ -98,7 +97,6 @@ const steps = [
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <TopBar />
       <Header />
 
       <main className="flex-1">
