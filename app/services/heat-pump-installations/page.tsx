@@ -101,7 +101,7 @@ export default function HeatPumpInstallationsPage() {
                 grant-claimed by one trusted team.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="/get-a-quote" className="btn-primary">
+                <Link href="/get-a-quote?service=heat-pump-installation" className="btn-primary">
                   Get a fixed quote
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -279,7 +279,7 @@ export default function HeatPumpInstallationsPage() {
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                  <Link href="/get-a-quote" className="btn-primary">
+                  <Link href="/get-a-quote?service=heat-pump-installation" className="btn-primary">
                     Start quote
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>

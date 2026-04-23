@@ -1,9 +1,10 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { ArrowLeft, Star, Check, ArrowRight } from "lucide-react"
 import { Header } from "../components/header"
 import { TopBar } from "../components/top-bar"
@@ -406,6 +407,18 @@ export default function GetAQuote() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showTooltip, setShowTooltip] = useState<string | null>(null)
+  const router = useRouter()
+
+  // Deep-link: pre-select service from ?service=<id> and skip to step 2
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const params = new URLSearchParams(window.location.search)
+    const serviceParam = params.get("service")
+    if (serviceParam && serviceTypes.some((s) => s.id === serviceParam)) {
+      setSelectedService(serviceParam)
+      setStep(2)
+    }
+  }, [])
 
   const handleServiceSelect = (serviceId: string) => {
     setSelectedService(serviceId)
@@ -555,27 +568,7 @@ export default function GetAQuote() {
       const savedQuote = saveQuoteRequest(quoteData)
 
       if (savedQuote) {
-        // Show success message
-        alert("Your quote request has been submitted successfully! We will contact you shortly.")
-
-        // Reset form
-        setSelectedService(null)
-        setSelectedType(null)
-        setSelectedBrand(null)
-        setSelectedModel(null)
-        setStartingPrice(null)
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          address: "",
-          postcode: "",
-        })
-        setStep(1)
-
-        // Log the current state of quotes in localStorage for debugging
-        const currentQuotes = localStorage.getItem("hh-plumbing-quotes")
-        console.log("Current quotes in storage:", currentQuotes ? JSON.parse(currentQuotes) : "None")
+        router.push("/get-a-quote/thank-you")
       } else {
         alert("There was an error submitting your quote request. Please try again.")
       }

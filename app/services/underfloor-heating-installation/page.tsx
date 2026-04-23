@@ -110,7 +110,7 @@ export default function UnderfloorHeatingPage() {
                 whole-house new builds.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="/get-a-quote" className="btn-primary">
+                <Link href="/get-a-quote?service=underfloor-heating" className="btn-primary">
                   Get a fixed quote
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -291,7 +291,7 @@ export default function UnderfloorHeatingPage() {
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                  <Link href="/get-a-quote" className="btn-primary">
+                  <Link href="/get-a-quote?service=underfloor-heating" className="btn-primary">
                     Start quote
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>

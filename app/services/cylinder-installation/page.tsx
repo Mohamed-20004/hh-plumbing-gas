@@ -115,7 +115,7 @@ export default function CylinderInstallationPage() {
                 certified by G3-qualified engineers.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="/get-a-quote" className="btn-primary">
+                <Link href="/get-a-quote?service=cylinder-installation" className="btn-primary">
                   Get a fixed quote
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -296,7 +296,7 @@ export default function CylinderInstallationPage() {
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                  <Link href="/get-a-quote" className="btn-primary">
+                  <Link href="/get-a-quote?service=cylinder-installation" className="btn-primary">
                     Start quote
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
