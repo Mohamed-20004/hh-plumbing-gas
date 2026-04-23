@@ -866,45 +866,56 @@ export default function GetAQuote() {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {getAvailableBrands().map((brand) => {
                     const isSelected = selectedBrand === brand.id
                     return (
                       <button
                         key={brand.id}
                         type="button"
-                        className={`group relative rounded-lg border p-6 transition-all duration-300 flex flex-col items-center text-center ${
+                        className={`group relative flex items-center gap-4 rounded-md border p-4 text-left transition-colors ${
                           isSelected
-                            ? "border-foreground bg-foreground/[0.04]"
-                            : brand.recommended
-                              ? "border-foreground/30 bg-card"
-                              : "border-border bg-card hover:border-foreground/30"
+                            ? "border-foreground bg-foreground/[0.03]"
+                            : "border-border bg-card hover:border-foreground/40"
                         }`}
                         onClick={() => handleBrandSelect(brand.id)}
                       >
-                        {brand.recommended && (
-                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 rounded-sm bg-brand-yellow text-black text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 ">
-                            <Star className="h-3 w-3 fill-current" />
-                            Recommended
-                          </div>
-                        )}
-                        <div className="relative h-16 w-full flex items-center justify-center mb-4">
+                        <div className="relative h-12 w-20 shrink-0 flex items-center justify-center">
                           <img
                             src={brand.logo || "/placeholder.svg"}
                             alt={brand.name}
                             className="max-h-full max-w-full object-contain"
                           />
                         </div>
-                        <h3 className="font-semibold tracking-tight">{brand.name}</h3>
-                        <p className="mt-2 text-xs text-muted-foreground">
-                          from{" "}
-                          <span className="font-semibold text-foreground">£{brand.startingPrice}</span>
-                        </p>
-                        {isSelected && (
-                          <span className="absolute top-3 right-3 inline-flex h-6 w-6 items-center justify-center rounded-md bg-foreground text-background">
-                            <Check className="h-3.5 w-3.5" />
-                          </span>
-                        )}
+
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="font-semibold tracking-tight">{brand.name}</h3>
+                            {brand.recommended && (
+                              <span className="inline-flex items-center gap-1 rounded-sm bg-brand-yellow text-black text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5">
+                                <Star className="h-2.5 w-2.5 fill-current" />
+                                Recommended
+                              </span>
+                            )}
+                          </div>
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            From{" "}
+                            <span className="font-semibold text-foreground">
+                              £{brand.startingPrice.toLocaleString()}
+                            </span>
+                          </p>
+                        </div>
+
+                        <span
+                          aria-hidden
+                          className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                            isSelected
+                              ? "border-foreground bg-foreground text-background"
+                              : "border-border bg-background"
+                          }`}
+                        >
+                          {isSelected && <Check className="h-3 w-3" />}
+                        </span>
                       </button>
                     )
                   })}
@@ -939,38 +950,44 @@ export default function GetAQuote() {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-3">
                   {getModelOptions().map((model) => {
                     const isSelected = selectedModel === model.id
                     return (
                       <button
                         key={model.id}
                         type="button"
-                        className={`group relative rounded-lg border p-6 text-left transition-all duration-300 ${
+                        className={`group relative flex items-start gap-4 rounded-md border p-5 text-left transition-colors ${
                           isSelected
-                            ? "border-foreground bg-foreground/[0.04]"
-                            : "border-border bg-card hover:border-foreground/30"
+                            ? "border-foreground bg-foreground/[0.03]"
+                            : "border-border bg-card hover:border-foreground/40"
                         }`}
                         onClick={() => handleModelSelect(model.id)}
                       >
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <h3 className="text-lg font-semibold tracking-tight">{model.name}</h3>
-                            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                              {model.description}
+                        <span
+                          aria-hidden
+                          className={`mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                            isSelected
+                              ? "border-foreground bg-foreground text-background"
+                              : "border-border bg-background"
+                          }`}
+                        >
+                          {isSelected && <Check className="h-3 w-3" />}
+                        </span>
+
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                            <h3 className="text-base font-semibold tracking-tight">{model.name}</h3>
+                            <p className="text-sm">
+                              <span className="text-muted-foreground">From </span>
+                              <span className="font-semibold text-foreground">
+                                £{model.startingPrice.toLocaleString()}
+                              </span>
                             </p>
                           </div>
-                          {isSelected && (
-                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-foreground text-background shrink-0">
-                              <Check className="h-4 w-4" />
-                            </span>
-                          )}
-                        </div>
-                        <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
-                          <span className="text-xs text-muted-foreground">Starting from</span>
-                          <span className="text-lg font-bold">
-                            £{model.startingPrice.toLocaleString()}
-                          </span>
+                          <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                            {model.description}
+                          </p>
                         </div>
                       </button>
                     )
@@ -1006,57 +1023,48 @@ export default function GetAQuote() {
                   </button>
                 </div>
 
-                <div className="mb-8 rounded-lg border border-border bg-foreground/[0.02] p-6">
-                  <div className="flex items-center gap-2 mb-5">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-foreground text-background">
-                      <Check className="h-3.5 w-3.5" />
-                    </span>
-                    <h3 className="font-semibold tracking-tight">Quote summary</h3>
+                <div className="mb-8 overflow-hidden rounded-md border border-border bg-card">
+                  <div className="flex items-center justify-between border-b border-border bg-foreground/[0.02] px-5 py-3">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                      Quote summary
+                    </p>
                   </div>
-                  <dl className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Service
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold">
+                  <dl className="divide-y divide-border text-sm">
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <dt className="text-muted-foreground">Service</dt>
+                      <dd className="font-semibold">
                         {serviceTypes.find((s) => s.id === selectedService)?.name}
                       </dd>
                     </div>
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Type
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold">
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <dt className="text-muted-foreground">Type</dt>
+                      <dd className="font-semibold">
                         {getTypeOptions().find((t) => t.id === selectedType)?.name}
                       </dd>
                     </div>
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Brand
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold">
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <dt className="text-muted-foreground">Brand</dt>
+                      <dd className="font-semibold">
                         {getAvailableBrands().find((b) => b.id === selectedBrand)?.name}
                       </dd>
                     </div>
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Model
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold">
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <dt className="text-muted-foreground">Model</dt>
+                      <dd className="font-semibold">
                         {getModelOptions().find((m) => m.id === selectedModel)?.name}
                       </dd>
                     </div>
+                    {startingPrice && (
+                      <div className="flex items-center justify-between px-5 py-4 bg-foreground/[0.02]">
+                        <dt className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                          Starting from
+                        </dt>
+                        <dd className="text-xl font-bold">
+                          £{startingPrice.toLocaleString()}
+                        </dd>
+                      </div>
+                    )}
                   </dl>
-                  {startingPrice && (
-                    <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Starting from
-                      </span>
-                      <span className="text-2xl font-extrabold">
-                        £{startingPrice.toLocaleString()}
-                      </span>
-                    </div>
-                  )}
                 </div>
 
                 <form
