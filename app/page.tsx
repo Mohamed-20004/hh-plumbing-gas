@@ -343,26 +343,24 @@ export default function Home() {
 
               <div className="relative">
                 <div className="glass-panel p-8 md:p-10">
-                  <div className="flex items-center justify-between">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
+                    Registered with
+                  </p>
+                  <div className="mt-5 flex items-center gap-5">
+                    <div className="relative h-20 w-20 shrink-0">
+                      <Image
+                        src="/images/gas-safe-logo.png"
+                        alt="Gas Safe"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
-                        Registered with
-                      </p>
-                      <p className="mt-1 text-2xl font-bold">Gas Safe Register</p>
-                    </div>
-                    <div className="relative h-14 w-14">
-                      <Image src="/images/gas-safe-logo.png" alt="Gas Safe" fill className="object-contain" />
+                      <p className="text-xl font-bold leading-tight">Gas Safe Register</p>
+                      <p className="mt-1 text-sm text-white/60">Register number 630695</p>
                     </div>
                   </div>
-                  <div className="relative mt-8 aspect-[5/4] rounded-lg overflow-hidden border border-white/10">
-                    <Image
-                      src="/images/gas-safe-register.png"
-                      alt="Gas Safe Registered · 630695"
-                      fill
-                      className="object-contain p-4 bg-white"
-                    />
-                  </div>
-                  <dl className="mt-8 grid grid-cols-2 gap-6">
+                  <dl className="mt-8 grid grid-cols-2 gap-6 border-t border-white/10 pt-6">
                     {stats.map((stat) => (
                       <div key={stat.label}>
                         <dt className="text-xs uppercase tracking-[0.18em] text-white/50">{stat.label}</dt>
