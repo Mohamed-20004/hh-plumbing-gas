@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ThemeToggle } from "./theme-toggle"
-import { ChevronDown, ArrowUpRight } from "lucide-react"
+import { ChevronDown, ArrowUpRight, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function Navigation() {
@@ -167,9 +167,17 @@ export function Navigation() {
         </div>
       </div>
 
+      <a
+        href="tel:07712599254"
+        className="ml-6 hidden lg:inline-flex items-center gap-2 text-sm font-semibold text-foreground/75 hover:text-foreground transition-colors"
+      >
+        <Phone className="h-3.5 w-3.5" />
+        07712 599254
+      </a>
+
       <Link
         href="/get-a-quote"
-        className="group ml-6 inline-flex items-center gap-2 rounded-md bg-foreground text-background px-5 py-2 text-sm font-semibold transition-colors hover:bg-foreground/90"
+        className="group ml-4 inline-flex items-center gap-2 rounded-md bg-foreground text-background px-5 py-2 text-sm font-semibold transition-colors hover:bg-foreground/90"
       >
         Get a quote
         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
