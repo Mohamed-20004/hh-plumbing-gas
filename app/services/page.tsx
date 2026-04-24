@@ -10,6 +10,7 @@ import {
   Siren,
   ShieldCheck,
   Clock,
+  Wrench,
 } from "lucide-react"
 import { Header } from "../components/header"
 import { SiteFooter } from "../components/site-footer"
@@ -17,10 +18,10 @@ import { ContactCTA } from "../components/contact-cta"
 
 const services = [
   {
-    title: "Boiler Installation",
-    tagline: "Worcester Bosch, Vaillant, Baxi — approved installer",
+    title: "Gas Installation & Repair",
+    tagline: "Boilers, cookers and gas pipework — Gas Safe certified",
     description:
-      "High-efficiency combi, system and regular boilers installed to manufacturer spec — with up to 12 years parts & labour warranty.",
+      "Gas Safe registered installs and repairs across boilers, gas cookers and pipework — with manufacturer-approved parts and up to 12-year warranty.",
     icon: Flame,
     link: "/services/boiler-installations",
     highlights: ["From £1,800", "12-year warranty", "Same-week install"],
@@ -33,6 +34,15 @@ const services = [
     icon: Thermometer,
     link: "/services/heat-pump-installations",
     highlights: ["£7,500 grant", "MCS certified", "A++ efficiency"],
+  },
+  {
+    title: "Bathroom Installation",
+    tagline: "End-to-end design & fit",
+    description:
+      "Full bathroom renovations — from first fix to final silicone. Tiling, plumbing and electrics coordinated under one roof.",
+    icon: Bath,
+    link: "/services/bathroom-installation",
+    highlights: ["Design service", "Project managed", "Fixed timeline"],
   },
   {
     title: "Underfloor Heating",
@@ -53,13 +63,13 @@ const services = [
     highlights: ["Unvented specialists", "G3 certified", "Zero airlocks"],
   },
   {
-    title: "Bathroom Installation",
-    tagline: "End-to-end design & fit",
+    title: "Drainage",
+    tagline: "Unblocking, CCTV inspections and repairs",
     description:
-      "Full bathroom renovations — from first fix to final silicone. Tiling, plumbing and electrics coordinated under one roof.",
-    icon: Bath,
-    link: "/services/bathroom-installation",
-    highlights: ["Design service", "Project managed", "Fixed timeline"],
+      "Blocked drains cleared on the first visit. CCTV diagnosis, patch repairs and full-excavation work — fixed-fee diagnosis on every job.",
+    icon: Wrench,
+    link: "/services/drainage",
+    highlights: ["Same-day clears", "CCTV included", "Fixed-fee diagnosis"],
   },
   {
     title: "Emergency Repairs",

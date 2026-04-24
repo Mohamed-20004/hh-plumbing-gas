@@ -22,7 +22,7 @@ import {
 import { saveQuoteRequest } from "../utils/quote-storage"
 
 const serviceTypes = [
-  { id: "boiler-installation", name: "Boiler Installation", icon: <CombiBoilerIcon /> },
+  { id: "boiler-installation", name: "Gas Installation & Repair", icon: <CombiBoilerIcon /> },
   { id: "heat-pump-installation", name: "Heat Pump Installation", icon: <HeatPumpIcon /> },
   { id: "underfloor-heating", name: "Underfloor Heating", icon: <UnderfloorHeatingIcon /> },
   { id: "cylinder-installation", name: "Cylinder Installation", icon: <CylinderIcon /> },

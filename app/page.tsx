@@ -31,20 +31,28 @@ const partnerLogos = [
 
 const services = [
   {
-    title: "Boiler Installations",
+    title: "Gas Installation & Repair",
     href: "/services/boiler-installations",
     icon: Flame,
-    desc: "Combi, system and regular boilers from Worcester, Vaillant, Baxi and more.",
-    image: "/placeholder.svg?height=600&width=800&text=Boiler+install",
+    desc: "Boilers, gas cookers and gas pipework — installed and repaired by Gas Safe registered engineers.",
+    image: "/placeholder.svg?height=600&width=800&text=Gas+install+%26+repair",
     price: "from £1,800",
   },
   {
-    title: "Heat Pump Installations",
+    title: "Heat Pump Installation",
     href: "/services/heat-pump-installations",
     icon: Thermometer,
     desc: "Air and ground source heat pumps for efficient, low-carbon heating.",
     image: "/placeholder.svg?height=600&width=800&text=Heat+pump",
     price: "£7,500 BUS grant",
+  },
+  {
+    title: "Bathroom Installation",
+    href: "/services/bathroom-installation",
+    icon: Droplet,
+    desc: "Full bathroom renovations — design, plumbing, tiling and electrics under one roof.",
+    image: "/images/modern-bathroom.jpeg",
+    price: "Design-led",
   },
   {
     title: "Underfloor Heating",
@@ -63,12 +71,12 @@ const services = [
     price: "Unvented specialists",
   },
   {
-    title: "Bathroom Installation",
-    href: "/services/bathroom-installation",
-    icon: Droplet,
-    desc: "Full bathroom renovations — design, plumbing, tiling and electrics under one roof.",
-    image: "/images/modern-bathroom.jpeg",
-    price: "Design-led",
+    title: "Drainage",
+    href: "/services/drainage",
+    icon: Wrench,
+    desc: "Blocked drains cleared and damaged drains repaired — with CCTV inspection included.",
+    image: "/placeholder.svg?height=600&width=800&text=Drainage",
+    price: "Same-day clears",
   },
   {
     title: "Emergency Repairs",

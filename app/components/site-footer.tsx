@@ -47,12 +47,17 @@ export function SiteFooter() {
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="/services/boiler-installations" className="text-white/80 hover:text-brand-yellow transition-colors">
-                  Boiler Installations
+                  Gas Installation &amp; Repair
                 </Link>
               </li>
               <li>
                 <Link href="/services/heat-pump-installations" className="text-white/80 hover:text-brand-yellow transition-colors">
-                  Heat Pump Installations
+                  Heat Pump Installation
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/bathroom-installation" className="text-white/80 hover:text-brand-yellow transition-colors">
+                  Bathroom Installation
                 </Link>
               </li>
               <li>
@@ -63,6 +68,16 @@ export function SiteFooter() {
               <li>
                 <Link href="/services/cylinder-installation" className="text-white/80 hover:text-brand-yellow transition-colors">
                   Cylinder Installation
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/drainage" className="text-white/80 hover:text-brand-yellow transition-colors">
+                  Drainage
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/emergency-repairs" className="text-white/80 hover:text-brand-yellow transition-colors">
+                  Emergency Repairs
                 </Link>
               </li>
             </ul>

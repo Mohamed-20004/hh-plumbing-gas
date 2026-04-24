@@ -31,13 +31,18 @@ export function Navigation() {
   const serviceLinks = [
     {
       href: "/services/boiler-installations",
-      label: "Boiler Installation",
-      hint: "Combi · System · Regular",
+      label: "Gas Installation & Repair",
+      hint: "Boilers · Cookers · Pipework",
     },
     {
       href: "/services/heat-pump-installations",
       label: "Heat Pump Installation",
       hint: "Air · Ground · Hybrid",
+    },
+    {
+      href: "/services/bathroom-installation",
+      label: "Bathroom Installation",
+      hint: "Design & full fit",
     },
     {
       href: "/services/underfloor-heating-installation",
@@ -50,9 +55,9 @@ export function Navigation() {
       hint: "Direct · Indirect",
     },
     {
-      href: "/services/bathroom-installation",
-      label: "Bathroom Installation",
-      hint: "Design & full fit",
+      href: "/services/drainage",
+      label: "Drainage",
+      hint: "Unblocking · CCTV · Repairs",
     },
     {
       href: "/services/emergency-repairs",
