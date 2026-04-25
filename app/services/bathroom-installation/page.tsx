@@ -138,8 +138,8 @@ export default function BathroomInstallationPage() {
                   Get a fixed quote
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <a href="tel:07712599254" className="btn-ghost-dark">
-                  Call 07712 599254
+                <a href="tel:0208 102 1108" className="btn-ghost-dark">
+                  Call 0208 102 1108
                 </a>
               </div>
 

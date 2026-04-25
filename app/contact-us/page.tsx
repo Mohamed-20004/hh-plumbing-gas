@@ -45,7 +45,7 @@ export default function ContactUsPage() {
                   Call us directly
                 </span>
                 <h2 className="mt-5 text-3xl md:text-5xl font-extrabold tracking-tight">
-                  07712&nbsp;599254
+                  0208 102&nbsp;1108
                 </h2>
                 <p className="mt-3 text-black/70 max-w-md">
                   Speak to a Gas Safe registered engineer — no call centres, no gatekeepers. Available 24/7
@@ -53,7 +53,7 @@ export default function ContactUsPage() {
                 </p>
                 <div className="mt-7 flex flex-wrap items-center gap-3">
                   <a
-                    href="tel:07712599254"
+                    href="tel:0208 102 1108"
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
                   >
                     <Phone className="h-4 w-4" />
@@ -81,7 +81,7 @@ export default function ContactUsPage() {
                   <Clock className="h-5 w-5 mt-0.5" />
                   <div>
                     <p className="font-semibold">Saturday</p>
-                    <p className="text-black/70">9AM – 4PM</p>
+                    <p className="text-black/70">9AM – 5PM</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3 rounded-lg border border-black/15 bg-white/40 backdrop-blur-sm p-4">
@@ -111,7 +111,7 @@ export default function ContactUsPage() {
                 href="mailto:info@hhplumbing.com"
                 className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold border-b border-brand-yellow pb-0.5 hover:text-brand-yellow transition-colors"
               >
-                info@hhplumbing.com
+                office@hhplumbingandgas.com
                 <ArrowRight className="h-4 w-4" />
               </a>
               <p className="mt-3 text-xs text-muted-foreground">Response within 24 hours.</p>
@@ -123,9 +123,9 @@ export default function ContactUsPage() {
               </div>
               <h3 className="mt-5 text-lg font-semibold">Our base</h3>
               <address className="not-italic mt-1 text-sm text-muted-foreground">
-                2 Broomfield Road
+                5th Floor 167-169 Great Portland Street
                 <br />
-                London, W13 9AP
+                London, W1W 5PF
               </address>
               <p className="mt-4 text-xs text-muted-foreground">
                 Covering central, west and greater London.

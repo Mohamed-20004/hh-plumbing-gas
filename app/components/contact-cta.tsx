@@ -26,10 +26,10 @@ export function ContactCTA({
               <h2 className="display-md mt-4 text-white">{heading}</h2>
               <p className="mt-4 text-white/70 max-w-lg">{subhead}</p>
               <a
-                href="tel:07712599254"
+                href="tel:02081021108"
                 className="mt-6 block text-3xl md:text-4xl font-bold tracking-tight hover:text-brand-yellow transition-colors"
               >
-                07712&nbsp;599254
+                0208 102&nbsp;1108
               </a>
               <ul className="mt-5 flex flex-wrap items-center gap-5 text-xs text-white/60">
                 <li className="inline-flex items-center gap-2">
@@ -45,7 +45,7 @@ export function ContactCTA({
 
             <div className="flex flex-col gap-3">
               <a
-                href="tel:07712599254"
+                href="tel:0208 102 1108"
                 className="inline-flex items-center justify-center gap-2 rounded-md bg-brand-yellow text-black px-5 py-3 text-sm font-semibold transition-colors hover:bg-[#E6BE00]"
               >
                 <Phone className="h-4 w-4" />

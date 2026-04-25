@@ -148,11 +148,11 @@ export default function Home() {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
                 <a
-                  href="tel:07712599254"
+                  href="tel:0208 102 1108"
                   className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/5 backdrop-blur px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
                 >
                   <Phone className="h-4 w-4" />
-                  Call 07712 599254
+                  Call 0208 102 1108
                 </a>
               </div>
 
@@ -495,8 +495,8 @@ export default function Home() {
               </h2>
               <p className="lead mt-5 max-w-md">
                 Can't find what you're looking for? Call us on{" "}
-                <a href="tel:07712599254" className="font-semibold underline underline-offset-4 decoration-brand-yellow">
-                  07712 599254
+                <a href="tel:0208 102 1108" className="font-semibold underline underline-offset-4 decoration-brand-yellow">
+                  0208 102 1108
                 </a>{" "}
                 — we're happy to talk it through.
               </p>

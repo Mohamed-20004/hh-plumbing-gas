@@ -71,22 +71,22 @@ export default function QuoteThankYouPage() {
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <a
-                  href="tel:07712599254"
+                  href="tel:0208 102 1108"
                   className="inline-flex items-center justify-between gap-2 rounded-md border border-border bg-card p-4 hover:border-foreground/40 transition-colors"
                 >
                   <span className="inline-flex items-center gap-3">
                     <Phone className="h-4 w-4 text-foreground" />
-                    <span className="font-semibold">07712 599254</span>
+                    <span className="font-semibold">0208 102 1108</span>
                   </span>
                   <span className="text-xs text-muted-foreground">24/7 emergency</span>
                 </a>
                 <a
-                  href="mailto:info@hhplumbing.com"
+                  href="mailto:office@hhplumbingandgas.com"
                   className="inline-flex items-center justify-between gap-2 rounded-md border border-border bg-card p-4 hover:border-foreground/40 transition-colors"
                 >
                   <span className="inline-flex items-center gap-3">
                     <Mail className="h-4 w-4 text-foreground" />
-                    <span className="font-semibold">info@hhplumbing.com</span>
+                    <span className="font-semibold">office@hhplumbingandgas.com</span>
                   </span>
                   <span className="text-xs text-muted-foreground">Within 24h</span>
                 </a>

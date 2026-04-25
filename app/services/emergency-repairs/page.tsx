@@ -43,7 +43,7 @@ const process = [
   {
     icon: PhoneCall,
     step: "1",
-    title: "Call 07712 599254",
+    title: "Call 0208 102 1108",
     description: "Tell us what's happening — we'll talk you through immediate safety steps and dispatch.",
   },
   {
@@ -106,9 +106,9 @@ export default function EmergencyRepairsPage() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <a href="tel:07712599254" className="btn-primary">
+                <a href="tel:0208 102 1108" className="btn-primary">
                   <PhoneCall className="h-4 w-4" />
-                  Call 07712 599254
+                  Call 0208 102 1108
                 </a>
                 <Link href="/contact-us" className="btn-ghost-dark">
                   Contact form
@@ -149,7 +149,7 @@ export default function EmergencyRepairsPage() {
                 </div>
               </div>
               <a
-                href="tel:07712599254"
+                href="tel:0208 102 1108"
                 className="md:ml-auto inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <PhoneCall className="h-4 w-4" />
