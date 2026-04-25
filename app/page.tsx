@@ -31,11 +31,11 @@ const partnerLogos = [
 
 const services = [
   {
-    title: "Gas Installation & Repair",
+    title: "Boiler Installations",
     href: "/services/boiler-installations",
     icon: Flame,
-    desc: "Boilers, gas cookers and gas pipework — installed and repaired by Gas Safe registered engineers.",
-    image: "/placeholder.svg?height=600&width=800&text=Gas+install+%26+repair",
+    desc: "Combi, system and regular boilers from Worcester, Vaillant, Baxi and more.",
+    image: "/placeholder.svg?height=600&width=800&text=Boiler+install",
     price: "from £1,800",
   },
   {

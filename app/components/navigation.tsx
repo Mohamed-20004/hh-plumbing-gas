@@ -31,8 +31,8 @@ export function Navigation() {
   const serviceLinks = [
     {
       href: "/services/boiler-installations",
-      label: "Gas Installation & Repair",
-      hint: "Boilers · Cookers · Pipework",
+      label: "Boiler Installation",
+      hint: "Combi · System · Regular",
     },
     {
       href: "/services/heat-pump-installations",

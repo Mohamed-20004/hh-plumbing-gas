@@ -47,7 +47,7 @@ export function SiteFooter() {
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="/services/boiler-installations" className="text-white/80 hover:text-brand-yellow transition-colors">
-                  Gas Installation &amp; Repair
+                  Boiler Installations
                 </Link>
               </li>
               <li>

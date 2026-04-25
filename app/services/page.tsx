@@ -18,10 +18,10 @@ import { ContactCTA } from "../components/contact-cta"
 
 const services = [
   {
-    title: "Gas Installation & Repair",
-    tagline: "Boilers, cookers and gas pipework — Gas Safe certified",
+    title: "Boiler Installation",
+    tagline: "Worcester Bosch, Vaillant, Baxi — approved installer",
     description:
-      "Gas Safe registered installs and repairs across boilers, gas cookers and pipework — with manufacturer-approved parts and up to 12-year warranty.",
+      "High-efficiency combi, system and regular boilers installed to manufacturer spec — with up to 12 years parts & labour warranty.",
     icon: Flame,
     link: "/services/boiler-installations",
     highlights: ["From £1,800", "12-year warranty", "Same-week install"],
