@@ -108,7 +108,7 @@ export default function ContactUsPage() {
                 For quotes, follow-ups or non-urgent questions.
               </p>
               <a
-                href="mailto:info@hhplumbing.com"
+                href="mailto:office@hhplumbingandgas.com"
                 className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold border-b border-brand-yellow pb-0.5 hover:text-brand-yellow transition-colors"
               >
                 office@hhplumbingandgas.com
