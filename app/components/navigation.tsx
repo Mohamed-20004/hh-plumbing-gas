@@ -173,7 +173,7 @@ export function Navigation() {
       </div>
 
       <a
-        href="tel:07712599254"
+        href="tel:0208 102 1108"
         className="ml-6 hidden lg:inline-flex items-center gap-2 text-sm font-semibold text-foreground/75 hover:text-foreground transition-colors"
       >
         <Phone className="h-3.5 w-3.5" />
