@@ -123,7 +123,7 @@ export function SiteFooter() {
                 <Phone className="h-4 w-4 text-brand-yellow" />
                 0208 102 1108
               </a>
-              <a href="mailto:info@hhplumbing.com" className="flex items-center gap-2 hover:text-brand-yellow transition-colors">
+              <a href="mailto:office@hhplumbingandgas.com" className="flex items-center gap-2 hover:text-brand-yellow transition-colors">
                 <Mail className="h-4 w-4 text-brand-yellow" />
                 office@hhplumbingandgas.com
               </a>
