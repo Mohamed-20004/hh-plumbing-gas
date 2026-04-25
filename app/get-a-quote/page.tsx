@@ -19,7 +19,6 @@ import {
   HybridHeatPumpIcon,
   InfoIcon,
 } from "../components/icons/boiler-icons"
-import { saveQuoteRequest } from "../utils/quote-storage"
 
 const serviceTypes = [
   { id: "boiler-installation", name: "Boiler Installation", icon: <CombiBoilerIcon /> },
@@ -553,7 +552,6 @@ export default function GetAQuote() {
       const models = brandModels[brandModelKey as keyof typeof brandModels] || []
       const modelName = models.find((model) => model.id === selectedModel)?.name || ""
 
-      // Save quote request to localStorage
       const quoteData = {
         ...formData,
         serviceType: service,
@@ -563,12 +561,17 @@ export default function GetAQuote() {
         startingPrice: startingPrice || 0,
       }
 
-      console.log("Saving quote data:", quoteData)
-      const savedQuote = saveQuoteRequest(quoteData)
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(quoteData),
+      })
 
-      if (savedQuote) {
+      if (res.ok) {
         router.push("/get-a-quote/thank-you")
       } else {
+        const { error } = await res.json().catch(() => ({ error: "" }))
+        console.error("Quote submission failed:", error)
         alert("There was an error submitting your quote request. Please try again.")
       }
     } catch (error) {
