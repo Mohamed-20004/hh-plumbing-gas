@@ -35,9 +35,9 @@ export function SiteFooter() {
                 Get a free quote
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
-              <a href="tel:07712599254" className="btn-ghost-dark">
+              <a href="tel:0208 102 1108" className="btn-ghost-dark">
                 <Phone className="h-4 w-4" />
-                07712 599254
+                0208 102 1108
               </a>
             </div>
           </div>
@@ -135,17 +135,17 @@ export function SiteFooter() {
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 text-brand-yellow" />
                 <div>
-                  <p>2 Broomfield Road</p>
-                  <p className="text-white/60">London, W13 9AP</p>
+                  <p>5th Floor 167-169 Great Portland Street</p>
+                  <p className="text-white/60">London, W1W 5PF</p>
                 </div>
               </div>
               <a href="tel:07712599254" className="flex items-center gap-2 hover:text-brand-yellow transition-colors">
                 <Phone className="h-4 w-4 text-brand-yellow" />
-                07712 599254
+                0208 102 1108
               </a>
               <a href="mailto:info@hhplumbing.com" className="flex items-center gap-2 hover:text-brand-yellow transition-colors">
                 <Mail className="h-4 w-4 text-brand-yellow" />
-                info@hhplumbing.com
+                office@hhplumbingandgas.com
               </a>
             </address>
           </div>

@@ -127,7 +127,7 @@ export default function Home() {
                   </Link>
                   <a href="tel:07712599254" className="btn-secondary">
                     <Phone className="h-4 w-4" />
-                    Call 07712 599254
+                    Call 0208 102 1108
                   </a>
                 </div>
 
@@ -438,11 +438,11 @@ export default function Home() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
-                  href="tel:07712599254"
+                  href="tel:0208 102 1108"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-black/20 bg-transparent px-6 py-3 text-sm font-semibold hover:bg-black/5 transition-colors"
                 >
                   <Phone className="h-4 w-4" />
-                  07712 599254
+                  0208 102 1108
                 </a>
               </div>
             </div>
