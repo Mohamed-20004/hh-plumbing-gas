@@ -14,8 +14,8 @@ import {
   Timer,
 } from "lucide-react"
 import { Header } from "../../components/header"
-import { TopBar } from "../../components/top-bar"
 import { SiteFooter } from "../../components/site-footer"
+import { ContactCTA } from "../../components/contact-cta"
 
 const plumbingIssues = [
   "Burst or leaking pipes",
@@ -43,7 +43,7 @@ const process = [
   {
     icon: PhoneCall,
     step: "1",
-    title: "Call 07712 599254",
+    title: "Call 0208 102 1108",
     description: "Tell us what's happening — we'll talk you through immediate safety steps and dispatch.",
   },
   {
@@ -87,7 +87,6 @@ const preventHeating = [
 export default function EmergencyRepairsPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <TopBar />
       <Header />
 
       <main className="flex-1">
@@ -99,7 +98,7 @@ export default function EmergencyRepairsPage() {
                 24/7 Emergency
               </span>
               <h1 className="display-xl mt-6 text-white">
-                Leaks, no heat, breakdowns — <span className="text-brand-yellow">we'll be there fast</span>.
+                Leaks, no heat, breakdowns — we'll be there fast.
               </h1>
               <p className="lead mt-6 text-white/70 max-w-2xl">
                 Gas Safe registered engineers, fully stocked vans, and a fixed-fee diagnosis. Call any time — we
@@ -107,9 +106,9 @@ export default function EmergencyRepairsPage() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <a href="tel:07712599254" className="btn-primary">
+                <a href="tel:0208 102 1108" className="btn-primary">
                   <PhoneCall className="h-4 w-4" />
-                  Call 07712 599254
+                  Call 0208 102 1108
                 </a>
                 <Link href="/contact-us" className="btn-ghost-dark">
                   Contact form
@@ -137,7 +136,7 @@ export default function EmergencyRepairsPage() {
 
         {/* ============ EMERGENCY BANNER ============ */}
         <section className="container mx-auto px-4 -mt-10 relative z-10">
-          <div className="rounded-3xl border border-brand-yellow/40 bg-brand-yellow p-6 md:p-8 text-black shadow-lift">
+          <div className="rounded-lg border border-brand-yellow/40 bg-brand-yellow p-6 md:p-8 text-black shadow-lift">
             <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
               <div className="flex items-start gap-4">
                 <AlertTriangle className="h-8 w-8 shrink-0" />
@@ -150,7 +149,7 @@ export default function EmergencyRepairsPage() {
                 </div>
               </div>
               <a
-                href="tel:07712599254"
+                href="tel:0208 102 1108"
                 className="md:ml-auto inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <PhoneCall className="h-4 w-4" />
@@ -172,15 +171,15 @@ export default function EmergencyRepairsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
-              <div className="rounded-3xl border border-border bg-card p-8">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+              <div className="rounded-lg border border-border bg-card p-8">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
                   <Droplet className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">Plumbing emergencies</h3>
                 <ul className="mt-5 grid sm:grid-cols-2 gap-2">
                   {plumbingIssues.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{item}</span>
@@ -189,15 +188,15 @@ export default function EmergencyRepairsPage() {
                 </ul>
               </div>
 
-              <div className="rounded-3xl border border-border bg-card p-8">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+              <div className="rounded-lg border border-border bg-card p-8">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
                   <Flame className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">Heating & gas emergencies</h3>
                 <ul className="mt-5 grid sm:grid-cols-2 gap-2">
                   {heatingIssues.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{item}</span>
@@ -223,12 +222,12 @@ export default function EmergencyRepairsPage() {
                 return (
                   <li
                     key={p.step}
-                    className="relative rounded-2xl border border-border bg-card p-6"
+                    className="relative rounded-lg border border-border bg-card p-6"
                   >
                     <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
                       Step {p.step}
                     </span>
-                    <div className="mt-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow">
+                    <div className="mt-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-4 text-lg font-semibold tracking-tight">{p.title}</h3>
@@ -249,12 +248,12 @@ export default function EmergencyRepairsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
-              <div className="rounded-3xl border border-border bg-card p-8">
+              <div className="rounded-lg border border-border bg-card p-8">
                 <h3 className="text-lg font-semibold">Plumbing prevention</h3>
                 <ul className="mt-5 space-y-3">
                   {preventPlumbing.map((tip) => (
                     <li key={tip} className="flex items-start gap-3">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{tip}</span>
@@ -262,12 +261,12 @@ export default function EmergencyRepairsPage() {
                   ))}
                 </ul>
               </div>
-              <div className="rounded-3xl border border-border bg-card p-8">
+              <div className="rounded-lg border border-border bg-card p-8">
                 <h3 className="text-lg font-semibold">Heating prevention</h3>
                 <ul className="mt-5 space-y-3">
                   {preventHeating.map((tip) => (
                     <li key={tip} className="flex items-start gap-3">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                         <Check className="h-3 w-3" />
                       </span>
                       <span className="text-sm text-muted-foreground">{tip}</span>
@@ -279,43 +278,11 @@ export default function EmergencyRepairsPage() {
           </div>
         </section>
 
-        {/* ============ CTA ============ */}
-        <section className="section">
-          <div className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 opacity-60"
-                style={{
-                  background: "radial-gradient(600px circle at 20% 20%, rgba(255,214,10,0.18), transparent 55%)",
-                }}
-              />
-              <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
-                <div>
-                  <span className="eyebrow border-white/15 bg-white/5 text-white/70">Need help right now?</span>
-                  <h2 className="display-lg mt-4 text-white">We're on the phone 24/7.</h2>
-                  <p className="lead mt-4 text-white/70 max-w-xl">
-                    One call reaches a Gas Safe registered engineer — not a call centre. We'll get you safely back
-                    on.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                  <a href="tel:07712599254" className="btn-primary">
-                    <PhoneCall className="h-4 w-4" />
-                    Call 07712 599254
-                  </a>
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    All services
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ContactCTA
+          eyebrow="Need help right now?"
+          heading="We're on the phone 24/7."
+          subhead="One call reaches a Gas Safe registered engineer — not a call centre. We'll get you safely back on."
+        />
       </main>
 
       <SiteFooter />

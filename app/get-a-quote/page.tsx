@@ -1,12 +1,12 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { ArrowLeft, Star, Check, ArrowRight } from "lucide-react"
 import { Header } from "../components/header"
-import { TopBar } from "../components/top-bar"
 import { SiteFooter } from "../components/site-footer"
 import {
   CombiBoilerIcon,
@@ -19,7 +19,6 @@ import {
   HybridHeatPumpIcon,
   InfoIcon,
 } from "../components/icons/boiler-icons"
-import { saveQuoteRequest } from "../utils/quote-storage"
 
 const serviceTypes = [
   { id: "boiler-installation", name: "Boiler Installation", icon: <CombiBoilerIcon /> },
@@ -406,6 +405,18 @@ export default function GetAQuote() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showTooltip, setShowTooltip] = useState<string | null>(null)
+  const router = useRouter()
+
+  // Deep-link: pre-select service from ?service=<id> and skip to step 2
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const params = new URLSearchParams(window.location.search)
+    const serviceParam = params.get("service")
+    if (serviceParam && serviceTypes.some((s) => s.id === serviceParam)) {
+      setSelectedService(serviceParam)
+      setStep(2)
+    }
+  }, [])
 
   const handleServiceSelect = (serviceId: string) => {
     setSelectedService(serviceId)
@@ -541,7 +552,6 @@ export default function GetAQuote() {
       const models = brandModels[brandModelKey as keyof typeof brandModels] || []
       const modelName = models.find((model) => model.id === selectedModel)?.name || ""
 
-      // Save quote request to localStorage
       const quoteData = {
         ...formData,
         serviceType: service,
@@ -551,32 +561,17 @@ export default function GetAQuote() {
         startingPrice: startingPrice || 0,
       }
 
-      console.log("Saving quote data:", quoteData)
-      const savedQuote = saveQuoteRequest(quoteData)
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(quoteData),
+      })
 
-      if (savedQuote) {
-        // Show success message
-        alert("Your quote request has been submitted successfully! We will contact you shortly.")
-
-        // Reset form
-        setSelectedService(null)
-        setSelectedType(null)
-        setSelectedBrand(null)
-        setSelectedModel(null)
-        setStartingPrice(null)
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          address: "",
-          postcode: "",
-        })
-        setStep(1)
-
-        // Log the current state of quotes in localStorage for debugging
-        const currentQuotes = localStorage.getItem("hh-plumbing-quotes")
-        console.log("Current quotes in storage:", currentQuotes ? JSON.parse(currentQuotes) : "None")
+      if (res.ok) {
+        router.push("/get-a-quote/thank-you")
       } else {
+        const { error } = await res.json().catch(() => ({ error: "" }))
+        console.error("Quote submission failed:", error)
         alert("There was an error submitting your quote request. Please try again.")
       }
     } catch (error) {
@@ -652,7 +647,6 @@ export default function GetAQuote() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <TopBar />
       <Header />
 
       <main className="flex-1">
@@ -670,7 +664,7 @@ export default function GetAQuote() {
             <div className="mt-6 max-w-3xl">
               <span className="eyebrow">Free no-obligation quote</span>
               <h1 className="display-lg mt-4">
-                Get your <span className="gradient-text-yellow">tailored quote</span> in minutes.
+                Get your <span className="text-foreground">tailored quote</span> in minutes.
               </h1>
               <p className="lead mt-4 max-w-2xl">
                 Answer a few quick questions and we'll send a fixed, itemised quote with manufacturer-approved
@@ -682,7 +676,7 @@ export default function GetAQuote() {
 
         {/* Quote card */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-border bg-card shadow-lift overflow-hidden">
+          <div className="mx-auto max-w-5xl rounded-lg border border-border bg-card shadow-lift overflow-hidden">
             {/* Progress Steps */}
             <div className="relative bg-foreground/[0.02] border-b border-border px-6 md:px-10 py-6">
               <div className="relative flex items-center justify-between gap-2">
@@ -700,7 +694,7 @@ export default function GetAQuote() {
                       <div
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
                           active
-                            ? "bg-brand-yellow text-black shadow-[0_6px_18px_-8px_rgba(255,214,10,0.9)]"
+                            ? "bg-brand-yellow text-black "
                             : "bg-background border border-border text-muted-foreground"
                         } ${current ? "ring-4 ring-brand-yellow/20" : ""}`}
                       >
@@ -746,14 +740,14 @@ export default function GetAQuote() {
                     <button
                       key={service.id}
                       type="button"
-                      className={`group relative flex flex-col items-center rounded-2xl border p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                      className={`group relative flex flex-col items-center rounded-lg border p-7 text-center transition-all duration-300 ${
                         selectedService === service.id
-                          ? "border-brand-yellow bg-brand-yellow/5"
-                          : "border-border bg-card hover:border-foreground/20"
+                          ? "border-foreground bg-foreground/[0.04]"
+                          : "border-border bg-card hover:border-foreground/30"
                       }`}
                       onClick={() => handleServiceSelect(service.id)}
                     >
-                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-2xl bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-foreground/[0.06] text-foreground/80 group-hover:bg-foreground group-hover:text-background transition-colors">
                         <div className="h-14 w-14">{service.icon}</div>
                       </div>
                       <h3 className="font-semibold tracking-tight">{service.name}</h3>
@@ -789,7 +783,7 @@ export default function GetAQuote() {
                   </div>
                   <button
                     onClick={handleBack}
-                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" />
                     Back
@@ -800,10 +794,10 @@ export default function GetAQuote() {
                   {getTypeOptions().map((typeOption) => (
                     <div
                       key={typeOption.id}
-                      className={`group relative rounded-2xl border p-7 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center ${
+                      className={`group relative rounded-lg border p-7 cursor-pointer transition-all duration-300 flex flex-col items-center ${
                         selectedType === typeOption.id
-                          ? "border-brand-yellow bg-brand-yellow/5"
-                          : "border-border bg-card hover:border-foreground/20"
+                          ? "border-foreground bg-foreground/[0.04]"
+                          : "border-border bg-card hover:border-foreground/30"
                       }`}
                       onClick={() => handleTypeSelect(typeOption.id)}
                     >
@@ -819,7 +813,7 @@ export default function GetAQuote() {
                         <InfoIcon />
                       </button>
 
-                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-2xl bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                      <div className="h-20 w-20 mb-4 flex items-center justify-center rounded-lg bg-foreground/[0.06] text-foreground/80 group-hover:bg-foreground group-hover:text-background transition-colors">
                         <div className="h-14 w-14">{typeOption.icon}</div>
                       </div>
                       <h3 className="font-semibold tracking-tight text-center">{typeOption.name}</h3>
@@ -832,7 +826,7 @@ export default function GetAQuote() {
                           <p className="text-xs text-muted-foreground leading-relaxed">{typeOption.description}</p>
                           <p className="mt-3 text-xs font-semibold">
                             Starting from{" "}
-                            <span className="text-brand-yellow">£{typeOption.startingPrice}</span>
+                            £{typeOption.startingPrice}
                           </p>
                           <div
                             aria-hidden
@@ -866,52 +860,63 @@ export default function GetAQuote() {
                   </div>
                   <button
                     onClick={handleBack}
-                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" />
                     Back
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {getAvailableBrands().map((brand) => {
                     const isSelected = selectedBrand === brand.id
                     return (
                       <button
                         key={brand.id}
                         type="button"
-                        className={`group relative rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center text-center ${
+                        className={`group relative flex items-center gap-4 rounded-md border p-4 text-left transition-colors ${
                           isSelected
-                            ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
-                            : brand.recommended
-                              ? "border-brand-yellow/60 bg-card"
-                              : "border-border bg-card hover:border-foreground/20"
+                            ? "border-foreground bg-foreground/[0.03]"
+                            : "border-border bg-card hover:border-foreground/40"
                         }`}
                         onClick={() => handleBrandSelect(brand.id)}
                       >
-                        {brand.recommended && (
-                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 rounded-full bg-brand-yellow text-black text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 shadow-[0_6px_18px_-8px_rgba(255,214,10,0.9)]">
-                            <Star className="h-3 w-3 fill-current" />
-                            Recommended
-                          </div>
-                        )}
-                        <div className="relative h-16 w-full flex items-center justify-center mb-4">
+                        <div className="relative h-12 w-20 shrink-0 flex items-center justify-center">
                           <img
                             src={brand.logo || "/placeholder.svg"}
                             alt={brand.name}
                             className="max-h-full max-w-full object-contain"
                           />
                         </div>
-                        <h3 className="font-semibold tracking-tight">{brand.name}</h3>
-                        <p className="mt-2 text-xs text-muted-foreground">
-                          from{" "}
-                          <span className="font-semibold text-foreground">£{brand.startingPrice}</span>
-                        </p>
-                        {isSelected && (
-                          <span className="absolute top-3 right-3 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-yellow text-black">
-                            <Check className="h-3.5 w-3.5" />
-                          </span>
-                        )}
+
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="font-semibold tracking-tight">{brand.name}</h3>
+                            {brand.recommended && (
+                              <span className="inline-flex items-center gap-1 rounded-sm bg-brand-yellow text-black text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5">
+                                <Star className="h-2.5 w-2.5 fill-current" />
+                                Recommended
+                              </span>
+                            )}
+                          </div>
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            From{" "}
+                            <span className="font-semibold text-foreground">
+                              £{brand.startingPrice.toLocaleString()}
+                            </span>
+                          </p>
+                        </div>
+
+                        <span
+                          aria-hidden
+                          className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                            isSelected
+                              ? "border-foreground bg-foreground text-background"
+                              : "border-border bg-background"
+                          }`}
+                        >
+                          {isSelected && <Check className="h-3 w-3" />}
+                        </span>
                       </button>
                     )
                   })}
@@ -939,45 +944,51 @@ export default function GetAQuote() {
                   </div>
                   <button
                     onClick={handleBack}
-                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" />
                     Back
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-3">
                   {getModelOptions().map((model) => {
                     const isSelected = selectedModel === model.id
                     return (
                       <button
                         key={model.id}
                         type="button"
-                        className={`group relative rounded-2xl border p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                        className={`group relative flex items-start gap-4 rounded-md border p-5 text-left transition-colors ${
                           isSelected
-                            ? "border-brand-yellow bg-brand-yellow/5 shadow-glow"
-                            : "border-border bg-card hover:border-foreground/20"
+                            ? "border-foreground bg-foreground/[0.03]"
+                            : "border-border bg-card hover:border-foreground/40"
                         }`}
                         onClick={() => handleModelSelect(model.id)}
                       >
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <h3 className="text-lg font-semibold tracking-tight">{model.name}</h3>
-                            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                              {model.description}
+                        <span
+                          aria-hidden
+                          className={`mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                            isSelected
+                              ? "border-foreground bg-foreground text-background"
+                              : "border-border bg-background"
+                          }`}
+                        >
+                          {isSelected && <Check className="h-3 w-3" />}
+                        </span>
+
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                            <h3 className="text-base font-semibold tracking-tight">{model.name}</h3>
+                            <p className="text-sm">
+                              <span className="text-muted-foreground">From </span>
+                              <span className="font-semibold text-foreground">
+                                £{model.startingPrice.toLocaleString()}
+                              </span>
                             </p>
                           </div>
-                          {isSelected && (
-                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-yellow text-black shrink-0">
-                              <Check className="h-4 w-4" />
-                            </span>
-                          )}
-                        </div>
-                        <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
-                          <span className="text-xs text-muted-foreground">Starting from</span>
-                          <span className="text-lg font-bold">
-                            £{model.startingPrice.toLocaleString()}
-                          </span>
+                          <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                            {model.description}
+                          </p>
                         </div>
                       </button>
                     )
@@ -1006,69 +1017,60 @@ export default function GetAQuote() {
                   </div>
                   <button
                     onClick={handleBack}
-                    className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
                   >
                     <ArrowLeft className="h-3.5 w-3.5" />
                     Back
                   </button>
                 </div>
 
-                <div className="mb-8 rounded-2xl border border-brand-yellow/50 bg-brand-yellow/5 p-6">
-                  <div className="flex items-center gap-2 mb-5">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-yellow text-black">
-                      <Check className="h-3.5 w-3.5" />
-                    </span>
-                    <h3 className="font-semibold tracking-tight">Quote summary</h3>
+                <div className="mb-8 overflow-hidden rounded-md border border-border bg-card">
+                  <div className="flex items-center justify-between border-b border-border bg-foreground/[0.02] px-5 py-3">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                      Quote summary
+                    </p>
                   </div>
-                  <dl className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Service
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold">
+                  <dl className="divide-y divide-border text-sm">
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <dt className="text-muted-foreground">Service</dt>
+                      <dd className="font-semibold">
                         {serviceTypes.find((s) => s.id === selectedService)?.name}
                       </dd>
                     </div>
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Type
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold">
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <dt className="text-muted-foreground">Type</dt>
+                      <dd className="font-semibold">
                         {getTypeOptions().find((t) => t.id === selectedType)?.name}
                       </dd>
                     </div>
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Brand
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold">
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <dt className="text-muted-foreground">Brand</dt>
+                      <dd className="font-semibold">
                         {getAvailableBrands().find((b) => b.id === selectedBrand)?.name}
                       </dd>
                     </div>
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Model
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold">
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <dt className="text-muted-foreground">Model</dt>
+                      <dd className="font-semibold">
                         {getModelOptions().find((m) => m.id === selectedModel)?.name}
                       </dd>
                     </div>
+                    {startingPrice && (
+                      <div className="flex items-center justify-between px-5 py-4 bg-foreground/[0.02]">
+                        <dt className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                          Starting from
+                        </dt>
+                        <dd className="text-xl font-bold">
+                          £{startingPrice.toLocaleString()}
+                        </dd>
+                      </div>
+                    )}
                   </dl>
-                  {startingPrice && (
-                    <div className="mt-5 flex items-center justify-between border-t border-brand-yellow/40 pt-4">
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                        Starting from
-                      </span>
-                      <span className="text-2xl font-extrabold">
-                        £{startingPrice.toLocaleString()}
-                      </span>
-                    </div>
-                  )}
                 </div>
 
                 <form
                   onSubmit={handleSubmit}
-                  className="rounded-2xl border border-border bg-card p-6 md:p-8"
+                  className="rounded-lg border border-border bg-card p-6 md:p-8"
                 >
                   <h3 className="text-lg font-semibold tracking-tight">Contact information</h3>
                   <p className="mt-1 text-sm text-muted-foreground">
@@ -1087,7 +1089,7 @@ export default function GetAQuote() {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                     <div>
@@ -1101,7 +1103,7 @@ export default function GetAQuote() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                     <div>
@@ -1115,7 +1117,7 @@ export default function GetAQuote() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                     <div>
@@ -1129,7 +1131,7 @@ export default function GetAQuote() {
                         value={formData.postcode}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                     <div className="md:col-span-2">
@@ -1143,7 +1145,7 @@ export default function GetAQuote() {
                         value={formData.address}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm transition-colors focus:outline-none focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
                       />
                     </div>
                   </div>

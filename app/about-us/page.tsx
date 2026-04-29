@@ -13,8 +13,8 @@ import {
   Clock,
 } from "lucide-react"
 import { Header } from "../components/header"
-import { TopBar } from "../components/top-bar"
 import { SiteFooter } from "../components/site-footer"
+import { ContactCTA } from "../components/contact-cta"
 
 const values = [
   {
@@ -58,7 +58,6 @@ const values = [
 export default function AboutUsPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <TopBar />
       <Header />
 
       <main className="flex-1">
@@ -68,7 +67,7 @@ export default function AboutUsPage() {
             <div className="max-w-3xl">
               <span className="eyebrow border-white/15 bg-white/5 text-white/70">About HH Plumbing &amp; Gas</span>
               <h1 className="display-xl mt-6 text-white">
-                Craft, care and <span className="text-brand-yellow">clean installs</span> — for London homes.
+                Craft, care and clean installs — for London homes.
               </h1>
               <p className="lead mt-6 text-white/70 max-w-2xl">
                 We're a small team of Gas Safe registered engineers building a reputation for reliable plumbing,
@@ -95,7 +94,7 @@ export default function AboutUsPage() {
               <span className="eyebrow">Who we are</span>
               <h2 className="display-lg mt-4">
                 Local expertise. <br />
-                <span className="text-brand-yellow">Manufacturer-grade install.</span>
+                Manufacturer-grade install.
               </h2>
               <p className="lead mt-5">
                 HH Plumbing and Gas is a trusted provider of professional plumbing and heating services across
@@ -108,14 +107,14 @@ export default function AboutUsPage() {
               </p>
 
               <div className="mt-10 grid sm:grid-cols-2 gap-4">
-                <div className="rounded-2xl border border-border bg-card p-5">
+                <div className="rounded-lg border border-border bg-card p-5">
                   <ShieldCheck className="h-6 w-6 text-brand-yellow" />
                   <p className="mt-4 font-semibold">Gas Safe Registered</p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Register number 630695 — every gas job is safe, legal and certified.
                   </p>
                 </div>
-                <div className="rounded-2xl border border-border bg-card p-5">
+                <div className="rounded-lg border border-border bg-card p-5">
                   <Award className="h-6 w-6 text-brand-yellow" />
                   <p className="mt-4 font-semibold">Manufacturer Approved</p>
                   <p className="mt-1 text-sm text-muted-foreground">
@@ -139,7 +138,7 @@ export default function AboutUsPage() {
                   aria-hidden
                   className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
                 />
-                <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6 rounded-2xl border border-white/15 bg-black/60 backdrop-blur-md p-5 text-white">
+                <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6 rounded-lg border border-white/15 bg-black/60 backdrop-blur-md p-5 text-white">
                   <div className="flex items-center gap-4">
                     <div className="relative h-12 w-12 shrink-0 rounded-xl bg-white p-1.5">
                       <Image
@@ -150,7 +149,7 @@ export default function AboutUsPage() {
                       />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-yellow">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                         Certified
                       </p>
                       <p className="font-semibold">Gas Safe Register · 630695</p>
@@ -179,9 +178,9 @@ export default function AboutUsPage() {
                 return (
                   <div
                     key={i}
-                    className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
                   >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-5 text-lg font-semibold tracking-tight">{item.title}</h3>
@@ -193,43 +192,7 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        {/* ============== CTA ============== */}
-        <section className="section">
-          <div className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 opacity-60"
-                style={{
-                  background:
-                    "radial-gradient(600px circle at 20% 20%, rgba(255,214,10,0.18), transparent 55%)",
-                }}
-              />
-              <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
-                <div>
-                  <span className="eyebrow border-white/15 bg-white/5 text-white/70">Our expertise</span>
-                  <h2 className="display-lg mt-4 text-white">
-                    From boilers to whole-home heating — we do it all.
-                  </h2>
-                  <p className="lead mt-4 text-white/70 max-w-xl">
-                    Boiler installations, heat pumps, underfloor heating and more — at fair prices, with certified
-                    engineers you can trust.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                  <Link href="/services" className="btn-primary">
-                    Explore services
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
-                  <div className="inline-flex items-center gap-2 text-sm text-white/60">
-                    <Clock className="h-4 w-4 text-brand-yellow" />
-                    24/7 emergency cover
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ContactCTA quoteHref="/get-a-quote" />
       </main>
 
       <SiteFooter />

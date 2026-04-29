@@ -10,10 +10,11 @@ import {
   Siren,
   ShieldCheck,
   Clock,
+  Wrench,
 } from "lucide-react"
-import { TopBar } from "../components/top-bar"
 import { Header } from "../components/header"
 import { SiteFooter } from "../components/site-footer"
+import { ContactCTA } from "../components/contact-cta"
 
 const services = [
   {
@@ -35,6 +36,15 @@ const services = [
     highlights: ["£7,500 grant", "MCS certified", "A++ efficiency"],
   },
   {
+    title: "Bathroom Installation",
+    tagline: "End-to-end design & fit",
+    description:
+      "Full bathroom renovations — from first fix to final silicone. Tiling, plumbing and electrics coordinated under one roof.",
+    icon: Bath,
+    link: "/services/bathroom-installation",
+    highlights: ["Design service", "Project managed", "Fixed timeline"],
+  },
+  {
     title: "Underfloor Heating",
     tagline: "Wet & electric systems, new build or retrofit",
     description:
@@ -53,13 +63,13 @@ const services = [
     highlights: ["Unvented specialists", "G3 certified", "Zero airlocks"],
   },
   {
-    title: "Bathroom Installation",
-    tagline: "End-to-end design & fit",
+    title: "Drainage",
+    tagline: "Unblocking, CCTV inspections and repairs",
     description:
-      "Full bathroom renovations — from first fix to final silicone. Tiling, plumbing and electrics coordinated under one roof.",
-    icon: Bath,
-    link: "/services/bathroom-installation",
-    highlights: ["Design service", "Project managed", "Fixed timeline"],
+      "Blocked drains cleared on the first visit. CCTV diagnosis, patch repairs and full-excavation work — fixed-fee diagnosis on every job.",
+    icon: Wrench,
+    link: "/services/drainage",
+    highlights: ["Same-day clears", "CCTV included", "Fixed-fee diagnosis"],
   },
   {
     title: "Emergency Repairs",
@@ -75,7 +85,6 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <TopBar />
       <Header />
 
       <main className="flex-1">
@@ -86,7 +95,7 @@ export default function ServicesPage() {
             <div className="max-w-3xl">
               <span className="eyebrow">Plumbing, heating &amp; gas</span>
               <h1 className="display-xl mt-6">
-                Every service, <span className="gradient-text-yellow">one trusted team</span>.
+                Every service, <span className="text-foreground">one trusted team</span>.
               </h1>
               <p className="lead mt-6 max-w-2xl">
                 From a single boiler swap to a full bathroom refit — Gas Safe registered engineers handling every
@@ -98,10 +107,10 @@ export default function ServicesPage() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
-                  href="tel:07712599254"
+                  href="tel:0208 102 1108"
                   className="btn-secondary"
                 >
-                  Call 07712 599254
+                  Call 0208 102 1108
                 </a>
               </div>
             </div>
@@ -117,13 +126,13 @@ export default function ServicesPage() {
                 <Link
                   key={service.title}
                   href={service.link}
-                  className="group relative flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:border-brand-yellow/40"
+                  className="group relative flex flex-col rounded-lg border border-border bg-card p-6 transition-all duration-300"
                 >
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="mt-5 text-lg font-semibold tracking-tight">{service.title}</h3>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-brand-yellow">
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                     {service.tagline}
                   </p>
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{service.description}</p>
@@ -141,7 +150,7 @@ export default function ServicesPage() {
 
                   <div className="mt-6 pt-6 border-t border-border flex items-center justify-between">
                     <span className="text-sm font-semibold">Learn more</span>
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-brand-yellow group-hover:bg-brand-yellow group-hover:text-black">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
                       <ArrowUpRight className="h-4 w-4" />
                     </span>
                   </div>
@@ -154,21 +163,21 @@ export default function ServicesPage() {
         {/* ============ TRUST BAND ============ */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
           <div className="grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <ShieldCheck className="h-6 w-6 text-brand-yellow" />
               <p className="mt-4 font-semibold">Gas Safe Registered</p>
               <p className="mt-1 text-sm text-muted-foreground">
                 Register 630695 — every gas job safe, legal and certified.
               </p>
             </div>
-            <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <Clock className="h-6 w-6 text-brand-yellow" />
               <p className="mt-4 font-semibold">24/7 Emergency Cover</p>
               <p className="mt-1 text-sm text-muted-foreground">
                 Leaks, breakdowns or no heat — we answer out of hours.
               </p>
             </div>
-            <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <ArrowUpRight className="h-6 w-6 text-brand-yellow" />
               <p className="mt-4 font-semibold">Manufacturer Approved</p>
               <p className="mt-1 text-sm text-muted-foreground">
@@ -178,45 +187,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ============ CTA ============ */}
-        <section className="section">
-          <div className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 opacity-60"
-                style={{
-                  background:
-                    "radial-gradient(600px circle at 20% 20%, rgba(255,214,10,0.18), transparent 55%)",
-                }}
-              />
-              <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
-                <div>
-                  <span className="eyebrow border-white/15 bg-white/5 text-white/70">Ready when you are</span>
-                  <h2 className="display-lg mt-4 text-white">
-                    Get a fixed, itemised quote in minutes.
-                  </h2>
-                  <p className="lead mt-4 text-white/70 max-w-xl">
-                    Answer a few quick questions — we'll send a transparent quote with manufacturer-approved
-                    options and fair pricing.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                  <Link href="/get-a-quote" className="btn-primary">
-                    Start quote
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="/contact-us"
-                    className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    Or contact us directly
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ContactCTA quoteHref="/get-a-quote" />
       </main>
 
       <SiteFooter />

@@ -21,11 +21,11 @@ export function Header() {
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/60 shadow-soft"
-          : "bg-background/60 backdrop-blur-sm border-b border-transparent"
+          ? "bg-background/90 backdrop-blur-xl border-b border-border/60 shadow-soft"
+          : "bg-background/80 backdrop-blur-sm border-b border-border/40"
       }`}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between h-[72px]">
+      <div className="container mx-auto px-4 flex items-center justify-between h-[68px]">
         <Logo />
         <Navigation />
         <MobileMenu />

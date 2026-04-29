@@ -13,8 +13,8 @@ import {
   BadgePoundSterling,
 } from "lucide-react"
 import { Header } from "../../components/header"
-import { TopBar } from "../../components/top-bar"
 import { SiteFooter } from "../../components/site-footer"
+import { ContactCTA } from "../../components/contact-cta"
 
 const brands = [
   { src: "/images/vaillant-logo-new.png", alt: "Vaillant" },
@@ -84,7 +84,6 @@ const process = [
 export default function HeatPumpInstallationsPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <TopBar />
       <Header />
 
       <main className="flex-1">
@@ -94,19 +93,19 @@ export default function HeatPumpInstallationsPage() {
             <div className="max-w-3xl">
               <span className="eyebrow border-white/15 bg-white/5 text-white/70">Heat pump installations</span>
               <h1 className="display-xl mt-6 text-white">
-                Low-carbon heating, <span className="text-brand-yellow">£7,500 off</span>, MCS certified.
+                Low-carbon heating, £7,500 off, MCS certified.
               </h1>
               <p className="lead mt-6 text-white/70 max-w-2xl">
                 Air and ground source heat pumps from Vaillant, Mitsubishi and Daikin — designed, installed and
                 grant-claimed by one trusted team.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="/get-a-quote" className="btn-primary">
+                <Link href="/get-a-quote?service=heat-pump-installation" className="btn-primary">
                   Get a fixed quote
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <a href="tel:07712599254" className="btn-ghost-dark">
-                  Call 07712 599254
+                <a href="tel:0208 102 1108" className="btn-ghost-dark">
+                  Call 0208 102 1108
                 </a>
               </div>
 
@@ -135,7 +134,7 @@ export default function HeatPumpInstallationsPage() {
               <span className="eyebrow">What we install</span>
               <h2 className="display-lg mt-4">
                 Air source, ground source <br />
-                <span className="text-brand-yellow">or hybrid retrofit.</span>
+                or hybrid retrofit.
               </h2>
               <p className="lead mt-5">
                 We specify heat pumps around your actual heat loss, radiators and hot water habits — not a
@@ -152,7 +151,7 @@ export default function HeatPumpInstallationsPage() {
                   "Commissioning + MCS certification on completion",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
+                    <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
                       <Check className="h-3 w-3" />
                     </span>
                     <span className="text-sm text-muted-foreground">{item}</span>
@@ -161,7 +160,7 @@ export default function HeatPumpInstallationsPage() {
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-border bg-card p-8">
+            <div className="rounded-lg border border-border bg-card p-8">
               <h3 className="text-lg font-semibold">Brands we install</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 We're partnered with leading heat pump manufacturers for premium kit and extended warranties.
@@ -222,9 +221,9 @@ export default function HeatPumpInstallationsPage() {
                 return (
                   <div
                     key={b.title}
-                    className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
                   >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow/15 text-brand-yellow transition-colors group-hover:bg-brand-yellow group-hover:text-black">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>
@@ -246,7 +245,7 @@ export default function HeatPumpInstallationsPage() {
 
             <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
               {process.map((p) => (
-                <li key={p.step} className="relative rounded-2xl border border-border bg-card p-6">
+                <li key={p.step} className="relative rounded-lg border border-border bg-card p-6">
                   <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
                     Step {p.step}
                   </span>
@@ -258,42 +257,7 @@ export default function HeatPumpInstallationsPage() {
           </div>
         </section>
 
-        {/* ============ CTA ============ */}
-        <section className="section">
-          <div className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-brand-black text-white p-10 md:p-16">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 opacity-60"
-                style={{
-                  background: "radial-gradient(600px circle at 20% 20%, rgba(255,214,10,0.18), transparent 55%)",
-                }}
-              />
-              <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
-                <div>
-                  <span className="eyebrow border-white/15 bg-white/5 text-white/70">Ready to go low-carbon?</span>
-                  <h2 className="display-lg mt-4 text-white">See if a heat pump fits your home.</h2>
-                  <p className="lead mt-4 text-white/70 max-w-xl">
-                    Send us a few details — we'll come back with honest guidance and a fixed quote,
-                    grant-adjusted.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                  <Link href="/get-a-quote" className="btn-primary">
-                    Start quote
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    All services
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ContactCTA quoteHref="/get-a-quote?service=heat-pump-installation" />
       </main>
 
       <SiteFooter />
