@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Mouse } from "lucide-react"
+import { ArrowRight, Check, Mouse } from "lucide-react"
 import { Header } from "./components/header"
 import { SiteFooter } from "./components/site-footer"
 
@@ -145,6 +145,67 @@ export default function Home() {
           >
             <Mouse className="h-6 w-6" strokeWidth={1.5} />
             <p className="text-[10px] font-semibold uppercase tracking-[0.3em]">Scroll down</p>
+          </div>
+        </section>
+
+        {/* =================== WHO WE ARE =================== */}
+        <section className="container mx-auto px-4 py-20 md:py-28">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-yellow-deep">
+                Who we are
+              </p>
+              <h2 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight leading-[1.08] text-balance">
+                Specialists you can
+                <br />
+                rely on. Every job.
+              </h2>
+
+              <p className="mt-9 text-lg text-muted-foreground leading-relaxed">
+                HH Plumbing &amp; Gas has been keeping London homes and businesses running since
+                2010. From a single leaking pipe to a full bathroom renovation or a ground source
+                heat pump installation — we approach every job with the same care and precision.
+              </p>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                All our engineers are Gas Safe registered and manufacturer-trained. We work with the
+                best brands in the industry and back every installation with a written guarantee.
+              </p>
+
+              <ul className="mt-10 space-y-4">
+                {[
+                  "Gas Safe Registered (Reg. No. 630695)",
+                  "MCS Certified — Heat Pump Installations",
+                  "Manufacturer-approved installer: Vaillant, Daikin, Mitsubishi",
+                  "All work fully insured and guaranteed",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-4">
+                    <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center bg-brand-yellow text-black">
+                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                    </span>
+                    <span className="text-foreground/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="relative">
+              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                <Image
+                  src="https://images.unsplash.com/photo-1620653713380-7a34b773fef8?w=900&h=675&fit=crop&auto=format"
+                  alt="HH Plumbing & Gas engineer working on a hot water cylinder"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute bottom-8 left-0 lg:-left-10 max-w-[260px] bg-brand-black p-8">
+                <p className="text-3xl md:text-4xl font-bold tracking-tight text-brand-yellow">
+                  2,400+
+                </p>
+                <p className="mt-2 text-sm text-white/60 leading-relaxed">
+                  Installations completed across London
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
