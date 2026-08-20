@@ -16,6 +16,7 @@ import {
 import { Header } from "../../components/header"
 import { SiteFooter } from "../../components/site-footer"
 import { ContactCTA } from "../../components/contact-cta"
+import { Reveal, Stagger, StaggerItem, HeroText, FadeIn } from "../../components/motion"
 
 const plumbingIssues = [
   "Burst or leaking pipes",
@@ -94,49 +95,59 @@ export default function EmergencyRepairsPage() {
         <section className="page-hero">
           <div className="relative container mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
             <div className="max-w-3xl">
-              <span className="eyebrow border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow">
-                24/7 Emergency
-              </span>
-              <h1 className="display-xl mt-6 text-white">
-                Leaks, no heat, breakdowns — we'll be there fast.
-              </h1>
-              <p className="lead mt-6 text-white/70 max-w-2xl">
-                Gas Safe registered engineers, fully stocked vans, and a fixed-fee diagnosis. Call any time — we
-                answer around the clock.
-              </p>
+              <FadeIn delay={0.05} y={12}>
+                <span className="eyebrow border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow">
+                  24/7 Emergency
+                </span>
+              </FadeIn>
+              <HeroText
+                text="Leaks, no heat, breakdowns — we'll be there fast."
+                className="display-xl mt-6 text-white"
+                delay={0.15}
+              />
+              <FadeIn delay={0.55}>
+                <p className="lead mt-6 text-white/70 max-w-2xl">
+                  Gas Safe registered engineers, fully stocked vans, and a fixed-fee diagnosis. Call any time — we
+                  answer around the clock.
+                </p>
+              </FadeIn>
 
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <a href="tel:0208 102 1108" className="btn-primary">
-                  <PhoneCall className="h-4 w-4" />
-                  Call 0208 102 1108
-                </a>
-                <Link href="/contact-us" className="btn-ghost-dark">
-                  Contact form
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
+              <FadeIn delay={0.7}>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <a href="tel:0208 102 1108" className="btn-primary">
+                    <PhoneCall className="h-4 w-4" />
+                    Call 0208 102 1108
+                  </a>
+                  <Link href="/contact-us" className="btn-ghost-dark">
+                    Contact form
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </FadeIn>
 
-              <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/70">
-                <span className="inline-flex items-center gap-2">
-                  <ShieldCheck className="h-4 w-4 text-brand-yellow" />
-                  Gas Safe · 630695
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-brand-yellow" />
-                  24/7 dispatch
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <Tool className="h-4 w-4 text-brand-yellow" />
-                  Fixed-fee diagnosis
-                </span>
-              </div>
+              <FadeIn delay={0.85}>
+                <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/70">
+                  <span className="inline-flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 text-brand-yellow" />
+                    Gas Safe · 630695
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-brand-yellow" />
+                    24/7 dispatch
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <Tool className="h-4 w-4 text-brand-yellow" />
+                    Fixed-fee diagnosis
+                  </span>
+                </div>
+              </FadeIn>
             </div>
           </div>
         </section>
 
         {/* ============ EMERGENCY BANNER ============ */}
         <section className="container mx-auto px-4 -mt-10 relative z-10">
-          <div className="rounded-lg border border-brand-yellow/40 bg-brand-yellow p-6 md:p-8 text-black shadow-lift">
+          <FadeIn delay={1.0} className="rounded-lg border border-brand-yellow/40 bg-brand-yellow p-6 md:p-8 text-black shadow-lift">
             <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
               <div className="flex items-start gap-4">
                 <AlertTriangle className="h-8 w-8 shrink-0" />
@@ -156,125 +167,132 @@ export default function EmergencyRepairsPage() {
                 Call us now
               </a>
             </div>
-          </div>
+          </FadeIn>
         </section>
 
         {/* ============ ISSUES WE HANDLE ============ */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">What we fix</span>
               <h2 className="display-lg mt-4">From trickle leaks to total breakdowns.</h2>
               <p className="lead mt-4">
                 Fully equipped vans handle most repairs on the spot. If we need parts, we'll make safe and return.
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid md:grid-cols-2 gap-5">
-              <div className="rounded-lg border border-border bg-card p-8">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
-                  <Droplet className="h-5 w-5" />
+            <Stagger className="grid md:grid-cols-2 gap-5">
+              <StaggerItem className="h-full">
+                <div className="h-full rounded-lg border border-border bg-card p-8 hover-lift">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
+                    <Droplet className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold">Plumbing emergencies</h3>
+                  <ul className="mt-5 grid sm:grid-cols-2 gap-2">
+                    {plumbingIssues.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                          <Check className="h-3 w-3" />
+                        </span>
+                        <span className="text-sm text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="mt-5 text-lg font-semibold">Plumbing emergencies</h3>
-                <ul className="mt-5 grid sm:grid-cols-2 gap-2">
-                  {plumbingIssues.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
-                        <Check className="h-3 w-3" />
-                      </span>
-                      <span className="text-sm text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </StaggerItem>
 
-              <div className="rounded-lg border border-border bg-card p-8">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
-                  <Flame className="h-5 w-5" />
+              <StaggerItem className="h-full">
+                <div className="h-full rounded-lg border border-border bg-card p-8 hover-lift">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
+                    <Flame className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold">Heating & gas emergencies</h3>
+                  <ul className="mt-5 grid sm:grid-cols-2 gap-2">
+                    {heatingIssues.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                          <Check className="h-3 w-3" />
+                        </span>
+                        <span className="text-sm text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="mt-5 text-lg font-semibold">Heating & gas emergencies</h3>
-                <ul className="mt-5 grid sm:grid-cols-2 gap-2">
-                  {heatingIssues.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
-                        <Check className="h-3 w-3" />
-                      </span>
-                      <span className="text-sm text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+              </StaggerItem>
+            </Stagger>
           </div>
         </section>
 
         {/* ============ PROCESS ============ */}
         <section className="bg-foreground/[0.02] border-y border-border py-20 md:py-28">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">How we respond</span>
               <h2 className="display-lg mt-4">Four steps from call to fix.</h2>
-            </div>
+            </Reveal>
 
-            <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <Stagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
               {process.map((p) => {
                 const Icon = p.icon
                 return (
-                  <li
-                    key={p.step}
-                    className="relative rounded-lg border border-border bg-card p-6"
-                  >
-                    <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
-                      Step {p.step}
-                    </span>
-                    <div className="mt-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
-                      <Icon className="h-5 w-5" />
+                  <StaggerItem key={p.step} className="h-full">
+                    <div className="relative h-full rounded-lg border border-border bg-card p-6 hover-lift">
+                      <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
+                        Step {p.step}
+                      </span>
+                      <div className="mt-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="mt-4 text-lg font-semibold tracking-tight">{p.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
                     </div>
-                    <h3 className="mt-4 text-lg font-semibold tracking-tight">{p.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
-                  </li>
+                  </StaggerItem>
                 )
               })}
-            </ol>
+            </Stagger>
           </div>
         </section>
 
         {/* ============ PREVENTION TIPS ============ */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">Prevention</span>
               <h2 className="display-lg mt-4">Small habits, fewer call-outs.</h2>
-            </div>
+            </Reveal>
 
-            <div className="grid md:grid-cols-2 gap-5">
-              <div className="rounded-lg border border-border bg-card p-8">
-                <h3 className="text-lg font-semibold">Plumbing prevention</h3>
-                <ul className="mt-5 space-y-3">
-                  {preventPlumbing.map((tip) => (
-                    <li key={tip} className="flex items-start gap-3">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
-                        <Check className="h-3 w-3" />
-                      </span>
-                      <span className="text-sm text-muted-foreground">{tip}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rounded-lg border border-border bg-card p-8">
-                <h3 className="text-lg font-semibold">Heating prevention</h3>
-                <ul className="mt-5 space-y-3">
-                  {preventHeating.map((tip) => (
-                    <li key={tip} className="flex items-start gap-3">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
-                        <Check className="h-3 w-3" />
-                      </span>
-                      <span className="text-sm text-muted-foreground">{tip}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            <Stagger className="grid md:grid-cols-2 gap-5">
+              <StaggerItem className="h-full">
+                <div className="h-full rounded-lg border border-border bg-card p-8 hover-lift">
+                  <h3 className="text-lg font-semibold">Plumbing prevention</h3>
+                  <ul className="mt-5 space-y-3">
+                    {preventPlumbing.map((tip) => (
+                      <li key={tip} className="flex items-start gap-3">
+                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                          <Check className="h-3 w-3" />
+                        </span>
+                        <span className="text-sm text-muted-foreground">{tip}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </StaggerItem>
+              <StaggerItem className="h-full">
+                <div className="h-full rounded-lg border border-border bg-card p-8 hover-lift">
+                  <h3 className="text-lg font-semibold">Heating prevention</h3>
+                  <ul className="mt-5 space-y-3">
+                    {preventHeating.map((tip) => (
+                      <li key={tip} className="flex items-start gap-3">
+                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                          <Check className="h-3 w-3" />
+                        </span>
+                        <span className="text-sm text-muted-foreground">{tip}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </StaggerItem>
+            </Stagger>
           </div>
         </section>
 

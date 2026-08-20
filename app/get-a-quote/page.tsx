@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { ArrowLeft, Star, Check, ArrowRight } from "lucide-react"
@@ -19,6 +19,9 @@ import {
   HybridHeatPumpIcon,
   InfoIcon,
 } from "../components/icons/boiler-icons"
+import { FadeIn } from "../components/motion"
+
+const STEP_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 const serviceTypes = [
   { id: "boiler-installation", name: "Boiler Installation", icon: <CombiBoilerIcon /> },
@@ -406,6 +409,15 @@ export default function GetAQuote() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showTooltip, setShowTooltip] = useState<string | null>(null)
   const router = useRouter()
+  const reduce = useReducedMotion()
+
+  // Purely presentational step-change motion — opacity only under reduced motion
+  const stepMotion = {
+    initial: reduce ? { opacity: 0 } : { opacity: 0, x: 24 },
+    animate: reduce ? { opacity: 1 } : { opacity: 1, x: 0 },
+    exit: reduce ? { opacity: 0 } : { opacity: 0, x: -16 },
+    transition: { duration: 0.35, ease: STEP_EASE },
+  }
 
   // Deep-link: pre-select service from ?service=<id> and skip to step 2
   useEffect(() => {
@@ -654,51 +666,72 @@ export default function GetAQuote() {
         <section className="relative overflow-hidden">
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-radial-yellow" />
           <div className="relative container mx-auto px-4 pt-12 md:pt-16 pb-10">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" />
-              Back to Home
-            </Link>
+            <FadeIn delay={0.05} y={12}>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                Back to Home
+              </Link>
+            </FadeIn>
             <div className="mt-6 max-w-3xl">
-              <span className="eyebrow">Free no-obligation quote</span>
-              <h1 className="display-lg mt-4">
-                Get your <span className="text-foreground">tailored quote</span> in minutes.
-              </h1>
-              <p className="lead mt-4 max-w-2xl">
-                Answer a few quick questions and we'll send a fixed, itemised quote with manufacturer-approved
-                options.
-              </p>
+              <FadeIn delay={0.05} y={12}>
+                <span className="eyebrow">Free no-obligation quote</span>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <h1 className="display-lg mt-4">
+                  Get your <span className="text-foreground">tailored quote</span> in minutes.
+                </h1>
+              </FadeIn>
+              <FadeIn delay={0.3}>
+                <p className="lead mt-4 max-w-2xl">
+                  Answer a few quick questions and we'll send a fixed, itemised quote with manufacturer-approved
+                  options.
+                </p>
+              </FadeIn>
             </div>
           </div>
         </section>
 
         {/* Quote card */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
+          <FadeIn delay={0.45}>
           <div className="mx-auto max-w-5xl rounded-lg border border-border bg-card shadow-lift overflow-hidden">
             {/* Progress Steps */}
             <div className="relative bg-foreground/[0.02] border-b border-border px-6 md:px-10 py-6">
               <div className="relative flex items-center justify-between gap-2">
                 <div aria-hidden className="absolute top-4 left-[10%] right-[10%] h-px bg-border" />
-                <div
+                <motion.div
                   aria-hidden
-                  className="absolute top-4 left-[10%] h-px bg-brand-yellow transition-all duration-500"
-                  style={{ width: `${Math.max(0, ((step - 1) / 4) * 80)}%` }}
+                  className="absolute top-4 left-[10%] h-px bg-brand-yellow"
+                  initial={false}
+                  animate={{ width: `${Math.max(0, ((step - 1) / 4) * 80)}%` }}
+                  transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 130, damping: 26 }}
                 />
                 {progressSteps.map((s) => {
                   const active = step >= s.id
                   const current = step === s.id
                   return (
                     <div key={s.id} className="relative z-10 flex flex-col items-center gap-2">
-                      <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
-                          active
-                            ? "bg-brand-yellow text-black "
-                            : "bg-background border border-border text-muted-foreground"
-                        } ${current ? "ring-4 ring-brand-yellow/20" : ""}`}
-                      >
-                        {step > s.id ? <Check className="h-4 w-4" /> : s.id}
+                      <div className="relative">
+                        {current && !reduce && (
+                          <motion.div
+                            aria-hidden
+                            layoutId="step-indicator"
+                            className="absolute -inset-1.5 rounded-full bg-brand-yellow/20"
+                            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                          />
+                        )}
+                        <div
+                          className={`relative w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                            active
+                              ? "bg-brand-yellow text-black "
+                              : "bg-background border border-border text-muted-foreground"
+                          } ${current && reduce ? "ring-4 ring-brand-yellow/20" : ""}`}
+                        >
+                          {step > s.id ? <Check className="h-4 w-4" /> : s.id}
+                        </div>
                       </div>
                       <span
                         className={`text-[11px] font-semibold tracking-wide transition-colors ${
@@ -719,10 +752,7 @@ export default function GetAQuote() {
             {step === 1 && (
               <motion.div
                 key="step1"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
+                {...stepMotion}
               >
                 <div className="mb-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
@@ -737,10 +767,12 @@ export default function GetAQuote() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {serviceTypes.map((service) => (
-                    <button
+                    <motion.button
                       key={service.id}
                       type="button"
-                      className={`group relative flex flex-col items-center rounded-lg border p-7 text-center transition-all duration-300 ${
+                      whileHover={reduce ? undefined : { y: -2 }}
+                      whileTap={reduce ? undefined : { scale: 0.98 }}
+                      className={`group relative flex flex-col items-center rounded-lg border p-7 text-center transition-colors duration-300 ${
                         selectedService === service.id
                           ? "border-foreground bg-foreground/[0.04]"
                           : "border-border bg-card hover:border-foreground/30"
@@ -755,7 +787,7 @@ export default function GetAQuote() {
                         Select
                         <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                       </span>
-                    </button>
+                    </motion.button>
                   ))}
                 </div>
               </motion.div>
@@ -764,10 +796,7 @@ export default function GetAQuote() {
             {step === 2 && selectedService && (
               <motion.div
                 key="step2"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
+                {...stepMotion}
               >
                 <div className="mb-8 flex items-start justify-between gap-4">
                   <div>
@@ -792,9 +821,11 @@ export default function GetAQuote() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {getTypeOptions().map((typeOption) => (
-                    <div
+                    <motion.div
                       key={typeOption.id}
-                      className={`group relative rounded-lg border p-7 cursor-pointer transition-all duration-300 flex flex-col items-center ${
+                      whileHover={reduce ? undefined : { y: -2 }}
+                      whileTap={reduce ? undefined : { scale: 0.98 }}
+                      className={`group relative rounded-lg border p-7 cursor-pointer transition-colors duration-300 flex flex-col items-center ${
                         selectedType === typeOption.id
                           ? "border-foreground bg-foreground/[0.04]"
                           : "border-border bg-card hover:border-foreground/30"
@@ -834,7 +865,7 @@ export default function GetAQuote() {
                           />
                         </div>
                       )}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
@@ -843,10 +874,7 @@ export default function GetAQuote() {
             {step === 3 && selectedService && selectedType && (
               <motion.div
                 key="step3"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
+                {...stepMotion}
               >
                 <div className="mb-8 flex items-start justify-between gap-4">
                   <div>
@@ -871,9 +899,11 @@ export default function GetAQuote() {
                   {getAvailableBrands().map((brand) => {
                     const isSelected = selectedBrand === brand.id
                     return (
-                      <button
+                      <motion.button
                         key={brand.id}
                         type="button"
+                        whileHover={reduce ? undefined : { y: -2 }}
+                        whileTap={reduce ? undefined : { scale: 0.98 }}
                         className={`group relative flex items-center gap-4 rounded-md border p-4 text-left transition-colors ${
                           isSelected
                             ? "border-foreground bg-foreground/[0.03]"
@@ -917,7 +947,7 @@ export default function GetAQuote() {
                         >
                           {isSelected && <Check className="h-3 w-3" />}
                         </span>
-                      </button>
+                      </motion.button>
                     )
                   })}
                 </div>
@@ -927,10 +957,7 @@ export default function GetAQuote() {
             {step === 4 && selectedService && selectedType && selectedBrand && (
               <motion.div
                 key="step4"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
+                {...stepMotion}
               >
                 <div className="mb-8 flex items-start justify-between gap-4">
                   <div>
@@ -955,9 +982,11 @@ export default function GetAQuote() {
                   {getModelOptions().map((model) => {
                     const isSelected = selectedModel === model.id
                     return (
-                      <button
+                      <motion.button
                         key={model.id}
                         type="button"
+                        whileHover={reduce ? undefined : { y: -2 }}
+                        whileTap={reduce ? undefined : { scale: 0.98 }}
                         className={`group relative flex items-start gap-4 rounded-md border p-5 text-left transition-colors ${
                           isSelected
                             ? "border-foreground bg-foreground/[0.03]"
@@ -990,7 +1019,7 @@ export default function GetAQuote() {
                             {model.description}
                           </p>
                         </div>
-                      </button>
+                      </motion.button>
                     )
                   })}
                 </div>
@@ -1000,10 +1029,7 @@ export default function GetAQuote() {
             {step === 5 && (
               <motion.div
                 key="step5"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
+                {...stepMotion}
               >
                 <div className="mb-8 flex items-start justify-between gap-4">
                   <div>
@@ -1169,6 +1195,7 @@ export default function GetAQuote() {
           </AnimatePresence>
             </div>
           </div>
+          </FadeIn>
         </section>
       </main>
 
