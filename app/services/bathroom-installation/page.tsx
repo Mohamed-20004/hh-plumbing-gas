@@ -15,6 +15,7 @@ import {
 import { Header } from "../../components/header"
 import { SiteFooter } from "../../components/site-footer"
 import { ContactCTA } from "../../components/contact-cta"
+import { Reveal, Stagger, StaggerItem, HeroText, FadeIn } from "../../components/motion"
 
 const benefits = [
   {
@@ -111,7 +112,7 @@ export default function BathroomInstallationPage() {
             src="/images/modern-bathroom.jpeg"
             alt=""
             fill
-            className="object-cover opacity-35"
+            className="object-cover opacity-35 ken-burns"
             priority
             aria-hidden
           />
@@ -125,38 +126,48 @@ export default function BathroomInstallationPage() {
           />
           <div className="relative container mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
             <div className="max-w-3xl">
-              <span className="eyebrow border-white/15 bg-white/5 text-white/70">Bathroom installation</span>
-              <h1 className="display-xl mt-6 text-white">
-                A bathroom you'll love to start the day in.
-              </h1>
-              <p className="lead mt-6 text-white/70 max-w-2xl">
-                Design-led bathroom renovations and updates across London. One team, one timeline, one
-                transparent price.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="/get-a-quote" className="btn-primary">
-                  Get a fixed quote
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <a href="tel:0208 102 1108" className="btn-ghost-dark">
-                  Call 0208 102 1108
-                </a>
-              </div>
+              <FadeIn delay={0.05} y={12}>
+                <span className="eyebrow border-white/15 bg-white/5 text-white/70">Bathroom installation</span>
+              </FadeIn>
+              <HeroText
+                text="A bathroom you'll love to start the day in."
+                className="display-xl mt-6 text-white"
+                delay={0.15}
+              />
+              <FadeIn delay={0.55}>
+                <p className="lead mt-6 text-white/70 max-w-2xl">
+                  Design-led bathroom renovations and updates across London. One team, one timeline, one
+                  transparent price.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.7}>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <Link href="/get-a-quote" className="btn-primary group">
+                    Get a fixed quote
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                  <a href="tel:0208 102 1108" className="btn-ghost-dark">
+                    Call 0208 102 1108
+                  </a>
+                </div>
+              </FadeIn>
 
-              <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/70">
-                <span className="inline-flex items-center gap-2">
-                  <Bath className="h-4 w-4 text-brand-yellow" />
-                  Full renovations or updates
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-brand-yellow" />
-                  2–3 week typical timeline
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-brand-yellow" />
-                  Workmanship guaranteed
-                </span>
-              </div>
+              <FadeIn delay={0.85}>
+                <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/70">
+                  <span className="inline-flex items-center gap-2">
+                    <Bath className="h-4 w-4 text-brand-yellow" />
+                    Full renovations or updates
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-brand-yellow" />
+                    2–3 week typical timeline
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <Shield className="h-4 w-4 text-brand-yellow" />
+                    Workmanship guaranteed
+                  </span>
+                </div>
+              </FadeIn>
             </div>
           </div>
         </section>
@@ -164,88 +175,91 @@ export default function BathroomInstallationPage() {
         {/* ============ PACKAGES ============ */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">How we work</span>
               <h2 className="display-lg mt-4">Two clear packages.</h2>
               <p className="lead mt-4">
                 Whether you want a full design-and-build or a targeted refresh — we'll scope it plainly and price
                 it fairly.
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid md:grid-cols-2 gap-5">
+            <Stagger className="grid md:grid-cols-2 gap-5">
               {packages.map((pkg) => (
-                <div key={pkg.name} className="rounded-lg border border-border bg-card p-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                    {pkg.name}
-                  </p>
-                  <p className="mt-3 text-base text-muted-foreground leading-relaxed">{pkg.copy}</p>
-                  <ul className="mt-6 grid sm:grid-cols-2 gap-3">
-                    {pkg.points.map((p) => (
-                      <li key={p} className="flex items-start gap-2">
-                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
-                          <Check className="h-3 w-3" />
-                        </span>
-                        <span className="text-sm text-muted-foreground">{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <StaggerItem key={pkg.name} className="h-full">
+                  <div className="h-full rounded-lg border border-border bg-card p-8 hover-lift">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      {pkg.name}
+                    </p>
+                    <p className="mt-3 text-base text-muted-foreground leading-relaxed">{pkg.copy}</p>
+                    <ul className="mt-6 grid sm:grid-cols-2 gap-3">
+                      {pkg.points.map((p) => (
+                        <li key={p} className="flex items-start gap-2">
+                          <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                            <Check className="h-3 w-3" />
+                          </span>
+                          <span className="text-sm text-muted-foreground">{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </StaggerItem>
               ))}
-            </div>
+            </Stagger>
           </div>
         </section>
 
         {/* ============ BENEFITS ============ */}
         <section className="bg-foreground/[0.02] border-y border-border py-20 md:py-28">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">Why it matters</span>
               <h2 className="display-lg mt-4">Quality you can feel, every day.</h2>
               <p className="lead mt-4">
                 A good bathroom is about the details — silicone lines, tile alignment, how a tap feels.
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {benefits.map((b) => {
                 const Icon = b.icon
                 return (
-                  <div
-                    key={b.title}
-                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
-                  >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
-                      <Icon className="h-5 w-5" />
+                  <StaggerItem key={b.title} className="h-full">
+                    <div className="group h-full rounded-lg border border-border bg-card p-6 transition-all duration-300 hover-lift">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.description}</p>
                     </div>
-                    <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.description}</p>
-                  </div>
+                  </StaggerItem>
                 )
               })}
-            </div>
+            </Stagger>
           </div>
         </section>
 
         {/* ============ PROCESS ============ */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">How it works</span>
               <h2 className="display-lg mt-4">Measured, designed, fitted.</h2>
-            </div>
+            </Reveal>
 
-            <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <Stagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
               {process.map((p) => (
-                <li key={p.step} className="relative rounded-lg border border-border bg-card p-6">
-                  <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
-                    Step {p.step}
-                  </span>
-                  <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
-                </li>
+                <StaggerItem key={p.step} className="h-full">
+                  <div className="relative h-full rounded-lg border border-border bg-card p-6 hover-lift">
+                    <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
+                      Step {p.step}
+                    </span>
+                    <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
+                  </div>
+                </StaggerItem>
               ))}
-            </ol>
+            </Stagger>
           </div>
         </section>
 

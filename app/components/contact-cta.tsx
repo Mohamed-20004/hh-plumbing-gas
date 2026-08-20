@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Phone, ArrowRight, ShieldCheck, Clock } from "lucide-react"
+import { Reveal } from "./motion"
 
 type ContactCTAProps = {
   eyebrow?: string
@@ -19,7 +20,7 @@ export function ContactCTA({
   return (
     <section className="section">
       <div className="container mx-auto px-4">
-        <div className="rounded-lg border border-border bg-brand-black text-white p-8 md:p-14">
+        <Reveal className="rounded-lg border border-border bg-brand-black text-white p-8 md:p-14">
           <div className="grid md:grid-cols-[1.3fr_1fr] gap-10 items-center">
             <div>
               <span className="eyebrow text-white/60">{eyebrow}</span>
@@ -60,7 +61,7 @@ export function ContactCTA({
               </Link>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

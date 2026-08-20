@@ -15,6 +15,14 @@ import {
 import { Header } from "../../components/header"
 import { SiteFooter } from "../../components/site-footer"
 import { ContactCTA } from "../../components/contact-cta"
+import {
+  Reveal,
+  Stagger,
+  StaggerItem,
+  Parallax,
+  HeroText,
+  FadeIn,
+} from "../../components/motion"
 
 const brands = [
   { src: "/images/vaillant-logo-new.png", alt: "Vaillant" },
@@ -91,38 +99,48 @@ export default function HeatPumpInstallationsPage() {
         <section className="page-hero">
           <div className="relative container mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
             <div className="max-w-3xl">
-              <span className="eyebrow border-white/15 bg-white/5 text-white/70">Heat pump installations</span>
-              <h1 className="display-xl mt-6 text-white">
-                Low-carbon heating, £7,500 off, MCS certified.
-              </h1>
-              <p className="lead mt-6 text-white/70 max-w-2xl">
-                Air and ground source heat pumps from Vaillant, Mitsubishi and Daikin — designed, installed and
-                grant-claimed by one trusted team.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="/get-a-quote?service=heat-pump-installation" className="btn-primary">
-                  Get a fixed quote
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <a href="tel:0208 102 1108" className="btn-ghost-dark">
-                  Call 0208 102 1108
-                </a>
-              </div>
+              <FadeIn delay={0.05} y={12}>
+                <span className="eyebrow border-white/15 bg-white/5 text-white/70">Heat pump installations</span>
+              </FadeIn>
+              <HeroText
+                text="Low-carbon heating, £7,500 off, MCS certified."
+                className="display-xl mt-6 text-white"
+                delay={0.15}
+              />
+              <FadeIn delay={0.55}>
+                <p className="lead mt-6 text-white/70 max-w-2xl">
+                  Air and ground source heat pumps from Vaillant, Mitsubishi and Daikin — designed, installed and
+                  grant-claimed by one trusted team.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.7}>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <Link href="/get-a-quote?service=heat-pump-installation" className="btn-primary group">
+                    Get a fixed quote
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                  <a href="tel:0208 102 1108" className="btn-ghost-dark">
+                    Call 0208 102 1108
+                  </a>
+                </div>
+              </FadeIn>
 
-              <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/70">
-                <span className="inline-flex items-center gap-2">
-                  <ShieldCheck className="h-4 w-4 text-brand-yellow" />
-                  MCS certified
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <BadgePoundSterling className="h-4 w-4 text-brand-yellow" />
-                  £7,500 BUS grant handled
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <Leaf className="h-4 w-4 text-brand-yellow" />
-                  A++ efficiency
-                </span>
-              </div>
+              <FadeIn delay={0.85}>
+                <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/70">
+                  <span className="inline-flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 text-brand-yellow" />
+                    MCS certified
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <BadgePoundSterling className="h-4 w-4 text-brand-yellow" />
+                    £7,500 BUS grant handled
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <Leaf className="h-4 w-4 text-brand-yellow" />
+                    A++ efficiency
+                  </span>
+                </div>
+              </FadeIn>
             </div>
           </div>
         </section>
@@ -130,7 +148,7 @@ export default function HeatPumpInstallationsPage() {
         {/* ============ OVERVIEW + BRANDS ============ */}
         <section className="section">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
-            <div>
+            <Reveal>
               <span className="eyebrow">What we install</span>
               <h2 className="display-lg mt-4">
                 Air source, ground source <br />
@@ -158,102 +176,107 @@ export default function HeatPumpInstallationsPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
 
-            <div className="rounded-lg border border-border bg-card p-8">
-              <h3 className="text-lg font-semibold">Brands we install</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                We're partnered with leading heat pump manufacturers for premium kit and extended warranties.
-              </p>
-              <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {brands.map((b) => (
-                  <div
-                    key={b.alt}
-                    className="flex items-center justify-center h-20 rounded-xl border border-border bg-background"
-                  >
-                    <Image
-                      src={b.src}
-                      alt={b.alt}
-                      width={100}
-                      height={50}
-                      className="object-contain max-h-10 w-auto opacity-80"
-                    />
+            <Parallax amount={24}>
+              <Reveal delay={0.15}>
+                <div className="rounded-lg border border-border bg-card p-8">
+                  <h3 className="text-lg font-semibold">Brands we install</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    We're partnered with leading heat pump manufacturers for premium kit and extended warranties.
+                  </p>
+                  <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {brands.map((b) => (
+                      <div
+                        key={b.alt}
+                        className="flex items-center justify-center h-20 rounded-xl border border-border bg-background"
+                      >
+                        <Image
+                          src={b.src}
+                          alt={b.alt}
+                          width={100}
+                          height={50}
+                          className="object-contain max-h-10 w-auto opacity-80"
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
 
-              <div className="mt-8 pt-6 border-t border-border grid sm:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-                    Air source
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Most homes. Low install cost and minimal disruption.
-                  </p>
+                  <div className="mt-8 pt-6 border-t border-border grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                        Air source
+                      </p>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        Most homes. Low install cost and minimal disruption.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                        Ground source
+                      </p>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        Higher efficiency where ground access is available.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-                    Ground source
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Higher efficiency where ground access is available.
-                  </p>
-                </div>
-              </div>
-            </div>
+              </Reveal>
+            </Parallax>
           </div>
         </section>
 
         {/* ============ BENEFITS ============ */}
         <section className="bg-foreground/[0.02] border-y border-border py-20 md:py-28">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">Why heat pumps</span>
               <h2 className="display-lg mt-4">The case is stronger than ever.</h2>
               <p className="lead mt-4">
                 Grant support, rising gas prices and improved kit mean most homes save money from day one.
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {benefits.map((b) => {
                 const Icon = b.icon
                 return (
-                  <div
-                    key={b.title}
-                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
-                  >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
-                      <Icon className="h-5 w-5" />
+                  <StaggerItem key={b.title} className="h-full">
+                    <div className="group h-full rounded-lg border border-border bg-card p-6 transition-all duration-300 hover-lift">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.description}</p>
                     </div>
-                    <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.description}</p>
-                  </div>
+                  </StaggerItem>
                 )
               })}
-            </div>
+            </Stagger>
           </div>
         </section>
 
         {/* ============ PROCESS ============ */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">How it works</span>
               <h2 className="display-lg mt-4">From survey to MCS certificate.</h2>
-            </div>
+            </Reveal>
 
-            <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <Stagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
               {process.map((p) => (
-                <li key={p.step} className="relative rounded-lg border border-border bg-card p-6">
-                  <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
-                    Step {p.step}
-                  </span>
-                  <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
-                </li>
+                <StaggerItem key={p.step} className="h-full">
+                  <div className="relative h-full rounded-lg border border-border bg-card p-6 hover-lift">
+                    <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
+                      Step {p.step}
+                    </span>
+                    <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
+                  </div>
+                </StaggerItem>
               ))}
-            </ol>
+            </Stagger>
           </div>
         </section>
 

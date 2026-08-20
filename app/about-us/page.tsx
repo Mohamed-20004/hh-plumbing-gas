@@ -15,6 +15,14 @@ import {
 import { Header } from "../components/header"
 import { SiteFooter } from "../components/site-footer"
 import { ContactCTA } from "../components/contact-cta"
+import {
+  Reveal,
+  Stagger,
+  StaggerItem,
+  HeroText,
+  FadeIn,
+  Parallax,
+} from "../components/motion"
 
 const values = [
   {
@@ -65,24 +73,32 @@ export default function AboutUsPage() {
         <section className="page-hero">
           <div className="relative container mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
             <div className="max-w-3xl">
-              <span className="eyebrow border-white/15 bg-white/5 text-white/70">About HH Plumbing &amp; Gas</span>
-              <h1 className="display-xl mt-6 text-white">
-                Craft, care and clean installs — for London homes.
-              </h1>
-              <p className="lead mt-6 text-white/70 max-w-2xl">
-                We're a small team of Gas Safe registered engineers building a reputation for reliable plumbing,
-                heating and gas work that just keeps working — long after the dust has settled.
-              </p>
+              <FadeIn delay={0.05} y={12}>
+                <span className="eyebrow border-white/15 bg-white/5 text-white/70">About HH Plumbing &amp; Gas</span>
+              </FadeIn>
+              <HeroText
+                text="Craft, care and clean installs — for London homes."
+                className="display-xl mt-6 text-white"
+                delay={0.15}
+              />
+              <FadeIn delay={0.55}>
+                <p className="lead mt-6 text-white/70 max-w-2xl">
+                  We're a small team of Gas Safe registered engineers building a reputation for reliable plumbing,
+                  heating and gas work that just keeps working — long after the dust has settled.
+                </p>
+              </FadeIn>
 
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="/get-a-quote" className="btn-primary">
-                  Get a quote
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link href="/services" className="btn-ghost-dark">
-                  See our services
-                </Link>
-              </div>
+              <FadeIn delay={0.7}>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <Link href="/get-a-quote" className="btn-primary group">
+                    Get a quote
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  </Link>
+                  <Link href="/services" className="btn-ghost-dark">
+                    See our services
+                  </Link>
+                </div>
+              </FadeIn>
             </div>
           </div>
         </section>
@@ -91,42 +107,49 @@ export default function AboutUsPage() {
         <section className="section">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
-              <span className="eyebrow">Who we are</span>
-              <h2 className="display-lg mt-4">
-                Local expertise. <br />
-                Manufacturer-grade install.
-              </h2>
-              <p className="lead mt-5">
-                HH Plumbing and Gas is a trusted provider of professional plumbing and heating services across
-                London. With years on the tools, we've built our reputation on exceptional workmanship, reliable
-                service and fair pricing.
-              </p>
-              <p className="lead mt-4">
-                Our engineers are committed to the highest standards — every installation, repair and maintenance
-                job is completed with care and signed off against manufacturer specifications.
-              </p>
+              <Reveal>
+                <span className="eyebrow">Who we are</span>
+                <h2 className="display-lg mt-4">
+                  Local expertise. <br />
+                  Manufacturer-grade install.
+                </h2>
+                <p className="lead mt-5">
+                  HH Plumbing and Gas is a trusted provider of professional plumbing and heating services across
+                  London. With years on the tools, we've built our reputation on exceptional workmanship, reliable
+                  service and fair pricing.
+                </p>
+                <p className="lead mt-4">
+                  Our engineers are committed to the highest standards — every installation, repair and maintenance
+                  job is completed with care and signed off against manufacturer specifications.
+                </p>
+              </Reveal>
 
-              <div className="mt-10 grid sm:grid-cols-2 gap-4">
-                <div className="rounded-lg border border-border bg-card p-5">
-                  <ShieldCheck className="h-6 w-6 text-brand-yellow" />
-                  <p className="mt-4 font-semibold">Gas Safe Registered</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Register number 630695 — every gas job is safe, legal and certified.
-                  </p>
-                </div>
-                <div className="rounded-lg border border-border bg-card p-5">
-                  <Award className="h-6 w-6 text-brand-yellow" />
-                  <p className="mt-4 font-semibold">Manufacturer Approved</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Approved installers for Vaillant, Worcester Bosch, Baxi and more.
-                  </p>
-                </div>
-              </div>
+              <Stagger className="mt-10 grid sm:grid-cols-2 gap-4">
+                <StaggerItem className="h-full">
+                  <div className="h-full rounded-lg border border-border bg-card p-5 hover-lift">
+                    <ShieldCheck className="h-6 w-6 text-brand-yellow" />
+                    <p className="mt-4 font-semibold">Gas Safe Registered</p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Register number 630695 — every gas job is safe, legal and certified.
+                    </p>
+                  </div>
+                </StaggerItem>
+                <StaggerItem className="h-full">
+                  <div className="h-full rounded-lg border border-border bg-card p-5 hover-lift">
+                    <Award className="h-6 w-6 text-brand-yellow" />
+                    <p className="mt-4 font-semibold">Manufacturer Approved</p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Approved installers for Vaillant, Worcester Bosch, Baxi and more.
+                    </p>
+                  </div>
+                </StaggerItem>
+              </Stagger>
             </div>
 
-            <div className="relative">
+            <Parallax amount={24} className="relative">
               <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-brand-yellow/15 blur-2xl" aria-hidden />
-              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-border shadow-lift">
+              <Reveal delay={0.15}>
+                <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-border shadow-lift">
                 <Image
                   src="/images/modern-bathroom.jpeg"
                   alt="HH Plumbing and Gas — professional install"
@@ -156,39 +179,39 @@ export default function AboutUsPage() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+                </div>
+              </Reveal>
+            </Parallax>
           </div>
         </section>
 
         {/* ============== VALUES GRID ============== */}
         <section className="bg-foreground/[0.02] border-y border-border py-20 md:py-28">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">Why customers choose us</span>
               <h2 className="display-lg mt-4">Work that speaks for itself.</h2>
               <p className="lead mt-4 text-pretty">
                 Six reasons homeowners, landlords and letting agents across London rely on us.
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {values.map((item, i) => {
                 const Icon = item.icon
                 return (
-                  <div
-                    key={i}
-                    className="group rounded-lg border border-border bg-card p-6 transition-all duration-300"
-                  >
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
-                      <Icon className="h-5 w-5" />
+                  <StaggerItem key={i} className="h-full">
+                    <div className="group h-full rounded-lg border border-border bg-card p-6 transition-all duration-300 hover-lift">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="mt-5 text-lg font-semibold tracking-tight">{item.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                     </div>
-                    <h3 className="mt-5 text-lg font-semibold tracking-tight">{item.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                  </div>
+                  </StaggerItem>
                 )
               })}
-            </div>
+            </Stagger>
           </div>
         </section>
 

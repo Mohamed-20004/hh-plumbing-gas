@@ -16,6 +16,16 @@ import {
 import { Header } from "./components/header"
 import { SiteFooter } from "./components/site-footer"
 import { ContactCTA } from "./components/contact-cta"
+import {
+  Reveal,
+  Stagger,
+  StaggerItem,
+  CountUp,
+  Parallax,
+  HeroText,
+  FadeIn,
+  ScrollHint,
+} from "./components/motion"
 
 const partnerLogos = [
   { src: "/images/vaillant-logo-new.png", alt: "Vaillant" },
@@ -115,7 +125,7 @@ export default function Home() {
             alt=""
             fill
             priority
-            className="object-cover"
+            className="object-cover ken-burns"
             aria-hidden
           />
           <div
@@ -128,89 +138,105 @@ export default function Home() {
           />
 
           <div className="relative h-full container mx-auto px-4 pt-20 md:pt-28 pb-14 md:pb-20 flex flex-col justify-end min-h-[inherit]">
-            <div className="max-w-3xl text-white animate-fade-up">
-              <span className="eyebrow border-white/20 bg-white/5 text-white/80">
-                Trusted London heating engineers
-              </span>
+            <div className="max-w-3xl text-white">
+              <FadeIn delay={0.05} y={12}>
+                <span className="eyebrow border-white/20 bg-white/5 text-white/80">
+                  Trusted London heating engineers
+                </span>
+              </FadeIn>
 
-              <h1 className="display-xl mt-6 text-balance text-white">
-                Heating your home, done properly.
-              </h1>
+              <HeroText
+                text="Heating your home, done properly."
+                className="display-xl mt-6 text-balance text-white"
+                delay={0.15}
+              />
 
-              <p className="lead mt-6 max-w-xl text-white/80 text-pretty">
-                Gas Safe engineers designing and installing boilers, heat pumps, cylinders and complete bathrooms
-                across London — fixed prices, clean finishes, manufacturer-approved warranties.
-              </p>
+              <FadeIn delay={0.55}>
+                <p className="lead mt-6 max-w-xl text-white/80 text-pretty">
+                  Gas Safe engineers designing and installing boilers, heat pumps, cylinders and complete bathrooms
+                  across London — fixed prices, clean finishes, manufacturer-approved warranties.
+                </p>
+              </FadeIn>
 
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="/get-a-quote" className="btn-primary group">
-                  Get a free quote
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </Link>
-                <a
-                  href="tel:0208 102 1108"
-                  className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/5 backdrop-blur px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
-                >
-                  <Phone className="h-4 w-4" />
-                  Call 0208 102 1108
-                </a>
-              </div>
+              <FadeIn delay={0.7}>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <Link href="/get-a-quote" className="btn-primary group">
+                    Get a free quote
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                  <a
+                    href="tel:0208 102 1108"
+                    className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/5 backdrop-blur px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+                  >
+                    <Phone className="h-4 w-4" />
+                    Call 0208 102 1108
+                  </a>
+                </div>
+              </FadeIn>
 
-              <div className="mt-10 flex flex-wrap items-center gap-6 text-sm">
-                <div className="flex items-center gap-2 text-white/80">
-                  <div className="flex -space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />
-                    ))}
+              <FadeIn delay={0.85}>
+                <div className="mt-10 flex flex-wrap items-center gap-6 text-sm">
+                  <div className="flex items-center gap-2 text-white/80">
+                    <div className="flex -space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />
+                      ))}
+                    </div>
+                    <span className="font-semibold text-white">5.0</span>
+                    <span className="text-white/60">from local customers</span>
                   </div>
-                  <span className="font-semibold text-white">5.0</span>
-                  <span className="text-white/60">from local customers</span>
+                  <span className="hidden sm:inline h-4 w-px bg-white/20" aria-hidden />
+                  <div className="flex items-center gap-2 text-white/80">
+                    <ShieldCheck className="h-4 w-4 text-brand-yellow" />
+                    Gas Safe · 630695
+                  </div>
+                  <span className="hidden sm:inline h-4 w-px bg-white/20" aria-hidden />
+                  <div className="flex items-center gap-2 text-white/80">
+                    <Clock className="h-4 w-4 text-brand-yellow" />
+                    24/7 emergency response
+                  </div>
                 </div>
-                <span className="hidden sm:inline h-4 w-px bg-white/20" aria-hidden />
-                <div className="flex items-center gap-2 text-white/80">
-                  <ShieldCheck className="h-4 w-4 text-brand-yellow" />
-                  Gas Safe · 630695
-                </div>
-                <span className="hidden sm:inline h-4 w-px bg-white/20" aria-hidden />
-                <div className="flex items-center gap-2 text-white/80">
-                  <Clock className="h-4 w-4 text-brand-yellow" />
-                  24/7 emergency response
-                </div>
-              </div>
+              </FadeIn>
             </div>
+
+            <ScrollHint className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:block" />
           </div>
         </section>
 
         {/* =================== TRUST STATS BAND =================== */}
         <section className="relative bg-brand-black text-white">
           <div className="container mx-auto px-4 py-14 md:py-16">
-            <dl className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center">
+            <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center">
               {[
                 { value: "1,200+", label: "Homes installed" },
                 { value: "4.9★", label: "Average customer rating" },
                 { value: "12 yrs", label: "Manufacturer warranty" },
                 { value: "24/7", label: "Emergency cover" },
               ].map((s) => (
-                <div key={s.label} className="flex flex-col items-center">
-                  <dt className="order-2 mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-                    {s.label}
-                  </dt>
-                  <dd className="order-1 text-4xl md:text-5xl font-extrabold tracking-tight">
-                    {s.value}
-                  </dd>
-                </div>
+                <StaggerItem key={s.label} className="flex flex-col items-center">
+                  <dl className="flex flex-col items-center">
+                    <dt className="order-2 mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+                      {s.label}
+                    </dt>
+                    <dd className="order-1 text-4xl md:text-5xl font-extrabold tracking-tight">
+                      <CountUp value={s.value} />
+                    </dd>
+                  </dl>
+                </StaggerItem>
               ))}
-            </dl>
+            </Stagger>
           </div>
         </section>
 
         {/* =================== PARTNER MARQUEE =================== */}
         <section className="py-10 md:py-14 border-y border-border bg-foreground/[0.02]">
           <div className="container mx-auto px-4">
-            <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground mb-8">
-              Approved installer for leading brands
-            </p>
-            <div className="relative mask-fade-x overflow-hidden">
+            <Reveal>
+              <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground mb-8">
+                Approved installer for leading brands
+              </p>
+            </Reveal>
+            <div className="relative mask-fade-x overflow-hidden marquee-track">
               <div className="flex gap-12 animate-marquee w-max">
                 {[...partnerLogos, ...partnerLogos].map((logo, i) => (
                   <div
@@ -229,60 +255,63 @@ export default function Home() {
         <section className="section">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-              <div className="max-w-2xl">
+              <Reveal className="max-w-2xl">
                 <span className="eyebrow">What we do</span>
                 <h2 className="display-lg mt-4">
                   Quality installs for every part of{" "}
                   your home system.
                 </h2>
-              </div>
-              <p className="lead max-w-md">
-                From single-component upgrades to full heating refits, we handle the design, install and sign-off
-                end to end.
-              </p>
+              </Reveal>
+              <Reveal delay={0.15}>
+                <p className="lead max-w-md">
+                  From single-component upgrades to full heating refits, we handle the design, install and sign-off
+                  end to end.
+                </p>
+              </Reveal>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {services.map((service) => {
                 const Icon = service.icon
                 return (
-                  <Link
-                    key={service.href}
-                    href={service.href}
-                    className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all duration-300"
-                  >
-                    <div className="relative aspect-[5/3] overflow-hidden bg-foreground/[0.04]">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div
-                        aria-hidden
-                        className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
-                      />
-                      <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-brand-yellow text-black px-3 py-1 text-xs font-semibold">
-                        <Icon className="h-3.5 w-3.5" />
-                        {service.price}
-                      </span>
-                    </div>
-                    <div className="flex flex-col flex-1 p-6">
-                      <h3 className="text-xl font-semibold tracking-tight">{service.title}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
-                      <span className="mt-6 inline-flex items-center justify-between text-sm font-semibold">
-                        <span>Learn more</span>
-                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
-                          <ArrowUpRight className="h-4 w-4" />
+                  <StaggerItem key={service.href} className="h-full">
+                    <Link
+                      href={service.href}
+                      className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card hover-lift"
+                    >
+                      <div className="relative aspect-[5/3] overflow-hidden bg-foreground/[0.04]">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div
+                          aria-hidden
+                          className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+                        />
+                        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-brand-yellow text-black px-3 py-1 text-xs font-semibold">
+                          <Icon className="h-3.5 w-3.5" />
+                          {service.price}
                         </span>
-                      </span>
-                    </div>
-                  </Link>
+                      </div>
+                      <div className="flex flex-col flex-1 p-6">
+                        <h3 className="text-xl font-semibold tracking-tight">{service.title}</h3>
+                        <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
+                        <span className="mt-6 inline-flex items-center justify-between text-sm font-semibold">
+                          <span>Learn more</span>
+                          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
+                            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          </span>
+                        </span>
+                      </div>
+                    </Link>
+                  </StaggerItem>
                 )
               })}
-            </div>
+            </Stagger>
 
-            <div className="mt-10 text-center">
+            <Reveal className="mt-10 text-center">
               <Link
                 href="/services"
                 className="inline-flex items-center gap-2 text-sm font-semibold border-b border-brand-yellow pb-1 hover:text-brand-yellow transition-colors"
@@ -290,7 +319,7 @@ export default function Home() {
                 View all services
                 <ArrowRight className="h-4 w-4" />
               </Link>
-            </div>
+            </Reveal>
           </div>
         </section>
 
@@ -311,7 +340,7 @@ export default function Home() {
 
           <div className="relative container mx-auto px-4 py-20 md:py-28">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div>
+              <Reveal>
                 <span className="eyebrow border-white/15 bg-white/5 text-white/70">Quality you can trust</span>
                 <h2 className="display-lg mt-4 text-white">
                   Certified engineers. <br />
@@ -322,7 +351,7 @@ export default function Home() {
                   parts — with pressure-tests, benchmark certificates and warranty registration before we leave.
                 </p>
 
-                <ul className="mt-8 grid sm:grid-cols-2 gap-3">
+                <Stagger className="mt-8 grid sm:grid-cols-2 gap-3">
                   {[
                     "Boiler Installations",
                     "Heat Pump Installations",
@@ -331,12 +360,14 @@ export default function Home() {
                     "Bathroom Installation",
                     "Emergency Repairs",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-white/90">
-                      <CheckCircle2 className="h-4 w-4 text-brand-yellow mt-0.5 flex-shrink-0" />
-                      {item}
-                    </li>
+                    <StaggerItem key={item}>
+                      <span className="flex items-start gap-2.5 text-sm text-white/90">
+                        <CheckCircle2 className="h-4 w-4 text-brand-yellow mt-0.5 flex-shrink-0" />
+                        {item}
+                      </span>
+                    </StaggerItem>
                   ))}
-                </ul>
+                </Stagger>
 
                 <div className="mt-10 flex items-center gap-4">
                   <Link href="/services" className="btn-primary">
@@ -347,39 +378,41 @@ export default function Home() {
                     About our team
                   </Link>
                 </div>
-              </div>
+              </Reveal>
 
-              <div className="relative">
-                <div className="glass-panel p-8 md:p-10">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
-                    Registered with
-                  </p>
-                  <div className="mt-5 flex items-center gap-5">
-                    <div className="relative h-20 w-20 shrink-0">
-                      <Image
-                        src="/images/gas-safe-logo.png"
-                        alt="Gas Safe"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-xl font-bold leading-tight">Gas Safe Register</p>
-                      <p className="mt-1 text-sm text-white/60">Register number 630695</p>
-                    </div>
-                  </div>
-                  <dl className="mt-8 grid grid-cols-2 gap-6 border-t border-white/10 pt-6">
-                    {stats.map((stat) => (
-                      <div key={stat.label}>
-                        <dt className="text-xs uppercase tracking-[0.18em] text-white/50">{stat.label}</dt>
-                        <dd className="mt-1 text-2xl font-bold">
-                          {stat.value}
-                        </dd>
+              <Parallax amount={24} className="relative">
+                <Reveal delay={0.1}>
+                  <div className="glass-panel p-8 md:p-10">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
+                      Registered with
+                    </p>
+                    <div className="mt-5 flex items-center gap-5">
+                      <div className="relative h-20 w-20 shrink-0">
+                        <Image
+                          src="/images/gas-safe-logo.png"
+                          alt="Gas Safe"
+                          fill
+                          className="object-contain"
+                        />
                       </div>
-                    ))}
-                  </dl>
-                </div>
-              </div>
+                      <div>
+                        <p className="text-xl font-bold leading-tight">Gas Safe Register</p>
+                        <p className="mt-1 text-sm text-white/60">Register number 630695</p>
+                      </div>
+                    </div>
+                    <dl className="mt-8 grid grid-cols-2 gap-6 border-t border-white/10 pt-6">
+                      {stats.map((stat) => (
+                        <div key={stat.label}>
+                          <dt className="text-xs uppercase tracking-[0.18em] text-white/50">{stat.label}</dt>
+                          <dd className="mt-1 text-2xl font-bold">
+                            <CountUp value={stat.value} />
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                </Reveal>
+              </Parallax>
             </div>
           </div>
         </section>
@@ -388,25 +421,27 @@ export default function Home() {
         <section className="section bg-foreground/[0.02] border-y border-border">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-              <div className="max-w-2xl">
+              <Reveal className="max-w-2xl">
                 <span className="eyebrow">What customers say</span>
                 <h2 className="display-lg mt-4">
                   Kind words from London homes.
                 </h2>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-brand-yellow text-brand-yellow" />
-                  ))}
+              </Reveal>
+              <Reveal delay={0.15}>
+                <div className="flex items-center gap-3">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-brand-yellow text-brand-yellow" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    <span className="font-semibold text-foreground">4.9</span> from local customers
+                  </p>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">4.9</span> from local customers
-                </p>
-              </div>
+              </Reveal>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-5">
+            <Stagger className="grid md:grid-cols-3 gap-5">
               {[
                 {
                   quote:
@@ -427,67 +462,67 @@ export default function Home() {
                   area: "Fulham · Emergency call-out",
                 },
               ].map((t) => (
-                <figure
-                  key={t.name}
-                  className="flex flex-col rounded-lg border border-border bg-card p-8 shadow-soft"
-                >
-                  <div className="flex mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />
-                    ))}
-                  </div>
-                  <blockquote className="text-base leading-relaxed text-foreground/90 flex-1">
-                    &ldquo;{t.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-6 pt-6 border-t border-border">
-                    <p className="font-semibold">{t.name}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{t.area}</p>
-                  </figcaption>
-                </figure>
+                <StaggerItem key={t.name} className="h-full">
+                  <figure className="flex h-full flex-col rounded-lg border border-border bg-card p-8 shadow-soft hover-lift">
+                    <div className="flex mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />
+                      ))}
+                    </div>
+                    <blockquote className="text-base leading-relaxed text-foreground/90 flex-1">
+                      &ldquo;{t.quote}&rdquo;
+                    </blockquote>
+                    <figcaption className="mt-6 pt-6 border-t border-border">
+                      <p className="font-semibold">{t.name}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{t.area}</p>
+                    </figcaption>
+                  </figure>
+                </StaggerItem>
               ))}
-            </div>
+            </Stagger>
           </div>
         </section>
 
         {/* =================== PROCESS =================== */}
         <section className="section">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-14">
+            <Reveal className="max-w-2xl mx-auto text-center mb-14">
               <span className="eyebrow">How it works</span>
               <h2 className="display-lg mt-4">A simple path from quote to handover.</h2>
               <p className="lead mt-4 text-pretty">
                 We keep the process transparent at every step — no hidden fees, no nasty surprises on the day.
               </p>
-            </div>
+            </Reveal>
 
-            <ol className="relative grid md:grid-cols-4 gap-6">
+            <div className="relative">
               <div
                 aria-hidden
                 className="hidden md:block absolute top-5 left-[8%] right-[8%] h-px bg-border"
               />
-              {steps.map((step, i) => (
-                <li
-                  key={step.title}
-                  className="relative rounded-lg border border-border bg-card p-6 shadow-soft"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-yellow text-black font-bold text-sm">
-                      0{i + 1}
-                    </span>
-                    <span className="h-2 w-2 rounded-full bg-brand-yellow" aria-hidden />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold tracking-tight">{step.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
-                </li>
-              ))}
-            </ol>
+              <Stagger className="relative grid md:grid-cols-4 gap-6">
+                {steps.map((step, i) => (
+                  <StaggerItem key={step.title} className="h-full">
+                    <div className="h-full rounded-lg border border-border bg-card p-6 shadow-soft hover-lift">
+                      <div className="flex items-center justify-between">
+                        <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-yellow text-black font-bold text-sm">
+                          0{i + 1}
+                        </span>
+                        <span className="h-2 w-2 rounded-full bg-brand-yellow" aria-hidden />
+                      </div>
+                      <h3 className="mt-5 text-lg font-semibold tracking-tight">{step.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+            </div>
           </div>
         </section>
 
         {/* =================== FAQ =================== */}
         <section className="section">
           <div className="container mx-auto px-4 grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
-            <div>
+            <Reveal>
               <span className="eyebrow">Frequently asked</span>
               <h2 className="display-lg mt-4">
                 Answers before <br />
@@ -500,51 +535,53 @@ export default function Home() {
                 </a>{" "}
                 — we're happy to talk it through.
               </p>
-            </div>
+            </Reveal>
 
-            <div className="divide-y divide-border rounded-lg border border-border bg-card overflow-hidden">
-              {[
-                {
-                  q: "How much does a new boiler cost installed?",
-                  a: "Most combi boiler swaps start from £1,800 installed, with higher-output or system boilers from around £2,400. Every quote is fixed, itemised and includes parts, labour, a magnetic filter and warranty registration.",
-                },
-                {
-                  q: "Are you Gas Safe registered?",
-                  a: "Yes — we're Gas Safe registered (register number 630695). Every gas job is signed off and you'll receive Benchmark documentation on completion.",
-                },
-                {
-                  q: "Do you install heat pumps and handle the BUS grant?",
-                  a: "Yes. We install air and ground source heat pumps from Vaillant, Mitsubishi and Daikin, and we handle the £7,500 Boiler Upgrade Scheme grant application on your behalf.",
-                },
-                {
-                  q: "How long does a boiler installation take?",
-                  a: "Most straightforward combi replacements are completed in a single day. A system change (new cylinder, re-piped) typically takes 2–3 days.",
-                },
-                {
-                  q: "What warranty do you offer?",
-                  a: "Manufacturer warranties of up to 12 years on leading brands, plus our own workmanship guarantee on every installation.",
-                },
-                {
-                  q: "Do you cover emergencies out of hours?",
-                  a: "Yes — 24/7 Gas Safe emergency response across central, west and greater London. Call 07712 599254 any time.",
-                },
-              ].map((item) => (
-                <details key={item.q} className="group">
-                  <summary className="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 list-none transition-colors hover:bg-foreground/[0.02]">
-                    <span className="font-semibold text-base">{item.q}</span>
-                    <span
-                      aria-hidden
-                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-open:bg-brand-yellow group-open:border-brand-yellow group-open:text-black group-open:rotate-45"
-                    >
-                      <span className="text-lg leading-none">+</span>
-                    </span>
-                  </summary>
-                  <div className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed">
-                    {item.a}
-                  </div>
-                </details>
-              ))}
-            </div>
+            <Reveal delay={0.1}>
+              <div className="divide-y divide-border rounded-lg border border-border bg-card overflow-hidden">
+                {[
+                  {
+                    q: "How much does a new boiler cost installed?",
+                    a: "Most combi boiler swaps start from £1,800 installed, with higher-output or system boilers from around £2,400. Every quote is fixed, itemised and includes parts, labour, a magnetic filter and warranty registration.",
+                  },
+                  {
+                    q: "Are you Gas Safe registered?",
+                    a: "Yes — we're Gas Safe registered (register number 630695). Every gas job is signed off and you'll receive Benchmark documentation on completion.",
+                  },
+                  {
+                    q: "Do you install heat pumps and handle the BUS grant?",
+                    a: "Yes. We install air and ground source heat pumps from Vaillant, Mitsubishi and Daikin, and we handle the £7,500 Boiler Upgrade Scheme grant application on your behalf.",
+                  },
+                  {
+                    q: "How long does a boiler installation take?",
+                    a: "Most straightforward combi replacements are completed in a single day. A system change (new cylinder, re-piped) typically takes 2–3 days.",
+                  },
+                  {
+                    q: "What warranty do you offer?",
+                    a: "Manufacturer warranties of up to 12 years on leading brands, plus our own workmanship guarantee on every installation.",
+                  },
+                  {
+                    q: "Do you cover emergencies out of hours?",
+                    a: "Yes — 24/7 Gas Safe emergency response across central, west and greater London. Call 07712 599254 any time.",
+                  },
+                ].map((item) => (
+                  <details key={item.q} className="group faq-item">
+                    <summary className="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 list-none transition-colors hover:bg-foreground/[0.02]">
+                      <span className="font-semibold text-base">{item.q}</span>
+                      <span
+                        aria-hidden
+                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 group-open:bg-brand-yellow group-open:border-brand-yellow group-open:text-black group-open:rotate-45"
+                      >
+                        <span className="text-lg leading-none">+</span>
+                      </span>
+                    </summary>
+                    <div className="faq-body px-6 pb-6 text-sm text-muted-foreground leading-relaxed">
+                      {item.a}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </section>
 

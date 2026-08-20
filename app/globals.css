@@ -111,9 +111,25 @@
 @layer components {
   /* ------ Buttons ------ */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-md
-           bg-brand-yellow text-black transition-colors duration-150
-           hover:bg-[#E6BE00];
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-md
+           bg-brand-yellow text-black transition-all duration-200
+           hover:bg-[#E6BE00] hover:shadow-glow active:scale-[0.98];
+  }
+  /* Light sheen that sweeps across the primary button on hover */
+  .btn-primary::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 60%
+    );
+    transform: translateX(-110%);
+  }
+  .btn-primary:hover::before {
+    transition: transform 0.65s ease;
+    transform: translateX(110%);
   }
 
   .btn-secondary {
@@ -215,5 +231,86 @@
   }
   .mask-fade-x {
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  /* Slow cinematic drift for full-bleed hero images */
+  .ken-burns {
+    animation: ken-burns 24s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  /* Pause the partner marquee when hovered */
+  .marquee-track:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+
+  /* Card lift on hover — shadow + rise, used across grids */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-lift border-foreground/25;
+  }
+}
+
+/* ------ Smooth native <details> FAQ open/close ------ */
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+/* Content fades + slides down each time the item opens */
+details.faq-item[open] .faq-body {
+  animation: faq-open 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Modern browsers (Chrome 131+): true height animation */
+@supports (interpolate-size: allow-keywords) {
+  details.faq-item {
+    interpolate-size: allow-keywords;
+  }
+  details.faq-item::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      content-visibility 0.4s allow-discrete,
+      block-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  details.faq-item[open]::details-content {
+    block-size: auto;
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.08) translateY(-1.5%);
+  }
+}
+
+/* ------ Respect reduced-motion globally for CSS animations ------ */
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns,
+  .animate-marquee,
+  .animate-fade-up,
+  .animate-pulse-glow,
+  details.faq-item[open] .faq-body {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .btn-primary:hover::before {
+    transition: none;
+    transform: translateX(-110%);
   }
 }
