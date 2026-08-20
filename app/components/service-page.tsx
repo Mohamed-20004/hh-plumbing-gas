@@ -1,92 +1,154 @@
 import Link from "next/link"
-import { ArrowRight, Phone } from "lucide-react"
+import Image from "next/image"
+import { ArrowRight, Check, Phone } from "lucide-react"
 import { Header } from "./header"
 import { SiteFooter } from "./site-footer"
-import { ContactCTA } from "./contact-cta"
+import { CtaBand } from "./cta-band"
 
 export type ServicePageProps = {
-  eyebrow: string
+  name: string
   title: string
-  lead: string
-  included: string[]
-  process: { title: string; desc: string }[]
-  note?: { label: string; text: string }
+  intro: string
+  whatTitle: string
+  whatParas: string[]
+  image: string
+  imageAlt: string
+  stat?: { value: string; label: string }
+  provideList: string[]
+  secondImage?: string
+  secondImageAlt?: string
 }
 
-export function ServicePage({ eyebrow, title, lead, included, process, note }: ServicePageProps) {
+export function ServicePage({
+  name,
+  title,
+  intro,
+  whatTitle,
+  whatParas,
+  image,
+  imageAlt,
+  stat,
+  provideList,
+  secondImage,
+  secondImageAlt,
+}: ServicePageProps) {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
 
       <main className="flex-1">
-        {/* ============ INTRO ============ */}
-        <section className="container mx-auto px-4 pt-20 md:pt-28 pb-14 md:pb-20">
-          <p className="eyebrow">{eyebrow}</p>
-          <h1 className="mt-6 max-w-3xl text-balance font-serif text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.08]">
-            {title}
-          </h1>
-          <p className="lead mt-6 max-w-2xl text-pretty">{lead}</p>
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Link href="/get-a-quote" className="btn-primary">
-              Get a free quote
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <a href="tel:02081021108" className="btn-outline">
-              <Phone className="h-4 w-4" />
-              0208 102 1108
-            </a>
-          </div>
-        </section>
-
-        {/* ============ WHAT'S INCLUDED ============ */}
-        <section className="container mx-auto px-4 pb-16 md:pb-24">
-          <div className="grid gap-10 lg:grid-cols-[1fr_2fr] border-t border-border pt-12">
-            <h2 className="display-md">What&rsquo;s included</h2>
-            <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-4">
-              {included.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
-                  <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-brand-yellow" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* ============ PROCESS ============ */}
-        <section className="container mx-auto px-4 pb-20 md:pb-28">
-          <div className="grid gap-10 lg:grid-cols-[1fr_2fr] border-t border-border pt-12">
-            <h2 className="display-md">How it works</h2>
-            <ol>
-              {process.map((step, i) => (
-                <li
-                  key={step.title}
-                  className="grid grid-cols-[auto_1fr] gap-6 border-b border-border py-6 first:pt-0"
-                >
-                  <span className="text-sm font-semibold text-muted-foreground tabular-nums pt-0.5">
-                    0{i + 1}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold tracking-tight">{step.title}</h3>
-                    <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        {/* ============ NOTE ============ */}
-        {note && (
-          <section className="container mx-auto px-4 pb-20 md:pb-28">
-            <div className="border border-border p-8 md:p-10 max-w-3xl">
-              <p className="eyebrow">{note.label}</p>
-              <p className="mt-4 text-lg font-medium leading-relaxed">{note.text}</p>
+        {/* ============ HERO BAND ============ */}
+        <section className="bg-brand-black text-white">
+          <div className="container mx-auto px-4 py-20 md:py-28">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-yellow">
+              Our services
+            </p>
+            <h1 className="mt-5 max-w-3xl text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-white text-balance">
+              {title}
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-white/65 leading-relaxed text-pretty">{intro}</p>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <Link
+                href="/get-a-quote"
+                className="inline-flex items-center gap-2 bg-brand-yellow px-7 py-3.5 text-sm font-semibold text-black hover:bg-[#E6BE00] transition-colors"
+              >
+                Get a free quote
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a
+                href="tel:02081021108"
+                className="inline-flex items-center gap-2 border border-white/40 px-7 py-3.5 text-sm font-semibold text-white hover:border-white transition-colors"
+              >
+                <Phone className="h-4 w-4" />
+                0208 102 1108
+              </a>
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
-        <ContactCTA />
+        {/* ============ BREADCRUMB ============ */}
+        <div className="container mx-auto px-4 pt-8">
+          <p className="text-sm text-muted-foreground">
+            <Link href="/" className="font-medium text-foreground hover:text-brand-yellow-deep transition-colors">
+              Home
+            </Link>{" "}
+            <span aria-hidden>›</span>{" "}
+            <Link
+              href="/services"
+              className="font-medium text-foreground hover:text-brand-yellow-deep transition-colors"
+            >
+              Services
+            </Link>{" "}
+            <span aria-hidden>›</span> {name}
+          </p>
+        </div>
+
+        {/* ============ WHAT IS IT ============ */}
+        <section className="container mx-auto px-4 py-16 md:py-24">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-yellow-deep">
+                About this service
+              </p>
+              <h2 className="mt-6 text-3xl md:text-4xl font-bold tracking-tight leading-[1.1] text-balance">
+                {whatTitle}
+              </h2>
+              {whatParas.map((para) => (
+                <p key={para.slice(0, 32)} className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                  {para}
+                </p>
+              ))}
+            </div>
+
+            <div className="relative">
+              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                <Image src={image} alt={imageAlt} fill className="object-cover" />
+              </div>
+              {stat && (
+                <div className="absolute bottom-8 left-0 lg:-left-10 max-w-[260px] bg-brand-black p-8">
+                  <p className="text-2xl md:text-3xl font-bold tracking-tight text-brand-yellow">
+                    {stat.value}
+                  </p>
+                  <p className="mt-2 text-sm text-white/60 leading-relaxed">{stat.label}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ WHAT WE PROVIDE ============ */}
+        <section className="bg-foreground/[0.02] border-y border-border">
+          <div className="container mx-auto px-4 py-16 md:py-24">
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
+              {secondImage ? (
+                <div className="relative order-last lg:order-first aspect-[4/3] overflow-hidden bg-muted">
+                  <Image src={secondImage} alt={secondImageAlt ?? ""} fill className="object-cover" />
+                </div>
+              ) : null}
+
+              <div className={secondImage ? "" : "max-w-2xl"}>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-yellow-deep">
+                  What we provide
+                </p>
+                <h2 className="mt-6 text-3xl md:text-4xl font-bold tracking-tight leading-[1.1]">
+                  Everything handled, start to finish.
+                </h2>
+                <ul className="mt-9 space-y-4">
+                  {provideList.map((item) => (
+                    <li key={item} className="flex items-start gap-4">
+                      <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center bg-brand-yellow text-black">
+                        <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                      </span>
+                      <span className="text-foreground/90">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <CtaBand />
       </main>
 
       <SiteFooter />
