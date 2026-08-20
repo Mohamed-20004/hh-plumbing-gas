@@ -3,15 +3,37 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
-import { Menu, X, Phone } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { ArrowRight, ChevronDown, Menu, X, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
-  { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
   { href: "/about-us", label: "About" },
   { href: "/contact-us", label: "Contact" },
+]
+
+const featuredServices = [
+  {
+    href: "/services/bathroom-installation",
+    label: "Bathroom Renovations",
+    image: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=500&h=400&fit=crop&auto=format",
+  },
+  {
+    href: "/services/boiler-installations",
+    label: "Boiler Installations",
+    image: "https://images.unsplash.com/photo-1751486289950-5c4898a4c773?w=500&h=400&fit=crop&auto=format",
+  },
+  {
+    href: "/services/air-conditioning",
+    label: "AC Installations",
+    image: "https://images.unsplash.com/photo-1718203862467-c33159fdc504?w=500&h=400&fit=crop&auto=format",
+  },
+  {
+    href: "/services/heat-pump-installations",
+    label: "Heat Pump Installations",
+    image: "https://images.unsplash.com/photo-1776860150305-108ed577d7d4?w=500&h=400&fit=crop&auto=format",
+  },
 ]
 
 const serviceLinks = [
@@ -27,8 +49,10 @@ const serviceLinks = [
 
 export function Header({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false)
+  const [megaOpen, setMegaOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     if (!overlay) return
@@ -47,9 +71,27 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 
   useEffect(() => {
     setOpen(false)
+    setMegaOpen(false)
   }, [pathname])
 
-  const transparent = overlay && !scrolled && !open
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMegaOpen(false)
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [])
+
+  const enterMega = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setMegaOpen(true)
+  }
+  const leaveMega = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    closeTimer.current = setTimeout(() => setMegaOpen(false), 150)
+  }
+
+  const transparent = overlay && !scrolled && !open && !megaOpen
   const textMain = transparent ? "text-white" : "text-foreground"
   const textDim = transparent ? "text-white/75 hover:text-white" : "text-foreground/60 hover:text-foreground"
 
@@ -111,16 +153,40 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
+          {/* Services mega-menu trigger */}
+          <div onMouseEnter={enterMega} onMouseLeave={leaveMega}>
+            <Link
+              href="/services"
+              aria-expanded={megaOpen}
+              aria-haspopup="true"
+              onClick={() => setMegaOpen(false)}
+              className={cn(
+                "inline-flex items-center gap-1.5 text-sm font-medium transition-colors",
+                pathname.startsWith("/services")
+                  ? cn(textMain, "underline decoration-brand-yellow decoration-2 underline-offset-8")
+                  : megaOpen
+                    ? textMain
+                    : textDim,
+              )}
+            >
+              Services
+              <ChevronDown
+                className={cn("h-3.5 w-3.5 transition-transform duration-200", megaOpen && "rotate-180")}
+              />
+            </Link>
+          </div>
+
           {navLinks.map((link) => {
-            const active =
-              link.href === "/services" ? pathname.startsWith("/services") : pathname === link.href
+            const active = pathname === link.href
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
                   "text-sm font-medium transition-colors",
-                  active ? cn(textMain, "underline decoration-brand-yellow decoration-2 underline-offset-8") : textDim,
+                  active
+                    ? cn(textMain, "underline decoration-brand-yellow decoration-2 underline-offset-8")
+                    : textDim,
                 )}
               >
                 {link.label}
@@ -164,10 +230,97 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
         </button>
       </div>
 
+      {/* Services mega menu (desktop) */}
+      {megaOpen && (
+        <div
+          className="hidden md:block absolute inset-x-0 top-full bg-background border-b border-border shadow-[0_24px_48px_-24px_rgba(0,0,0,0.25)]"
+          onMouseEnter={enterMega}
+          onMouseLeave={leaveMega}
+        >
+          <div className="container mx-auto px-4 py-10 grid lg:grid-cols-[2.2fr_1fr] gap-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground border-b border-border pb-4">
+                Our services
+              </p>
+              <div className="mt-6 grid grid-cols-2 xl:grid-cols-4 gap-4">
+                {featuredServices.map((s) => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    className="group relative block aspect-[5/4] overflow-hidden bg-brand-black"
+                  >
+                    <Image
+                      src={s.image}
+                      alt=""
+                      fill
+                      className="object-cover opacity-75 transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 p-4">
+                      <p className="font-semibold leading-snug text-white">{s.label}</p>
+                      <ArrowRight className="mt-2 h-4 w-4 text-white transition-transform duration-300 group-hover:translate-x-1" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              <p className="mt-10 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground border-b border-border pb-4">
+                All services
+              </p>
+              <ul className="mt-5 grid grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-3">
+                {serviceLinks.map((s) => (
+                  <li key={s.href}>
+                    <Link
+                      href={s.href}
+                      className="group inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-foreground transition-colors"
+                    >
+                      {s.label}
+                      <ArrowRight className="h-3.5 w-3.5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Promo tile */}
+            <Link
+              href="/get-a-quote"
+              className="group relative hidden lg:flex flex-col justify-end overflow-hidden bg-brand-black p-8 min-h-[320px]"
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1620653713380-7a34b773fef8?w=700&h=800&fit=crop&auto=format"
+                alt=""
+                fill
+                className="object-cover opacity-45 transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
+              />
+              <div className="relative">
+                <p className="text-xl font-bold tracking-tight text-white leading-snug">
+                  Fixed-price quotes, back to you within the hour.
+                </p>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-yellow">
+                  Get a free quote
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      )}
+
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden fixed inset-x-0 top-[112px] bottom-0 z-40 overflow-y-auto border-t border-border bg-background">
           <nav className="container mx-auto px-4 py-8 flex flex-col">
+            <Link href="/services" className="border-b border-border py-4 text-lg font-semibold text-foreground">
+              Services
+            </Link>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -177,7 +330,9 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                 {link.label}
               </Link>
             ))}
-            <p className="eyebrow mt-8 mb-2">Services</p>
+            <p className="mt-8 mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+              Services
+            </p>
             {serviceLinks.map((link) => (
               <Link
                 key={link.href}
