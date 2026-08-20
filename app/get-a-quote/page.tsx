@@ -19,7 +19,6 @@ import {
   HybridHeatPumpIcon,
   InfoIcon,
 } from "../components/icons/boiler-icons"
-import { FadeIn } from "../components/motion"
 
 const STEP_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
@@ -666,7 +665,7 @@ export default function GetAQuote() {
         <section className="relative overflow-hidden">
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-radial-yellow" />
           <div className="relative container mx-auto px-4 pt-12 md:pt-16 pb-10">
-            <FadeIn delay={0.05} y={12}>
+            <div>
               <Link
                 href="/"
                 className="inline-flex items-center gap-2 rounded-none border border-border bg-background/80 backdrop-blur px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
@@ -674,29 +673,29 @@ export default function GetAQuote() {
                 <ArrowLeft className="h-3.5 w-3.5" />
                 Back to Home
               </Link>
-            </FadeIn>
+            </div>
             <div className="mt-6 max-w-3xl">
-              <FadeIn delay={0.05} y={12}>
+              <div>
                 <span className="eyebrow">Free no-obligation quote</span>
-              </FadeIn>
-              <FadeIn delay={0.15}>
+              </div>
+              <div>
                 <h1 className="display-lg mt-4">
                   Get your <span className="text-foreground">tailored quote</span> in minutes.
                 </h1>
-              </FadeIn>
-              <FadeIn delay={0.3}>
+              </div>
+              <div>
                 <p className="lead mt-4 max-w-2xl">
                   Answer a few quick questions and we'll send a fixed, itemised quote with manufacturer-approved
                   options.
                 </p>
-              </FadeIn>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Quote card */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
-          <FadeIn delay={0.45}>
+          <div>
           <div className="mx-auto max-w-5xl rounded-lg border border-border bg-card shadow-lift overflow-hidden">
             {/* Progress Steps */}
             <div className="relative bg-foreground/[0.02] border-b border-border px-6 md:px-10 py-6">
@@ -1195,7 +1194,7 @@ export default function GetAQuote() {
           </AnimatePresence>
             </div>
           </div>
-          </FadeIn>
+          </div>
         </section>
       </main>
 
