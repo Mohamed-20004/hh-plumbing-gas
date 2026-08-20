@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { Menu, X, Phone } from "lucide-react"
@@ -84,10 +85,15 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
       </div>
 
       <div className="container mx-auto px-4 flex h-[72px] items-center justify-between">
-        <Link href="/" className="inline-flex items-center gap-2.5" aria-label="HH Plumbing and Gas — home">
-          <span className="inline-flex h-10 w-10 items-center justify-center bg-brand-yellow text-black font-black text-sm">
-            HH
-          </span>
+        <Link href="/" className="inline-flex items-center gap-3" aria-label="HH Plumbing and Gas — home">
+          <Image
+            src="/images/hhpg-logo.png"
+            alt=""
+            width={49}
+            height={52}
+            priority
+            className="h-12 w-auto"
+          />
           <span className="flex flex-col leading-none">
             <span className={cn("text-[15px] font-bold tracking-tight", textMain)}>
               HH Plumbing &amp; Gas
