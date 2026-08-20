@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, Star, Check, ArrowRight } from "lucide-react"
+import { ArrowLeft, Star, Check, ArrowRight, ShowerHead, Snowflake, Wrench, Siren } from "lucide-react"
 import { Header } from "../components/header"
 import { SiteFooter } from "../components/site-footer"
 import {
@@ -27,7 +27,15 @@ const serviceTypes = [
   { id: "heat-pump-installation", name: "Heat Pump Installation", icon: <HeatPumpIcon /> },
   { id: "underfloor-heating", name: "Underfloor Heating", icon: <UnderfloorHeatingIcon /> },
   { id: "cylinder-installation", name: "Cylinder Installation", icon: <CylinderIcon /> },
+  { id: "bathroom-renovation", name: "Bathroom Renovation", icon: <ShowerHead className="h-full w-full p-1.5" strokeWidth={1.25} /> },
+  { id: "ac-installation", name: "AC Installation", icon: <Snowflake className="h-full w-full p-1.5" strokeWidth={1.25} /> },
+  { id: "drainage", name: "Drainage", icon: <Wrench className="h-full w-full p-1.5" strokeWidth={1.25} /> },
+  { id: "emergency-repairs", name: "Emergency Repairs", icon: <Siren className="h-full w-full p-1.5" strokeWidth={1.25} /> },
 ]
+
+// Services with no type/brand/model catalogue — these skip straight to
+// the contact step, where the customer describes the job instead.
+const simpleServices = new Set(["bathroom-renovation", "ac-installation", "drainage", "emergency-repairs"])
 
 const boilerTypes = [
   {
@@ -404,6 +412,7 @@ export default function GetAQuote() {
     phone: "",
     address: "",
     postcode: "",
+    message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showTooltip, setShowTooltip] = useState<string | null>(null)
@@ -425,7 +434,7 @@ export default function GetAQuote() {
     const serviceParam = params.get("service")
     if (serviceParam && serviceTypes.some((s) => s.id === serviceParam)) {
       setSelectedService(serviceParam)
-      setStep(2)
+      setStep(simpleServices.has(serviceParam) ? 5 : 2)
     }
   }, [])
 
@@ -435,7 +444,7 @@ export default function GetAQuote() {
     setSelectedBrand(null)
     setSelectedModel(null)
     setStartingPrice(null)
-    setStep(2)
+    setStep(simpleServices.has(serviceId) ? 5 : 2)
   }
 
   const handleTypeSelect = (typeId: string) => {
@@ -511,7 +520,7 @@ export default function GetAQuote() {
     setStep(5)
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
@@ -594,6 +603,10 @@ export default function GetAQuote() {
   }
 
   const handleBack = () => {
+    if (step === 5 && selectedService && simpleServices.has(selectedService)) {
+      setStep(1)
+      return
+    }
     if (step > 1) {
       setStep(step - 1)
     }
@@ -648,13 +661,20 @@ export default function GetAQuote() {
     }
   }
 
-  const progressSteps = [
-    { id: 1, label: "Service" },
-    { id: 2, label: "Type" },
-    { id: 3, label: "Brand" },
-    { id: 4, label: "Model" },
-    { id: 5, label: "Details" },
-  ]
+  const isSimple = !!selectedService && simpleServices.has(selectedService)
+
+  const progressSteps = isSimple
+    ? [
+        { id: 1, label: "Service" },
+        { id: 5, label: "Details" },
+      ]
+    : [
+        { id: 1, label: "Service" },
+        { id: 2, label: "Type" },
+        { id: 3, label: "Brand" },
+        { id: 4, label: "Model" },
+        { id: 5, label: "Details" },
+      ]
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -729,7 +749,7 @@ export default function GetAQuote() {
                               : "bg-background border border-border text-muted-foreground"
                           } ${current && reduce ? "ring-4 ring-brand-yellow/20" : ""}`}
                         >
-                          {step > s.id ? <Check className="h-4 w-4" /> : s.id}
+                          {step > s.id ? <Check className="h-4 w-4" /> : progressSteps.indexOf(s) + 1}
                         </div>
                       </div>
                       <span
@@ -755,7 +775,7 @@ export default function GetAQuote() {
               >
                 <div className="mb-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                    Step 1 of 5
+                    Step 1 of {isSimple ? 2 : 5}
                   </p>
                   <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">
                     What service do you need?
@@ -1033,7 +1053,7 @@ export default function GetAQuote() {
                 <div className="mb-8 flex items-start justify-between gap-4">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                      Step 5 of 5
+                      {isSimple ? "Step 2 of 2" : "Step 5 of 5"}
                     </p>
                     <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">Your details</h2>
                     <p className="mt-2 text-sm text-muted-foreground">
@@ -1062,24 +1082,28 @@ export default function GetAQuote() {
                         {serviceTypes.find((s) => s.id === selectedService)?.name}
                       </dd>
                     </div>
-                    <div className="flex items-center justify-between px-5 py-3">
-                      <dt className="text-muted-foreground">Type</dt>
-                      <dd className="font-semibold">
-                        {getTypeOptions().find((t) => t.id === selectedType)?.name}
-                      </dd>
-                    </div>
-                    <div className="flex items-center justify-between px-5 py-3">
-                      <dt className="text-muted-foreground">Brand</dt>
-                      <dd className="font-semibold">
-                        {getAvailableBrands().find((b) => b.id === selectedBrand)?.name}
-                      </dd>
-                    </div>
-                    <div className="flex items-center justify-between px-5 py-3">
-                      <dt className="text-muted-foreground">Model</dt>
-                      <dd className="font-semibold">
-                        {getModelOptions().find((m) => m.id === selectedModel)?.name}
-                      </dd>
-                    </div>
+                    {!isSimple && (
+                      <>
+                        <div className="flex items-center justify-between px-5 py-3">
+                          <dt className="text-muted-foreground">Type</dt>
+                          <dd className="font-semibold">
+                            {getTypeOptions().find((t) => t.id === selectedType)?.name}
+                          </dd>
+                        </div>
+                        <div className="flex items-center justify-between px-5 py-3">
+                          <dt className="text-muted-foreground">Brand</dt>
+                          <dd className="font-semibold">
+                            {getAvailableBrands().find((b) => b.id === selectedBrand)?.name}
+                          </dd>
+                        </div>
+                        <div className="flex items-center justify-between px-5 py-3">
+                          <dt className="text-muted-foreground">Model</dt>
+                          <dd className="font-semibold">
+                            {getModelOptions().find((m) => m.id === selectedModel)?.name}
+                          </dd>
+                        </div>
+                      </>
+                    )}
                     {startingPrice && (
                       <div className="flex items-center justify-between px-5 py-4 bg-foreground/[0.02]">
                         <dt className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
@@ -1171,6 +1195,25 @@ export default function GetAQuote() {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20"
+                      />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label htmlFor="message" className="block text-xs font-semibold text-muted-foreground mb-1.5">
+                        Tell us about the job{isSimple ? "" : " (optional)"}
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows={4}
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required={isSimple}
+                        placeholder={
+                          isSimple
+                            ? "A little detail helps us quote accurately — rooms, timings, what's wrong…"
+                            : "Anything else we should know?"
+                        }
+                        className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm transition-colors focus:outline-none focus:border-foreground focus:ring-2 focus:ring-foreground/20 resize-none"
                       />
                     </div>
                   </div>
