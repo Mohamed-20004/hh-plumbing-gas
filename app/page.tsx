@@ -8,32 +8,32 @@ const services = [
   {
     title: "Bathroom Renovations",
     href: "/services/bathroom-installation",
-    image: "/images/modern-bathroom.jpeg",
+    image: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&auto=format",
   },
   {
     title: "Boiler Installations",
     href: "/services/boiler-installations",
-    image: "/placeholder.svg?height=800&width=1000&text=Boiler+installations",
+    image: "https://images.unsplash.com/photo-1751486289950-5c4898a4c773?w=800&h=600&fit=crop&auto=format",
   },
   {
     title: "Cylinder Installations",
     href: "/services/cylinder-installation",
-    image: "/placeholder.svg?height=800&width=1000&text=Cylinder+installations",
+    image: "https://images.unsplash.com/photo-1575299737366-39c143459bc5?w=800&h=600&fit=crop&auto=format",
   },
   {
     title: "AC Installations",
     href: "/services/air-conditioning",
-    image: "/placeholder.svg?height=800&width=1000&text=AC+installations",
+    image: "https://images.unsplash.com/photo-1718203862467-c33159fdc504?w=800&h=600&fit=crop&auto=format",
   },
   {
     title: "Heat Pump Installations",
     href: "/services/heat-pump-installations",
-    image: "/placeholder.svg?height=800&width=1000&text=Heat+pump+installations",
+    image: "https://images.unsplash.com/photo-1776860150305-108ed577d7d4?w=800&h=600&fit=crop&auto=format",
   },
   {
     title: "Underfloor Heating",
     href: "/services/underfloor-heating-installation",
-    image: "/placeholder.svg?height=800&width=1000&text=Underfloor+heating",
+    image: "https://images.unsplash.com/photo-1647105604066-86ea4247e217?w=800&h=600&fit=crop&auto=format",
   },
 ]
 
