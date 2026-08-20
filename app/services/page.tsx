@@ -11,7 +11,7 @@ export default function ServicesPage() {
       <main className="flex-1">
         <section className="container mx-auto px-4 pt-20 md:pt-28 pb-16 md:pb-20">
           <p className="eyebrow">Services</p>
-          <h1 className="display-xl mt-6 max-w-3xl text-balance">
+          <h1 className="mt-6 max-w-3xl text-balance font-serif text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.08]">
             Every service, one trusted team.
           </h1>
           <p className="lead mt-6 max-w-2xl text-pretty">

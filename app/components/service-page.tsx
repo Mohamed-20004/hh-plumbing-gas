@@ -22,7 +22,9 @@ export function ServicePage({ eyebrow, title, lead, included, process, note }: S
         {/* ============ INTRO ============ */}
         <section className="container mx-auto px-4 pt-20 md:pt-28 pb-14 md:pb-20">
           <p className="eyebrow">{eyebrow}</p>
-          <h1 className="display-xl mt-6 max-w-3xl text-balance">{title}</h1>
+          <h1 className="mt-6 max-w-3xl text-balance font-serif text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.08]">
+            {title}
+          </h1>
           <p className="lead mt-6 max-w-2xl text-pretty">{lead}</p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Link href="/get-a-quote" className="btn-primary">

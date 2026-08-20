@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Logo } from "./logo"
 import { ThemeToggle } from "./theme-toggle"
 
@@ -91,9 +92,23 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} HH Plumbing &amp; Gas. All rights reserved.</p>
-          <ThemeToggle />
+        <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-t border-border pt-8">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} HH Plumbing &amp; Gas. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
+              <div className="relative h-10 w-10">
+                <Image src="/images/gas-safe-logo.png" alt="Gas Safe Register" fill className="object-contain" />
+              </div>
+              <p className="text-xs text-muted-foreground leading-snug">
+                Gas Safe Register
+                <br />
+                No. 630695
+              </p>
+            </div>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </footer>
