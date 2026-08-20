@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 const serviceLinks = [
   { href: "/services/bathroom-installation", label: "Bathroom Renovations" },
@@ -17,10 +18,8 @@ export function SiteFooter() {
       <div className="container mx-auto px-4 py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="HH Plumbing and Gas — home">
-              <span className="inline-flex h-10 w-10 items-center justify-center bg-brand-yellow text-black font-black text-sm">
-                HH
-              </span>
+            <Link href="/" className="inline-flex items-center gap-3" aria-label="HH Plumbing and Gas — home">
+              <Image src="/images/hhpg-logo.png" alt="" width={49} height={52} className="h-12 w-auto" />
               <span className="flex flex-col leading-none">
                 <span className="text-[15px] font-bold tracking-tight text-white">HH Plumbing &amp; Gas</span>
                 <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.22em] text-white/50">
