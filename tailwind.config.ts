@@ -100,7 +100,8 @@ const config: Config = {
         sm: "var(--radius)",
       },
       fontFamily: {
-        display: ["var(--font-display)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "ui-serif", "serif"],
       },
       keyframes: {
         "accordion-down": {

@@ -16,6 +16,7 @@ type QuotePayload = {
   brand?: string
   model?: string
   startingPrice?: number
+  message?: string
 }
 
 function escapeHtml(value: unknown) {
@@ -52,6 +53,7 @@ function buildHtml(d: QuotePayload) {
       ${row("Brand", d.brand)}
       ${row("Model", d.model)}
       ${row("Starting from", d.startingPrice ? `£${d.startingPrice.toLocaleString()}` : "")}
+      ${row("Message", d.message)}
     </table>
     <div style="padding:16px 24px;background:#f8fafc;font-size:12px;color:#64748b">
       Submitted via the HH Plumbing &amp; Gas website at ${new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })}.
@@ -75,6 +77,8 @@ function buildText(d: QuotePayload) {
     `Brand:       ${d.brand ?? ""}`,
     `Model:       ${d.model ?? ""}`,
     `Starting from: ${d.startingPrice ? `£${d.startingPrice.toLocaleString()}` : ""}`,
+    ``,
+    `Message:     ${d.message ?? ""}`,
   ].join("\n")
 }
 

@@ -1,9 +1,7 @@
 import Link from "next/link"
-import { Phone, Mail, Instagram, Clock, ArrowRight, MapPin, ShieldCheck } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Header } from "../components/header"
 import { SiteFooter } from "../components/site-footer"
-import { TikTokIcon } from "../components/icons/tiktok-icon"
-import { Reveal, Stagger, StaggerItem, FadeIn } from "../components/motion"
 
 export default function ContactUsPage() {
   return (
@@ -11,170 +9,68 @@ export default function ContactUsPage() {
       <Header />
 
       <main className="flex-1">
-        {/* ============ HERO ============ */}
-        <section className="relative overflow-hidden">
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-radial-yellow" />
-          <div className="relative container mx-auto px-4 pt-16 md:pt-20 pb-10">
-            <div className="max-w-3xl">
-              <FadeIn delay={0.05} y={12}>
-                <span className="eyebrow">We're here to help</span>
-              </FadeIn>
-              <FadeIn delay={0.15}>
-                <h1 className="display-xl mt-6">
-                  Get in touch with <span className="text-foreground">our team</span>.
-                </h1>
-              </FadeIn>
-              <FadeIn delay={0.55}>
-                <p className="lead mt-6 max-w-2xl">
-                  Fast, friendly and local. Call for urgent work, drop an email for quotes, or slide into our
-                  DMs — we'll get back fast.
-                </p>
-              </FadeIn>
-            </div>
-          </div>
+        <section className="container mx-auto px-4 pt-20 md:pt-28 pb-16 md:pb-20">
+          <p className="eyebrow">Contact us</p>
+          <h1 className="mt-6 max-w-3xl text-balance font-serif text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.08]">Get in touch with our team.</h1>
+          <p className="lead mt-6 max-w-2xl text-pretty">
+            Call, email or request a quote — we respond quickly, and the emergency line is open around
+            the clock.
+          </p>
         </section>
 
-        {/* ============ CALL PANEL ============ */}
-        <section className="container mx-auto px-4 pb-16">
-          <div className="relative overflow-hidden rounded-lg border border-border bg-brand-yellow p-10 md:p-14 text-black">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 opacity-60"
-              style={{
-                background:
-                  "radial-gradient(600px circle at 100% 0%, rgba(255,255,255,0.55), transparent 55%), radial-gradient(500px circle at 0% 100%, rgba(0,0,0,0.08), transparent 55%)",
-              }}
-            />
-            <div className="relative grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
-              <Reveal>
-                <span className="inline-flex items-center gap-2 rounded-none border border-black/20 bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">
-                  <Phone className="h-3 w-3" />
-                  Call us directly
-                </span>
-                <h2 className="mt-5 text-3xl md:text-5xl font-extrabold tracking-tight">
-                  0208 102&nbsp;1108
-                </h2>
-                <p className="mt-3 text-black/70 max-w-md">
-                  Speak to a Gas Safe registered engineer — no call centres, no gatekeepers. Available 24/7
-                  for genuine emergencies.
-                </p>
-                <div className="mt-7 flex flex-wrap items-center gap-3">
-                  <a
-                    href="tel:0208 102 1108"
-                    className="inline-flex items-center justify-center gap-2 rounded-none bg-black text-white px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
-                  >
-                    <Phone className="h-4 w-4" />
-                    Call now
-                  </a>
-                  <Link
-                    href="/get-a-quote"
-                    className="group inline-flex items-center justify-center gap-2 rounded-none border border-black/20 bg-transparent px-6 py-3 text-sm font-semibold hover:bg-black/5 transition-colors"
-                  >
-                    Get a free quote
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                  </Link>
-                </div>
-              </Reveal>
-
-              <Stagger className="grid gap-3 text-sm">
-                <StaggerItem className="flex items-start gap-3 rounded-lg border border-black/15 bg-white/40 backdrop-blur-sm p-4">
-                  <Clock className="h-5 w-5 mt-0.5" />
-                  <div>
-                    <p className="font-semibold">Mon – Fri</p>
-                    <p className="text-black/70">8AM – 6PM</p>
-                  </div>
-                </StaggerItem>
-                <StaggerItem className="flex items-start gap-3 rounded-lg border border-black/15 bg-white/40 backdrop-blur-sm p-4">
-                  <Clock className="h-5 w-5 mt-0.5" />
-                  <div>
-                    <p className="font-semibold">Saturday</p>
-                    <p className="text-black/70">9AM – 5PM</p>
-                  </div>
-                </StaggerItem>
-                <StaggerItem className="flex items-start gap-3 rounded-lg border border-black/15 bg-white/40 backdrop-blur-sm p-4">
-                  <ShieldCheck className="h-5 w-5 mt-0.5" />
-                  <div>
-                    <p className="font-semibold">Sunday &amp; out of hours</p>
-                    <p className="text-black/70">Emergency only — call 24/7</p>
-                  </div>
-                </StaggerItem>
-              </Stagger>
-            </div>
-          </div>
-        </section>
-
-        {/* ============ CONTACT GRID ============ */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
-          <Stagger className="grid md:grid-cols-3 gap-5">
-            <StaggerItem className="h-full">
-              <div className="h-full rounded-lg border border-border bg-card p-6 hover-lift">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold">Email us</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  For quotes, follow-ups or non-urgent questions.
+          <div className="border-t border-border">
+            <div className="grid gap-1 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-8 border-b border-border py-8">
+              <h2 className="font-semibold tracking-tight">Phone</h2>
+              <div>
+                <a
+                  href="tel:02081021108"
+                  className="text-2xl md:text-3xl font-semibold tracking-tight hover:text-foreground/70 transition-colors"
+                >
+                  0208 102 1108
+                </a>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  24/7 for emergencies — leaks, breakdowns, no heat or hot water.
                 </p>
+              </div>
+            </div>
+
+            <div className="grid gap-1 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-8 border-b border-border py-8">
+              <h2 className="font-semibold tracking-tight">Email</h2>
+              <div>
                 <a
                   href="mailto:office@hhplumbingandgas.com"
-                  className="group mt-4 inline-flex items-center gap-1.5 text-sm font-semibold border-b border-brand-yellow pb-0.5 hover:text-brand-yellow transition-colors"
+                  className="text-lg font-medium hover:text-foreground/70 transition-colors"
                 >
                   office@hhplumbingandgas.com
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </a>
-                <p className="mt-3 text-xs text-muted-foreground">Response within 24 hours.</p>
+                <p className="mt-2 text-sm text-muted-foreground">We reply within 24 hours.</p>
               </div>
-            </StaggerItem>
+            </div>
 
-            <StaggerItem className="h-full">
-              <div className="h-full rounded-lg border border-border bg-card p-6 hover-lift">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold">Our base</h3>
-                <address className="not-italic mt-1 text-sm text-muted-foreground">
-                  5th Floor 167-169 Great Portland Street
-                  <br />
-                  London, W1W 5PF
-                </address>
-                <p className="mt-4 text-xs text-muted-foreground">
-                  Covering central, west and greater London.
-                </p>
-              </div>
-            </StaggerItem>
+            <div className="grid gap-1 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-8 border-b border-border py-8">
+              <h2 className="font-semibold tracking-tight">Office</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                5th Floor 167-169 Great Portland Street
+                <br />
+                London, W1W 5PF
+              </p>
+            </div>
 
-            <StaggerItem className="h-full">
-              <div className="h-full rounded-lg border border-border bg-card p-6 hover-lift">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
-                  <Instagram className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold">Follow along</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Recent installs, tips and before-and-afters.
+            <div className="grid gap-1 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-8 border-b border-border py-8">
+              <h2 className="font-semibold tracking-tight">Quotes</h2>
+              <div>
+                <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
+                  Tell us about the job through the quote form and a Gas Safe engineer will come back
+                  to you with a fixed, itemised price.
                 </p>
-                <div className="mt-4 flex items-center gap-2">
-                  <a
-                    href="https://www.instagram.com/hhplumbingandgas"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-10 w-10 inline-flex items-center justify-center rounded-none border border-border hover:border-brand-yellow/60 hover:text-brand-yellow transition-colors"
-                    aria-label="Instagram"
-                  >
-                    <Instagram className="h-4 w-4" />
-                  </a>
-                  <a
-                    href="https://www.tiktok.com/@hussainhachem1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-10 w-10 inline-flex items-center justify-center rounded-none border border-border hover:border-brand-yellow/60 hover:text-brand-yellow transition-colors"
-                    aria-label="TikTok"
-                  >
-                    <TikTokIcon className="h-4 w-4" />
-                  </a>
-                </div>
+                <Link href="/get-a-quote" className="btn-primary mt-5 inline-flex">
+                  Get a free quote
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
-            </StaggerItem>
-          </Stagger>
+            </div>
+          </div>
         </section>
       </main>
 

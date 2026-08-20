@@ -1,65 +1,25 @@
 import Link from "next/link"
-import Image from "next/image"
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  Award,
-  Shield,
-  ThumbsUp,
-  Zap,
-  Wrench,
-  ShieldCheck,
-  Clock,
-} from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Header } from "../components/header"
 import { SiteFooter } from "../components/site-footer"
 import { ContactCTA } from "../components/contact-cta"
-import {
-  Reveal,
-  Stagger,
-  StaggerItem,
-  HeroText,
-  FadeIn,
-  Parallax,
-} from "../components/motion"
 
 const values = [
   {
-    icon: Award,
-    title: "Certified Professionals",
-    description:
-      "Gas Safe registered engineers and MCS certified professionals — every install meets safety and quality standards that go beyond the minimum.",
+    title: "Gas Safe, always",
+    desc: "Every gas job is carried out and signed off by Gas Safe registered engineers — register number 630695.",
   },
   {
-    icon: ThumbsUp,
-    title: "Approved by Leading Brands",
-    description:
-      "Proud approved installers for Vaillant, Worcester Bosch, Baxi and more — meaning longer manufacturer warranties on your kit.",
+    title: "Fixed, honest pricing",
+    desc: "Itemised quotes agreed before work starts. The price you see is the price you pay.",
   },
   {
-    icon: Zap,
-    title: "Competitive Pricing",
-    description:
-      "Transparent, itemised quotes. No call-out surprises, no hidden fees — only work we've agreed in writing.",
+    title: "Clean, careful work",
+    desc: "Floors protected, sites tidied, waste removed. We leave your home the way we found it — but working.",
   },
   {
-    icon: Wrench,
-    title: "Comprehensive Services",
-    description:
-      "From a single cylinder swap to a whole-home heating refit — one team, one contact, one clear scope.",
-  },
-  {
-    icon: Shield,
-    title: "Guaranteed Workmanship",
-    description:
-      "Every installation carries our workmanship guarantee alongside the manufacturer's parts & labour warranty.",
-  },
-  {
-    icon: Check,
-    title: "Customer Satisfaction",
-    description:
-      "We earn our repeat business by communicating clearly, tidying up daily, and turning up when we say we will.",
+    title: "Backed by warranty",
+    desc: "Manufacturer warranties up to 12 years, plus our own workmanship guarantee on every installation.",
   },
 ]
 
@@ -69,153 +29,39 @@ export default function AboutUsPage() {
       <Header />
 
       <main className="flex-1">
-        {/* ============== HERO ============== */}
-        <section className="page-hero">
-          <div className="relative container mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
-            <div className="max-w-3xl">
-              <FadeIn delay={0.05} y={12}>
-                <span className="eyebrow border-white/15 bg-white/5 text-white/70">About HH Plumbing &amp; Gas</span>
-              </FadeIn>
-              <HeroText
-                text="Craft, care and clean installs — for London homes."
-                className="display-xl mt-6 text-white"
-                delay={0.15}
-              />
-              <FadeIn delay={0.55}>
-                <p className="lead mt-6 text-white/70 max-w-2xl">
-                  We're a small team of Gas Safe registered engineers building a reputation for reliable plumbing,
-                  heating and gas work that just keeps working — long after the dust has settled.
-                </p>
-              </FadeIn>
-
-              <FadeIn delay={0.7}>
-                <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <Link href="/get-a-quote" className="btn-primary group">
-                    Get a quote
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                  </Link>
-                  <Link href="/services" className="btn-ghost-dark">
-                    See our services
-                  </Link>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
+        <section className="container mx-auto px-4 pt-20 md:pt-28 pb-16 md:pb-20">
+          <p className="eyebrow">About us</p>
+          <h1 className="mt-6 max-w-3xl text-balance font-serif text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.08]">
+            A London heating team that does things properly.
+          </h1>
+          <p className="lead mt-6 max-w-2xl text-pretty">
+            HH Plumbing &amp; Gas is a London-based team of Gas Safe registered engineers with over a
+            decade on the tools — installing boilers, heat pumps, air conditioning, cylinders and
+            complete bathrooms across the city.
+          </p>
         </section>
 
-        {/* ============== WHO WE ARE ============== */}
-        <section className="section">
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <section className="container mx-auto px-4 pb-16 md:pb-24">
+          <div className="grid gap-10 lg:grid-cols-[1fr_2fr] border-t border-border pt-12">
+            <h2 className="display-md">How we work</h2>
             <div>
-              <Reveal>
-                <span className="eyebrow">Who we are</span>
-                <h2 className="display-lg mt-4">
-                  Local expertise. <br />
-                  Manufacturer-grade install.
-                </h2>
-                <p className="lead mt-5">
-                  HH Plumbing and Gas is a trusted provider of professional plumbing and heating services across
-                  London. With years on the tools, we've built our reputation on exceptional workmanship, reliable
-                  service and fair pricing.
-                </p>
-                <p className="lead mt-4">
-                  Our engineers are committed to the highest standards — every installation, repair and maintenance
-                  job is completed with care and signed off against manufacturer specifications.
-                </p>
-              </Reveal>
-
-              <Stagger className="mt-10 grid sm:grid-cols-2 gap-4">
-                <StaggerItem className="h-full">
-                  <div className="h-full rounded-lg border border-border bg-card p-5 hover-lift">
-                    <ShieldCheck className="h-6 w-6 text-brand-yellow" />
-                    <p className="mt-4 font-semibold">Gas Safe Registered</p>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Register number 630695 — every gas job is safe, legal and certified.
-                    </p>
-                  </div>
-                </StaggerItem>
-                <StaggerItem className="h-full">
-                  <div className="h-full rounded-lg border border-border bg-card p-5 hover-lift">
-                    <Award className="h-6 w-6 text-brand-yellow" />
-                    <p className="mt-4 font-semibold">Manufacturer Approved</p>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Approved installers for Vaillant, Worcester Bosch, Baxi and more.
-                    </p>
-                  </div>
-                </StaggerItem>
-              </Stagger>
+              <ul>
+                {values.map((v) => (
+                  <li key={v.title} className="border-b border-border py-6 first:pt-0">
+                    <h3 className="font-semibold tracking-tight">{v.title}</h3>
+                    <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed max-w-xl">{v.desc}</p>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/services" className="link-accent mt-8 inline-flex items-center gap-2 text-sm">
+                See what we do
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-
-            <Parallax amount={24} className="relative">
-              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-brand-yellow/15 blur-2xl" aria-hidden />
-              <Reveal delay={0.15}>
-                <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-border shadow-lift">
-                <Image
-                  src="/images/modern-bathroom.jpeg"
-                  alt="HH Plumbing and Gas — professional install"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
-                />
-                <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6 rounded-lg border border-white/15 bg-black/60 backdrop-blur-md p-5 text-white">
-                  <div className="flex items-center gap-4">
-                    <div className="relative h-12 w-12 shrink-0 rounded-none bg-white p-1.5">
-                      <Image
-                        src="/images/gas-safe-logo.png"
-                        alt="Gas Safe Registered"
-                        fill
-                        className="object-contain p-1"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                        Certified
-                      </p>
-                      <p className="font-semibold">Gas Safe Register · 630695</p>
-                    </div>
-                  </div>
-                </div>
-                </div>
-              </Reveal>
-            </Parallax>
           </div>
         </section>
 
-        {/* ============== VALUES GRID ============== */}
-        <section className="bg-foreground/[0.02] border-y border-border py-20 md:py-28">
-          <div className="container mx-auto px-4">
-            <Reveal className="max-w-2xl mx-auto text-center mb-14">
-              <span className="eyebrow">Why customers choose us</span>
-              <h2 className="display-lg mt-4">Work that speaks for itself.</h2>
-              <p className="lead mt-4 text-pretty">
-                Six reasons homeowners, landlords and letting agents across London rely on us.
-              </p>
-            </Reveal>
-
-            <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {values.map((item, i) => {
-                const Icon = item.icon
-                return (
-                  <StaggerItem key={i} className="h-full">
-                    <div className="group h-full rounded-lg border border-border bg-card p-6 transition-all duration-300 hover-lift">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <h3 className="mt-5 text-lg font-semibold tracking-tight">{item.title}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                    </div>
-                  </StaggerItem>
-                )
-              })}
-            </Stagger>
-          </div>
-        </section>
-
-        <ContactCTA quoteHref="/get-a-quote" />
+        <ContactCTA />
       </main>
 
       <SiteFooter />
