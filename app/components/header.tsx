@@ -4,29 +4,38 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { Menu, X, Phone } from "lucide-react"
-import { Logo } from "./logo"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
   { href: "/services", label: "Services" },
+  { href: "/projects", label: "Projects" },
   { href: "/about-us", label: "About" },
   { href: "/contact-us", label: "Contact" },
 ]
 
 const serviceLinks = [
-  { href: "/services/boiler-installations", label: "Boiler Installation" },
-  { href: "/services/heat-pump-installations", label: "Heat Pump Installation" },
-  { href: "/services/air-conditioning", label: "Air Conditioning" },
-  { href: "/services/bathroom-installation", label: "Bathroom Installation" },
+  { href: "/services/bathroom-installation", label: "Bathroom Renovations" },
+  { href: "/services/boiler-installations", label: "Boiler Installations" },
+  { href: "/services/cylinder-installation", label: "Cylinder Installations" },
+  { href: "/services/air-conditioning", label: "AC Installations" },
+  { href: "/services/heat-pump-installations", label: "Heat Pump Installations" },
   { href: "/services/underfloor-heating-installation", label: "Underfloor Heating" },
-  { href: "/services/cylinder-installation", label: "Cylinder Installation" },
   { href: "/services/drainage", label: "Drainage" },
   { href: "/services/emergency-repairs", label: "Emergency Repairs" },
 ]
 
-export function Header() {
+export function Header({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => {
+    if (!overlay) return
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [overlay])
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : ""
@@ -39,10 +48,37 @@ export function Header() {
     setOpen(false)
   }, [pathname])
 
+  const transparent = overlay && !scrolled && !open
+  const textMain = transparent ? "text-white" : "text-foreground"
+  const textDim = transparent ? "text-white/75 hover:text-white" : "text-foreground/60 hover:text-foreground"
+
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
-      <div className="container mx-auto px-4 flex h-16 items-center justify-between">
-        <Logo />
+    <header
+      className={cn(
+        "top-0 z-40 w-full transition-colors duration-200",
+        overlay ? "fixed" : "sticky",
+        transparent ? "bg-transparent" : "bg-background border-b border-border",
+      )}
+    >
+      <div className="container mx-auto px-4 flex h-[72px] items-center justify-between">
+        <Link href="/" className="inline-flex items-center gap-2.5" aria-label="HH Plumbing and Gas — home">
+          <span className="inline-flex h-10 w-10 items-center justify-center bg-brand-yellow text-black font-black text-sm">
+            HH
+          </span>
+          <span className="flex flex-col leading-none">
+            <span className={cn("text-[15px] font-bold tracking-tight", textMain)}>
+              HH Plumbing &amp; Gas
+            </span>
+            <span
+              className={cn(
+                "mt-0.5 text-[10px] font-medium uppercase tracking-[0.22em]",
+                transparent ? "text-white/60" : "text-muted-foreground",
+              )}
+            >
+              London
+            </span>
+          </span>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
@@ -54,10 +90,8 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium underline-offset-8 decoration-2 transition-colors",
-                  active
-                    ? "underline decoration-brand-yellow"
-                    : "text-foreground/60 hover:text-foreground",
+                  "text-sm font-medium transition-colors",
+                  active ? cn(textMain, "underline decoration-brand-yellow decoration-2 underline-offset-8") : textDim,
                 )}
               >
                 {link.label}
@@ -66,12 +100,23 @@ export function Header() {
           })}
           <a
             href="tel:02081021108"
-            className="hidden lg:inline-flex items-center gap-2 text-sm font-semibold hover:text-foreground/70 transition-colors"
+            className={cn(
+              "hidden lg:inline-flex items-center gap-2 text-sm font-semibold transition-colors",
+              transparent ? "text-white/85 hover:text-white" : "text-foreground/80 hover:text-foreground",
+            )}
           >
             <Phone className="h-3.5 w-3.5" />
             0208 102 1108
           </a>
-          <Link href="/get-a-quote" className="btn-primary !py-2.5">
+          <Link
+            href="/get-a-quote"
+            className={cn(
+              "inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold transition-colors",
+              transparent
+                ? "bg-brand-yellow text-black hover:bg-[#E6BE00]"
+                : "bg-foreground text-background hover:bg-foreground/85",
+            )}
+          >
             Get a quote
           </Link>
         </nav>
@@ -79,7 +124,10 @@ export function Header() {
         {/* Mobile trigger */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden inline-flex h-10 w-10 items-center justify-center border border-border"
+          className={cn(
+            "md:hidden inline-flex h-10 w-10 items-center justify-center border",
+            transparent ? "border-white/40 text-white" : "border-border text-foreground",
+          )}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
@@ -89,13 +137,13 @@ export function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-border bg-background">
+        <div className="md:hidden fixed inset-x-0 top-[72px] bottom-0 z-40 overflow-y-auto border-t border-border bg-background">
           <nav className="container mx-auto px-4 py-8 flex flex-col">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="border-b border-border py-4 text-lg font-semibold"
+                className="border-b border-border py-4 text-lg font-semibold text-foreground"
               >
                 {link.label}
               </Link>
@@ -111,10 +159,16 @@ export function Header() {
               </Link>
             ))}
             <div className="mt-8 flex flex-col gap-3">
-              <Link href="/get-a-quote" className="btn-primary w-full">
+              <Link
+                href="/get-a-quote"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold bg-brand-yellow text-black"
+              >
                 Get a free quote
               </Link>
-              <a href="tel:02081021108" className="btn-outline w-full">
+              <a
+                href="tel:02081021108"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold border border-border text-foreground"
+              >
                 <Phone className="h-4 w-4" />
                 0208 102 1108
               </a>

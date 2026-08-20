@@ -1,40 +1,45 @@
 import Link from "next/link"
-import Image from "next/image"
-import { Logo } from "./logo"
-import { ThemeToggle } from "./theme-toggle"
 
 const serviceLinks = [
-  { href: "/services/boiler-installations", label: "Boiler Installation" },
-  { href: "/services/heat-pump-installations", label: "Heat Pump Installation" },
-  { href: "/services/air-conditioning", label: "Air Conditioning" },
-  { href: "/services/bathroom-installation", label: "Bathroom Installation" },
+  { href: "/services/bathroom-installation", label: "Bathroom Renovations" },
+  { href: "/services/boiler-installations", label: "Boiler Installations" },
+  { href: "/services/cylinder-installation", label: "Cylinder Installations" },
+  { href: "/services/air-conditioning", label: "AC Installations" },
+  { href: "/services/heat-pump-installations", label: "Heat Pump Installations" },
   { href: "/services/underfloor-heating-installation", label: "Underfloor Heating" },
-  { href: "/services/cylinder-installation", label: "Cylinder Installation" },
   { href: "/services/drainage", label: "Drainage" },
   { href: "/services/emergency-repairs", label: "Emergency Repairs" },
 ]
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="bg-brand-black text-white">
+      <div className="container mx-auto px-4 py-16 md:py-20">
+        <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <Logo />
-            <p className="mt-5 max-w-xs text-sm text-muted-foreground leading-relaxed">
-              Gas Safe registered plumbing, heating and gas engineers serving homes across London.
+            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="HH Plumbing and Gas — home">
+              <span className="inline-flex h-10 w-10 items-center justify-center bg-brand-yellow text-black font-black text-sm">
+                HH
+              </span>
+              <span className="flex flex-col leading-none">
+                <span className="text-[15px] font-bold tracking-tight text-white">HH Plumbing &amp; Gas</span>
+                <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.22em] text-white/50">
+                  London
+                </span>
+              </span>
+            </Link>
+            <p className="mt-6 max-w-xs text-sm text-white/55 leading-relaxed">
+              Gas Safe registered plumbing, heating, and air conditioning specialists. Serving all
+              London postcodes.
             </p>
-            <p className="mt-5 text-xs text-muted-foreground">Gas Safe register no. 630695</p>
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              Services
-            </p>
-            <ul className="mt-5 space-y-2.5 text-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/40">Services</p>
+            <ul className="mt-6 space-y-3 text-sm">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-foreground/70 hover:text-foreground transition-colors">
+                  <Link href={link.href} className="text-white/65 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -43,71 +48,33 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              Company
-            </p>
-            <ul className="mt-5 space-y-2.5 text-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/40">Contact</p>
+            <ul className="mt-6 space-y-3 text-sm text-white/65">
               <li>
-                <Link href="/about-us" className="text-foreground/70 hover:text-foreground transition-colors">
-                  About us
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact-us" className="text-foreground/70 hover:text-foreground transition-colors">
-                  Contact us
-                </Link>
-              </li>
-              <li>
-                <Link href="/get-a-quote" className="text-foreground/70 hover:text-foreground transition-colors">
-                  Get a free quote
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              Contact
-            </p>
-            <ul className="mt-5 space-y-2.5 text-sm text-foreground/70">
-              <li>
-                <a href="tel:02081021108" className="hover:text-foreground transition-colors">
+                <a href="tel:02081021108" className="hover:text-white transition-colors">
                   0208 102 1108
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:office@hhplumbingandgas.com"
-                  className="hover:text-foreground transition-colors"
-                >
+                <a href="mailto:office@hhplumbingandgas.com" className="hover:text-white transition-colors">
                   office@hhplumbingandgas.com
                 </a>
               </li>
-              <li className="pt-2 leading-relaxed">
-                5th Floor 167-169 Great Portland Street
-                <br />
-                London, W1W 5PF
-              </li>
+              <li>Mon–Sat, 7am–7pm</li>
+              <li className="pt-3 text-white/40">Gas Safe Reg. No. 630695</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-t border-border pt-8">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} HH Plumbing &amp; Gas. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-3">
-              <div className="relative h-10 w-10">
-                <Image src="/images/gas-safe-logo.png" alt="Gas Safe Register" fill className="object-contain" />
-              </div>
-              <p className="text-xs text-muted-foreground leading-snug">
-                Gas Safe Register
-                <br />
-                No. 630695
-              </p>
-            </div>
-            <ThemeToggle />
+        <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/45">
+          <p>© {new Date().getFullYear()} HH Plumbing &amp; Gas Ltd. All rights reserved.</p>
+          <div className="flex items-center gap-8">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms
+            </Link>
           </div>
         </div>
       </div>
