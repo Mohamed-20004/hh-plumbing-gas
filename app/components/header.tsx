@@ -13,7 +13,7 @@ const navLinks = [
   { href: "/contact-us", label: "Contact" },
 ]
 
-const featuredServices = [
+const megaServices = [
   {
     href: "/services/bathroom-installation",
     label: "Bathroom Renovations",
@@ -25,6 +25,11 @@ const featuredServices = [
     image: "https://images.unsplash.com/photo-1751486289950-5c4898a4c773?w=500&h=400&fit=crop&auto=format",
   },
   {
+    href: "/services/cylinder-installation",
+    label: "Cylinder Installations",
+    image: "https://images.unsplash.com/photo-1575299737366-39c143459bc5?w=500&h=400&fit=crop&auto=format",
+  },
+  {
     href: "/services/air-conditioning",
     label: "AC Installations",
     image: "https://images.unsplash.com/photo-1718203862467-c33159fdc504?w=500&h=400&fit=crop&auto=format",
@@ -34,18 +39,24 @@ const featuredServices = [
     label: "Heat Pump Installations",
     image: "https://images.unsplash.com/photo-1776860150305-108ed577d7d4?w=500&h=400&fit=crop&auto=format",
   },
+  {
+    href: "/services/underfloor-heating-installation",
+    label: "Underfloor Heating",
+    image: "https://images.unsplash.com/photo-1647105604066-86ea4247e217?w=500&h=400&fit=crop&auto=format",
+  },
+  {
+    href: "/services/drainage",
+    label: "Drainage",
+    image: "https://images.unsplash.com/photo-1620653713380-7a34b773fef8?w=500&h=400&fit=crop&auto=format",
+  },
+  {
+    href: "/services/emergency-repairs",
+    label: "Emergency Repairs",
+    image: "https://images.unsplash.com/photo-1751486289950-5c4898a4c773?w=500&h=400&fit=crop&crop=entropy&auto=format",
+  },
 ]
 
-const serviceLinks = [
-  { href: "/services/bathroom-installation", label: "Bathroom Renovations" },
-  { href: "/services/boiler-installations", label: "Boiler Installations" },
-  { href: "/services/cylinder-installation", label: "Cylinder Installations" },
-  { href: "/services/air-conditioning", label: "AC Installations" },
-  { href: "/services/heat-pump-installations", label: "Heat Pump Installations" },
-  { href: "/services/underfloor-heating-installation", label: "Underfloor Heating" },
-  { href: "/services/drainage", label: "Drainage" },
-  { href: "/services/emergency-repairs", label: "Emergency Repairs" },
-]
+const serviceLinks = megaServices.map(({ href, label }) => ({ href, label }))
 
 export function Header({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false)
@@ -243,7 +254,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                 Our services
               </p>
               <div className="mt-6 grid grid-cols-2 xl:grid-cols-4 gap-4">
-                {featuredServices.map((s) => (
+                {megaServices.map((s) => (
                   <Link
                     key={s.href}
                     href={s.href}
@@ -266,23 +277,6 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                   </Link>
                 ))}
               </div>
-
-              <p className="mt-10 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground border-b border-border pb-4">
-                All services
-              </p>
-              <ul className="mt-5 grid grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-3">
-                {serviceLinks.map((s) => (
-                  <li key={s.href}>
-                    <Link
-                      href={s.href}
-                      className="group inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-foreground transition-colors"
-                    >
-                      {s.label}
-                      <ArrowRight className="h-3.5 w-3.5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* Promo tile */}
