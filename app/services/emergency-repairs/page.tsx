@@ -161,7 +161,7 @@ export default function EmergencyRepairsPage() {
               </div>
               <a
                 href="tel:0208 102 1108"
-                className="md:ml-auto inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                className="md:ml-auto inline-flex items-center justify-center gap-2 rounded-none bg-black text-white px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <PhoneCall className="h-4 w-4" />
                 Call us now
@@ -184,14 +184,14 @@ export default function EmergencyRepairsPage() {
             <Stagger className="grid md:grid-cols-2 gap-5">
               <StaggerItem className="h-full">
                 <div className="h-full rounded-lg border border-border bg-card p-8 hover-lift">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                     <Droplet className="h-5 w-5" />
                   </div>
                   <h3 className="mt-5 text-lg font-semibold">Plumbing emergencies</h3>
                   <ul className="mt-5 grid sm:grid-cols-2 gap-2">
                     {plumbingIssues.map((item) => (
                       <li key={item} className="flex items-start gap-2">
-                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                           <Check className="h-3 w-3" />
                         </span>
                         <span className="text-sm text-muted-foreground">{item}</span>
@@ -203,14 +203,14 @@ export default function EmergencyRepairsPage() {
 
               <StaggerItem className="h-full">
                 <div className="h-full rounded-lg border border-border bg-card p-8 hover-lift">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                     <Flame className="h-5 w-5" />
                   </div>
                   <h3 className="mt-5 text-lg font-semibold">Heating & gas emergencies</h3>
                   <ul className="mt-5 grid sm:grid-cols-2 gap-2">
                     {heatingIssues.map((item) => (
                       <li key={item} className="flex items-start gap-2">
-                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                           <Check className="h-3 w-3" />
                         </span>
                         <span className="text-sm text-muted-foreground">{item}</span>
@@ -237,10 +237,10 @@ export default function EmergencyRepairsPage() {
                 return (
                   <StaggerItem key={p.step} className="h-full">
                     <div className="relative h-full rounded-lg border border-border bg-card p-6 hover-lift">
-                      <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
+                      <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-none bg-brand-yellow text-black text-xs font-bold px-3 py-1">
                         Step {p.step}
                       </span>
-                      <div className="mt-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
+                      <div className="mt-3 inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                         <Icon className="h-5 w-5" />
                       </div>
                       <h3 className="mt-4 text-lg font-semibold tracking-tight">{p.title}</h3>
@@ -268,7 +268,7 @@ export default function EmergencyRepairsPage() {
                   <ul className="mt-5 space-y-3">
                     {preventPlumbing.map((tip) => (
                       <li key={tip} className="flex items-start gap-3">
-                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                           <Check className="h-3 w-3" />
                         </span>
                         <span className="text-sm text-muted-foreground">{tip}</span>
@@ -283,7 +283,7 @@ export default function EmergencyRepairsPage() {
                   <ul className="mt-5 space-y-3">
                     {preventHeating.map((tip) => (
                       <li key={tip} className="flex items-start gap-3">
-                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                           <Check className="h-3 w-3" />
                         </span>
                         <span className="text-sm text-muted-foreground">{tip}</span>

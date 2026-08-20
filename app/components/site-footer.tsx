@@ -11,7 +11,7 @@ export function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-5">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-yellow text-black font-black">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-none bg-brand-yellow text-black font-black">
                 HH
               </span>
               <span className="font-bold text-lg tracking-tight">Plumbing &amp; Gas</span>
@@ -25,7 +25,7 @@ export function SiteFooter() {
                 href="https://www.instagram.com/hhplumbingandgas"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 hover:text-brand-yellow transition-colors"
+                className="h-10 w-10 inline-flex items-center justify-center rounded-none border border-white/10 bg-white/[0.04] text-white/80 hover:text-brand-yellow transition-colors"
                 aria-label="Follow us on Instagram"
               >
                 <Instagram className="h-4 w-4" />
@@ -34,7 +34,7 @@ export function SiteFooter() {
                 href="https://www.tiktok.com/@hussainhachem1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 hover:text-brand-yellow transition-colors"
+                className="h-10 w-10 inline-flex items-center justify-center rounded-none border border-white/10 bg-white/[0.04] text-white/80 hover:text-brand-yellow transition-colors"
                 aria-label="Follow us on TikTok"
               >
                 <TikTokIcon className="h-4 w-4" />
@@ -135,7 +135,7 @@ export function SiteFooter() {
           <p>© {year} HH Plumbing and Gas. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+              <span className="h-1.5 w-1.5 rounded-none bg-brand-yellow" />
               Gas Safe Registered · 630695
             </span>
             <span className="hidden sm:inline">Manufacturer-approved installer</span>

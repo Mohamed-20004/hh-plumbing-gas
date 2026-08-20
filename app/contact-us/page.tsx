@@ -47,7 +47,7 @@ export default function ContactUsPage() {
             />
             <div className="relative grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
               <Reveal>
-                <span className="inline-flex items-center gap-2 rounded-full border border-black/20 bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">
+                <span className="inline-flex items-center gap-2 rounded-none border border-black/20 bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">
                   <Phone className="h-3 w-3" />
                   Call us directly
                 </span>
@@ -61,14 +61,14 @@ export default function ContactUsPage() {
                 <div className="mt-7 flex flex-wrap items-center gap-3">
                   <a
                     href="tel:0208 102 1108"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                    className="inline-flex items-center justify-center gap-2 rounded-none bg-black text-white px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
                   >
                     <Phone className="h-4 w-4" />
                     Call now
                   </a>
                   <Link
                     href="/get-a-quote"
-                    className="group inline-flex items-center justify-center gap-2 rounded-full border border-black/20 bg-transparent px-6 py-3 text-sm font-semibold hover:bg-black/5 transition-colors"
+                    className="group inline-flex items-center justify-center gap-2 rounded-none border border-black/20 bg-transparent px-6 py-3 text-sm font-semibold hover:bg-black/5 transition-colors"
                   >
                     Get a free quote
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -108,7 +108,7 @@ export default function ContactUsPage() {
           <Stagger className="grid md:grid-cols-3 gap-5">
             <StaggerItem className="h-full">
               <div className="h-full rounded-lg border border-border bg-card p-6 hover-lift">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                   <Mail className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">Email us</h3>
@@ -128,7 +128,7 @@ export default function ContactUsPage() {
 
             <StaggerItem className="h-full">
               <div className="h-full rounded-lg border border-border bg-card p-6 hover-lift">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">Our base</h3>
@@ -145,7 +145,7 @@ export default function ContactUsPage() {
 
             <StaggerItem className="h-full">
               <div className="h-full rounded-lg border border-border bg-card p-6 hover-lift">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                   <Instagram className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">Follow along</h3>
@@ -157,7 +157,7 @@ export default function ContactUsPage() {
                     href="https://www.instagram.com/hhplumbingandgas"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-10 w-10 inline-flex items-center justify-center rounded-full border border-border hover:border-brand-yellow/60 hover:text-brand-yellow transition-colors"
+                    className="h-10 w-10 inline-flex items-center justify-center rounded-none border border-border hover:border-brand-yellow/60 hover:text-brand-yellow transition-colors"
                     aria-label="Instagram"
                   >
                     <Instagram className="h-4 w-4" />
@@ -166,7 +166,7 @@ export default function ContactUsPage() {
                     href="https://www.tiktok.com/@hussainhachem1"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-10 w-10 inline-flex items-center justify-center rounded-full border border-border hover:border-brand-yellow/60 hover:text-brand-yellow transition-colors"
+                    className="h-10 w-10 inline-flex items-center justify-center rounded-none border border-border hover:border-brand-yellow/60 hover:text-brand-yellow transition-colors"
                     aria-label="TikTok"
                   >
                     <TikTokIcon className="h-4 w-4" />

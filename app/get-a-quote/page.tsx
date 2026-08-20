@@ -669,7 +669,7 @@ export default function GetAQuote() {
             <FadeIn delay={0.05} y={12}>
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
+                className="inline-flex items-center gap-2 rounded-none border border-border bg-background/80 backdrop-blur px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
                 Back to Home
@@ -719,12 +719,12 @@ export default function GetAQuote() {
                           <motion.div
                             aria-hidden
                             layoutId="step-indicator"
-                            className="absolute -inset-1.5 rounded-full bg-brand-yellow/20"
+                            className="absolute -inset-1.5 rounded-none bg-brand-yellow/20"
                             transition={{ type: "spring", stiffness: 380, damping: 32 }}
                           />
                         )}
                         <div
-                          className={`relative w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                          className={`relative w-8 h-8 rounded-none flex items-center justify-center text-xs font-bold transition-all duration-300 ${
                             active
                               ? "bg-brand-yellow text-black "
                               : "bg-background border border-border text-muted-foreground"
@@ -834,7 +834,7 @@ export default function GetAQuote() {
                     >
                       <button
                         type="button"
-                        className="absolute top-3 right-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-border bg-background text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+                        className="absolute top-3 right-3 inline-flex h-7 w-7 items-center justify-center rounded-none border border-border bg-background text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
                         onClick={(e) => {
                           e.stopPropagation()
                           toggleTooltip(typeOption.id)
@@ -853,7 +853,7 @@ export default function GetAQuote() {
                       </p>
 
                       {showTooltip === typeOption.id && (
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-60 rounded-xl border border-border bg-popover p-4 text-left shadow-lift z-20">
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-60 rounded-none border border-border bg-popover p-4 text-left shadow-lift z-20">
                           <p className="text-xs text-muted-foreground leading-relaxed">{typeOption.description}</p>
                           <p className="mt-3 text-xs font-semibold">
                             Starting from{" "}
@@ -939,7 +939,7 @@ export default function GetAQuote() {
 
                         <span
                           aria-hidden
-                          className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                          className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-none border transition-colors ${
                             isSelected
                               ? "border-foreground bg-foreground text-background"
                               : "border-border bg-background"
@@ -996,7 +996,7 @@ export default function GetAQuote() {
                       >
                         <span
                           aria-hidden
-                          className={`mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                          className={`mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-none border transition-colors ${
                             isSelected
                               ? "border-foreground bg-foreground text-background"
                               : "border-border bg-background"

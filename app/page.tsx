@@ -165,7 +165,7 @@ export default function Home() {
               </p>
               <span
                 aria-hidden
-                className="mt-6 inline-block h-1 w-16 rounded-full bg-brand-yellow"
+                className="mt-6 inline-block h-1 w-16 rounded-none bg-brand-yellow"
               />
               <p className="lead mt-6 mx-auto max-w-3xl text-pretty">
                 HH Plumbing &amp; Gas is a London-based heating and plumbing company offering a complete
@@ -183,7 +183,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <Reveal>
               <h2 className="display-md">Our services</h2>
-              <span aria-hidden className="mt-5 block h-1 w-16 rounded-full bg-brand-yellow" />
+              <span aria-hidden className="mt-5 block h-1 w-16 rounded-none bg-brand-yellow" />
             </Reveal>
 
             <Stagger className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -243,7 +243,7 @@ export default function Home() {
                 <h2 className="display-md text-white">
                   High quality &amp; reliable plumbing, heating &amp; gas work
                 </h2>
-                <span aria-hidden className="mt-6 block h-1 w-16 rounded-full bg-brand-yellow" />
+                <span aria-hidden className="mt-6 block h-1 w-16 rounded-none bg-brand-yellow" />
                 <p className="mt-6 text-white/70 leading-relaxed">
                   Our approach is meticulous and thorough — every installation is carried out by Gas
                   Safe registered engineers using manufacturer-approved parts, with pressure-tests,
@@ -309,7 +309,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <Reveal className="text-center mb-12">
               <h2 className="display-md">HH Plumbing &amp; Gas reviews</h2>
-              <span aria-hidden className="mt-5 inline-block h-1 w-16 rounded-full bg-brand-yellow" />
+              <span aria-hidden className="mt-5 inline-block h-1 w-16 rounded-none bg-brand-yellow" />
               <div className="mt-5 flex items-center justify-center gap-3">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
@@ -333,7 +333,7 @@ export default function Home() {
               <h2 className="display-md text-black">
                 4 easy steps to get your project started&hellip;
               </h2>
-              <span aria-hidden className="mt-5 inline-block h-1 w-16 rounded-full bg-black" />
+              <span aria-hidden className="mt-5 inline-block h-1 w-16 rounded-none bg-black" />
             </Reveal>
 
             <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -355,7 +355,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <Reveal>
               <h2 className="display-md">Some of our recent projects</h2>
-              <span aria-hidden className="mt-5 block h-1 w-16 rounded-full bg-brand-yellow" />
+              <span aria-hidden className="mt-5 block h-1 w-16 rounded-none bg-brand-yellow" />
             </Reveal>
 
             <Stagger className="mt-12 grid md:grid-cols-3 gap-5">
@@ -369,7 +369,7 @@ export default function Home() {
                         fill
                         className="object-cover"
                       />
-                      <span className="absolute left-4 top-4 rounded-full bg-brand-yellow px-3 py-1 text-xs font-semibold text-black">
+                      <span className="absolute left-4 top-4 rounded-none bg-brand-yellow px-3 py-1 text-xs font-semibold text-black">
                         {project.tag}
                       </span>
                     </div>
@@ -424,7 +424,7 @@ export default function Home() {
                 Answers before <br />
                 you book.
               </h2>
-              <span aria-hidden className="mt-5 block h-1 w-16 rounded-full bg-brand-yellow" />
+              <span aria-hidden className="mt-5 block h-1 w-16 rounded-none bg-brand-yellow" />
               <p className="lead mt-6 max-w-md">
                 Can't find what you're looking for? Call us on{" "}
                 <a href="tel:0208 102 1108" className="font-semibold underline underline-offset-4 decoration-brand-yellow">
@@ -467,7 +467,7 @@ export default function Home() {
                       <span className="font-semibold text-base">{item.q}</span>
                       <span
                         aria-hidden
-                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 group-open:bg-brand-yellow group-open:border-brand-yellow group-open:text-black group-open:rotate-45"
+                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-none border border-border text-muted-foreground transition-all duration-300 group-open:bg-brand-yellow group-open:border-brand-yellow group-open:text-black group-open:rotate-45"
                       >
                         <span className="text-lg leading-none">+</span>
                       </span>

@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
-import { ArrowLeft, ArrowRight, Phone, ShieldCheck, Star } from "lucide-react"
+import { ArrowLeft, ArrowRight, Clock, Phone, ShieldCheck } from "lucide-react"
 import { FadeIn, HeroText, ScrollHint, EASE } from "./motion"
 
 type Slide = { src: string; alt: string }
@@ -74,34 +74,25 @@ export function HeroCarousel() {
       {/* Content */}
       <div className="relative container mx-auto px-4 min-h-[92svh] flex flex-col items-center justify-center text-center text-white pt-24 pb-28">
         <FadeIn delay={0.05} y={12}>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-sm font-bold uppercase tracking-[0.28em] text-white/90">
-              Highly recommended
-            </p>
-            <div className="flex items-center gap-2">
-              <span className="text-4xl md:text-5xl font-extrabold tracking-tight">5.0</span>
-              <span className="text-3xl md:text-4xl font-extrabold text-brand-yellow">★</span>
-            </div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
-              from local customers
-            </p>
-          </div>
+          <span className="eyebrow border-white/20 bg-white/5 text-white/80">
+            Trusted London heating engineers
+          </span>
         </FadeIn>
 
         <HeroText
           text="Heating your home, done properly."
-          className="display-xl mt-10 max-w-4xl text-balance text-white"
-          delay={0.25}
+          className="display-xl mt-6 max-w-4xl text-balance text-white"
+          delay={0.15}
         />
 
-        <FadeIn delay={0.6}>
+        <FadeIn delay={0.55}>
           <p className="lead mt-6 max-w-2xl text-white/80 text-pretty">
             Gas Safe engineers designing and installing boilers, heat pumps, cylinders and complete
             bathrooms across London — fixed prices, clean finishes, manufacturer-approved warranties.
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.75}>
+        <FadeIn delay={0.7}>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link href="/get-a-quote" className="btn-primary group">
               Get a free quote
@@ -117,7 +108,7 @@ export function HeroCarousel() {
           </div>
         </FadeIn>
 
-        <FadeIn delay={0.9}>
+        <FadeIn delay={0.85}>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
             <span className="inline-flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-brand-yellow" />
@@ -125,7 +116,7 @@ export function HeroCarousel() {
             </span>
             <span className="hidden sm:inline h-4 w-px bg-white/20" aria-hidden />
             <span className="inline-flex items-center gap-2">
-              <Star className="h-4 w-4 fill-brand-yellow text-brand-yellow" />
+              <Clock className="h-4 w-4 text-brand-yellow" />
               24/7 emergency response
             </span>
           </div>
@@ -138,7 +129,7 @@ export function HeroCarousel() {
           <button
             onClick={() => go(-1)}
             aria-label="Previous slide"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white backdrop-blur transition-colors hover:bg-white/15"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-none border border-white/25 bg-white/5 text-white backdrop-blur transition-colors hover:bg-white/15"
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
@@ -155,7 +146,7 @@ export function HeroCarousel() {
           <button
             onClick={() => go(1)}
             aria-label="Next slide"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white backdrop-blur transition-colors hover:bg-white/15"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-none border border-white/25 bg-white/5 text-white backdrop-blur transition-colors hover:bg-white/15"
           >
             <ArrowRight className="h-4 w-4" />
           </button>

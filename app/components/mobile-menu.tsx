@@ -59,7 +59,7 @@ export function MobileMenu() {
     <div className="md:hidden">
       <button
         onClick={() => setIsOpen(true)}
-        className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-border hover:border-foreground/30 text-foreground transition-colors"
+        className="inline-flex items-center justify-center h-10 w-10 rounded-none border border-border hover:border-foreground/30 text-foreground transition-colors"
         aria-label="Open menu"
       >
         <Menu className="h-5 w-5" />
@@ -78,7 +78,7 @@ export function MobileMenu() {
               <span className="font-semibold tracking-tight">Menu</span>
               <button
                 onClick={closeMenu}
-                className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-border hover:border-foreground/30 transition-colors"
+                className="inline-flex items-center justify-center h-10 w-10 rounded-none border border-border hover:border-foreground/30 transition-colors"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />

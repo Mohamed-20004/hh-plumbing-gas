@@ -195,7 +195,7 @@ export default function BathroomInstallationPage() {
                     <ul className="mt-6 grid sm:grid-cols-2 gap-3">
                       {pkg.points.map((p) => (
                         <li key={p} className="flex items-start gap-2">
-                          <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                          <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                             <Check className="h-3 w-3" />
                           </span>
                           <span className="text-sm text-muted-foreground">{p}</span>
@@ -226,7 +226,7 @@ export default function BathroomInstallationPage() {
                 return (
                   <StaggerItem key={b.title} className="h-full">
                     <div className="group h-full rounded-lg border border-border bg-card p-6 transition-all duration-300 hover-lift">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                         <Icon className="h-5 w-5" />
                       </div>
                       <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>
@@ -251,7 +251,7 @@ export default function BathroomInstallationPage() {
               {process.map((p) => (
                 <StaggerItem key={p.step} className="h-full">
                   <div className="relative h-full rounded-lg border border-border bg-card p-6 hover-lift">
-                    <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
+                    <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-none bg-brand-yellow text-black text-xs font-bold px-3 py-1">
                       Step {p.step}
                     </span>
                     <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.title}</h3>

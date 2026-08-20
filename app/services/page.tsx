@@ -72,7 +72,7 @@ export default function ServicesPage() {
         <section className="container mx-auto px-4 pt-12 md:pt-16 pb-4">
           <FadeIn delay={0.05} y={12}>
             <h1 className="display-xl">Services</h1>
-            <span aria-hidden className="mt-6 block h-1 w-16 rounded-full bg-brand-yellow" />
+            <span aria-hidden className="mt-6 block h-1 w-16 rounded-none bg-brand-yellow" />
           </FadeIn>
 
           <div className="mt-10 grid lg:grid-cols-[1.6fr_1fr] gap-10 lg:gap-16 items-start">

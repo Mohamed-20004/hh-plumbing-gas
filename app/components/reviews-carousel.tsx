@@ -77,7 +77,7 @@ export function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
         <button
           onClick={() => go(-1)}
           aria-label="Previous review"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
         </button>
@@ -90,7 +90,7 @@ export function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
                 setIndex(i)
               }}
               aria-label={`Go to review ${i + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-none transition-all duration-300 ${
                 i === index ? "w-6 bg-brand-yellow" : "w-2 bg-border hover:bg-foreground/30"
               }`}
             />
@@ -99,7 +99,7 @@ export function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
         <button
           onClick={() => go(1)}
           aria-label="Next review"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
         >
           <ArrowRight className="h-4 w-4" />
         </button>

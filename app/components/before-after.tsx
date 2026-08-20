@@ -98,7 +98,7 @@ export function BeforeAfter({
         aria-valuemin={0}
         aria-valuemax={100}
         onKeyDown={onKeyDown}
-        className="absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 inline-flex h-11 w-11 cursor-ew-resize items-center justify-center rounded-full bg-brand-yellow text-black shadow-lift transition-transform group-hover:scale-105 focus-visible:scale-105"
+        className="absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 inline-flex h-11 w-11 cursor-ew-resize items-center justify-center rounded-none bg-brand-yellow text-black shadow-lift transition-transform group-hover:scale-105 focus-visible:scale-105"
         style={{ left: `${pos}%` }}
       >
         <ChevronsLeftRight className="h-5 w-5" />
