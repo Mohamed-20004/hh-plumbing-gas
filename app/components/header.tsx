@@ -60,6 +60,29 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
         transparent ? "bg-transparent" : "bg-background border-b border-border",
       )}
     >
+      {/* Emergency banner */}
+      <div className="bg-[#171614] text-white">
+        <div className="container mx-auto px-4 flex h-10 items-center justify-between gap-4 text-sm">
+          <p className="flex items-center gap-2.5 min-w-0">
+            <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-red-500" />
+            <span className="truncate">
+              <span className="font-semibold">Emergency call-out available 24/7</span>
+              <span className="hidden sm:inline text-white/60">
+                {" "}
+                — burst pipes, gas leaks, boiler breakdowns
+              </span>
+            </span>
+          </p>
+          <a
+            href="tel:02081021108"
+            className="inline-flex shrink-0 items-center gap-2 font-bold text-brand-yellow hover:text-brand-yellow-soft transition-colors"
+          >
+            <Phone className="h-3.5 w-3.5" />
+            0208 102 1108
+          </a>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 flex h-[72px] items-center justify-between">
         <Link href="/" className="inline-flex items-center gap-2.5" aria-label="HH Plumbing and Gas — home">
           <span className="inline-flex h-10 w-10 items-center justify-center bg-brand-yellow text-black font-black text-sm">
@@ -137,7 +160,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden fixed inset-x-0 top-[72px] bottom-0 z-40 overflow-y-auto border-t border-border bg-background">
+        <div className="md:hidden fixed inset-x-0 top-[112px] bottom-0 z-40 overflow-y-auto border-t border-border bg-background">
           <nav className="container mx-auto px-4 py-8 flex flex-col">
             {navLinks.map((link) => (
               <Link
