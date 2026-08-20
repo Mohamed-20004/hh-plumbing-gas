@@ -91,7 +91,7 @@ export default function Home() {
         {/* =================== HERO =================== */}
         <section className="relative min-h-[100svh] w-full overflow-hidden bg-brand-black">
           <Image
-            src="/images/modern-bathroom.jpeg"
+            src="https://images.unsplash.com/photo-1695002817411-203c7f19dfa3?w=1800&h=1200&fit=crop&auto=format"
             alt=""
             fill
             priority
