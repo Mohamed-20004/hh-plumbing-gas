@@ -163,7 +163,7 @@ export default function AboutUsPage() {
                 />
                 <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6 rounded-lg border border-white/15 bg-black/60 backdrop-blur-md p-5 text-white">
                   <div className="flex items-center gap-4">
-                    <div className="relative h-12 w-12 shrink-0 rounded-xl bg-white p-1.5">
+                    <div className="relative h-12 w-12 shrink-0 rounded-none bg-white p-1.5">
                       <Image
                         src="/images/gas-safe-logo.png"
                         alt="Gas Safe Registered"
@@ -202,7 +202,7 @@ export default function AboutUsPage() {
                 return (
                   <StaggerItem key={i} className="h-full">
                     <div className="group h-full rounded-lg border border-border bg-card p-6 transition-all duration-300 hover-lift">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                         <Icon className="h-5 w-5" />
                       </div>
                       <h3 className="mt-5 text-lg font-semibold tracking-tight">{item.title}</h3>

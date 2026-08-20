@@ -90,7 +90,7 @@ export function Navigation() {
               <span
                 aria-hidden
                 className={cn(
-                  "pointer-events-none absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full bg-brand-yellow transition-all duration-300",
+                  "pointer-events-none absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-none bg-brand-yellow transition-all duration-300",
                   active ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 origin-center",
                 )}
               />
@@ -120,7 +120,7 @@ export function Navigation() {
             <span
               aria-hidden
               className={cn(
-                "pointer-events-none absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full bg-brand-yellow transition-all duration-300",
+                "pointer-events-none absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-none bg-brand-yellow transition-all duration-300",
                 isServicesActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 origin-center",
               )}
             />
@@ -157,7 +157,7 @@ export function Navigation() {
                         <Link
                           href={service.href}
                           className={cn(
-                            "group flex items-center justify-between gap-3 rounded-xl px-3 py-3 transition-colors",
+                            "group flex items-center justify-between gap-3 rounded-none px-3 py-3 transition-colors",
                             active
                               ? "bg-brand-yellow/10"
                               : "hover:bg-foreground/[0.04]",

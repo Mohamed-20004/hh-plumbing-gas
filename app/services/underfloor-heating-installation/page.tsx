@@ -181,7 +181,7 @@ export default function UnderfloorHeatingPage() {
                         {s.points.map((p) => (
                           <li
                             key={p}
-                            className="rounded-full border border-border bg-foreground/[0.03] px-2.5 py-1 text-[11px] font-medium text-muted-foreground"
+                            className="rounded-none border border-border bg-foreground/[0.03] px-2.5 py-1 text-[11px] font-medium text-muted-foreground"
                           >
                             {p}
                           </li>
@@ -204,7 +204,7 @@ export default function UnderfloorHeatingPage() {
                     {brands.map((b) => (
                       <div
                         key={b.alt}
-                        className="flex items-center justify-center h-20 rounded-xl border border-border bg-background"
+                        className="flex items-center justify-center h-20 rounded-none border border-border bg-background"
                       >
                         <Image
                           src={b.src}
@@ -229,7 +229,7 @@ export default function UnderfloorHeatingPage() {
                         "Commissioning certificate",
                       ].map((item) => (
                         <li key={item} className="flex items-start gap-3">
-                          <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/80">
+                          <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80">
                             <Check className="h-3 w-3" />
                           </span>
                           <span className="text-sm text-muted-foreground">{item}</span>
@@ -260,7 +260,7 @@ export default function UnderfloorHeatingPage() {
                 return (
                   <StaggerItem key={b.title} className="h-full">
                     <div className="group h-full rounded-lg border border-border bg-card p-6 transition-all duration-300 hover-lift">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-none bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
                         <Icon className="h-5 w-5" />
                       </div>
                       <h3 className="mt-5 text-lg font-semibold tracking-tight">{b.title}</h3>
@@ -285,7 +285,7 @@ export default function UnderfloorHeatingPage() {
               {process.map((p) => (
                 <StaggerItem key={p.step} className="h-full">
                   <div className="relative h-full rounded-lg border border-border bg-card p-6 hover-lift">
-                    <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-full bg-brand-yellow text-black text-xs font-bold px-3 py-1">
+                    <span className="absolute -top-3 left-6 inline-flex items-center justify-center rounded-none bg-brand-yellow text-black text-xs font-bold px-3 py-1">
                       Step {p.step}
                     </span>
                     <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.title}</h3>
