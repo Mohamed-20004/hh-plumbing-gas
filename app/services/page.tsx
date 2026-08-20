@@ -15,6 +15,7 @@ import {
 import { Header } from "../components/header"
 import { SiteFooter } from "../components/site-footer"
 import { ContactCTA } from "../components/contact-cta"
+import { Stagger, StaggerItem, FadeIn } from "../components/motion"
 
 const services = [
   {
@@ -93,98 +94,113 @@ export default function ServicesPage() {
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-radial-yellow" />
           <div className="relative container mx-auto px-4 pt-16 md:pt-24 pb-12">
             <div className="max-w-3xl">
-              <span className="eyebrow">Plumbing, heating &amp; gas</span>
-              <h1 className="display-xl mt-6">
-                Every service, <span className="text-foreground">one trusted team</span>.
-              </h1>
-              <p className="lead mt-6 max-w-2xl">
-                From a single boiler swap to a full bathroom refit — Gas Safe registered engineers handling every
-                step with manufacturer-grade care.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="/get-a-quote" className="btn-primary">
-                  Get a free quote
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <a
-                  href="tel:0208 102 1108"
-                  className="btn-secondary"
-                >
-                  Call 0208 102 1108
-                </a>
-              </div>
+              <FadeIn delay={0.05} y={12}>
+                <span className="eyebrow">Plumbing, heating &amp; gas</span>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <h1 className="display-xl mt-6">
+                  Every service, <span className="text-foreground">one trusted team</span>.
+                </h1>
+              </FadeIn>
+              <FadeIn delay={0.55}>
+                <p className="lead mt-6 max-w-2xl">
+                  From a single boiler swap to a full bathroom refit — Gas Safe registered engineers handling every
+                  step with manufacturer-grade care.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.7}>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <Link href="/get-a-quote" className="btn-primary group">
+                    Get a free quote
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                  <a
+                    href="tel:0208 102 1108"
+                    className="btn-secondary"
+                  >
+                    Call 0208 102 1108
+                  </a>
+                </div>
+              </FadeIn>
             </div>
           </div>
         </section>
 
         {/* ============ SERVICES GRID ============ */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service) => {
               const Icon = service.icon
               return (
-                <Link
-                  key={service.title}
-                  href={service.link}
-                  className="group relative flex flex-col rounded-lg border border-border bg-card p-6 transition-all duration-300"
-                >
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold tracking-tight">{service.title}</h3>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                    {service.tagline}
-                  </p>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                <StaggerItem key={service.title} className="h-full">
+                  <Link
+                    href={service.link}
+                    className="group relative flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-all duration-300 hover-lift"
+                  >
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/[0.06] text-foreground/80 transition-colors group-hover:bg-foreground group-hover:text-background">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 text-lg font-semibold tracking-tight">{service.title}</h3>
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                      {service.tagline}
+                    </p>
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{service.description}</p>
 
-                  <ul className="mt-5 flex flex-wrap gap-1.5">
-                    {service.highlights.map((h) => (
-                      <li
-                        key={h}
-                        className="rounded-full border border-border bg-foreground/[0.03] px-2.5 py-1 text-[11px] font-medium text-muted-foreground"
-                      >
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="mt-5 flex flex-wrap gap-1.5">
+                      {service.highlights.map((h) => (
+                        <li
+                          key={h}
+                          className="rounded-full border border-border bg-foreground/[0.03] px-2.5 py-1 text-[11px] font-medium text-muted-foreground"
+                        >
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
 
-                  <div className="mt-6 pt-6 border-t border-border flex items-center justify-between">
-                    <span className="text-sm font-semibold">Learn more</span>
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
-                      <ArrowUpRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                </Link>
+                    <div className="mt-6 pt-6 border-t border-border flex items-center justify-between">
+                      <span className="text-sm font-semibold">Learn more</span>
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
+                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
+                    </div>
+                  </Link>
+                </StaggerItem>
               )
             })}
-          </div>
+          </Stagger>
         </section>
 
         {/* ============ TRUST BAND ============ */}
         <section className="container mx-auto px-4 pb-20 md:pb-28">
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="rounded-lg border border-border bg-card p-6">
-              <ShieldCheck className="h-6 w-6 text-brand-yellow" />
-              <p className="mt-4 font-semibold">Gas Safe Registered</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Register 630695 — every gas job safe, legal and certified.
-              </p>
-            </div>
-            <div className="rounded-lg border border-border bg-card p-6">
-              <Clock className="h-6 w-6 text-brand-yellow" />
-              <p className="mt-4 font-semibold">24/7 Emergency Cover</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Leaks, breakdowns or no heat — we answer out of hours.
-              </p>
-            </div>
-            <div className="rounded-lg border border-border bg-card p-6">
-              <ArrowUpRight className="h-6 w-6 text-brand-yellow" />
-              <p className="mt-4 font-semibold">Manufacturer Approved</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Approved installers for Vaillant, Worcester Bosch and Baxi.
-              </p>
-            </div>
-          </div>
+          <Stagger className="grid gap-4 md:grid-cols-3">
+            <StaggerItem className="h-full">
+              <div className="h-full rounded-lg border border-border bg-card p-6 hover-lift">
+                <ShieldCheck className="h-6 w-6 text-brand-yellow" />
+                <p className="mt-4 font-semibold">Gas Safe Registered</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Register 630695 — every gas job safe, legal and certified.
+                </p>
+              </div>
+            </StaggerItem>
+            <StaggerItem className="h-full">
+              <div className="h-full rounded-lg border border-border bg-card p-6 hover-lift">
+                <Clock className="h-6 w-6 text-brand-yellow" />
+                <p className="mt-4 font-semibold">24/7 Emergency Cover</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Leaks, breakdowns or no heat — we answer out of hours.
+                </p>
+              </div>
+            </StaggerItem>
+            <StaggerItem className="h-full">
+              <div className="h-full rounded-lg border border-border bg-card p-6 hover-lift">
+                <ArrowUpRight className="h-6 w-6 text-brand-yellow" />
+                <p className="mt-4 font-semibold">Manufacturer Approved</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Approved installers for Vaillant, Worcester Bosch and Baxi.
+                </p>
+              </div>
+            </StaggerItem>
+          </Stagger>
         </section>
 
         <ContactCTA quoteHref="/get-a-quote" />
