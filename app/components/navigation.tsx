@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { ThemeToggle } from "./theme-toggle"
 import { ChevronDown, ArrowUpRight, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -11,6 +12,7 @@ export function Navigation() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
+  const reduce = useReducedMotion()
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -124,51 +126,74 @@ export function Navigation() {
             />
           </button>
 
-          {isServicesOpen && (
-            <div className="absolute left-1/2 -translate-x-1/2 mt-4 w-[420px] rounded-lg border border-border bg-popover text-popover-foreground shadow-lift z-50 overflow-hidden animate-fade-up">
-              <div className="p-2">
-                {serviceLinks.map((service) => {
-                  const active = pathname === service.href
-                  return (
-                    <Link
-                      key={service.href}
-                      href={service.href}
-                      className={cn(
-                        "group flex items-center justify-between gap-3 rounded-xl px-3 py-3 transition-colors",
-                        active
-                          ? "bg-brand-yellow/10"
-                          : "hover:bg-foreground/[0.04]",
-                      )}
-                      onClick={() => setIsServicesOpen(false)}
-                    >
-                      <div>
-                        <p className="text-sm font-semibold">{service.label}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{service.hint}</p>
-                      </div>
-                      <ArrowUpRight
-                        className={cn(
-                          "h-4 w-4 transition-all",
-                          active
-                            ? "text-brand-yellow opacity-100"
-                            : "text-muted-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0",
-                        )}
-                      />
-                    </Link>
-                  )
-                })}
-              </div>
-              <div className="border-t border-border bg-foreground/[0.02] px-4 py-3">
-                <Link
-                  href="/services"
-                  className="group inline-flex items-center gap-2 text-sm font-semibold"
-                  onClick={() => setIsServicesOpen(false)}
+          <AnimatePresence>
+            {isServicesOpen && (
+              <motion.div
+                className="absolute left-1/2 -translate-x-1/2 mt-4 w-[420px] rounded-lg border border-border bg-popover text-popover-foreground shadow-lift z-50 overflow-hidden"
+                initial={reduce ? { opacity: 0 } : { opacity: 0, y: 10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={reduce ? { opacity: 0 } : { opacity: 0, y: 6, scale: 0.98, transition: { duration: 0.15 } }}
+                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <motion.div
+                  className="p-2"
+                  initial="hidden"
+                  animate="show"
+                  variants={{
+                    hidden: {},
+                    show: { transition: { staggerChildren: 0.035, delayChildren: 0.05 } },
+                  }}
                 >
-                  <span className="border-b border-brand-yellow pb-0.5">View all services</span>
-                  <ArrowUpRight className="h-4 w-4 text-brand-yellow transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
-              </div>
-            </div>
-          )}
+                  {serviceLinks.map((service) => {
+                    const active = pathname === service.href
+                    return (
+                      <motion.div
+                        key={service.href}
+                        variants={{
+                          hidden: reduce ? { opacity: 1 } : { opacity: 0, y: 8 },
+                          show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } },
+                        }}
+                      >
+                        <Link
+                          href={service.href}
+                          className={cn(
+                            "group flex items-center justify-between gap-3 rounded-xl px-3 py-3 transition-colors",
+                            active
+                              ? "bg-brand-yellow/10"
+                              : "hover:bg-foreground/[0.04]",
+                          )}
+                          onClick={() => setIsServicesOpen(false)}
+                        >
+                          <div>
+                            <p className="text-sm font-semibold">{service.label}</p>
+                            <p className="text-xs text-muted-foreground mt-0.5">{service.hint}</p>
+                          </div>
+                          <ArrowUpRight
+                            className={cn(
+                              "h-4 w-4 transition-all",
+                              active
+                                ? "text-brand-yellow opacity-100"
+                                : "text-muted-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0",
+                            )}
+                          />
+                        </Link>
+                      </motion.div>
+                    )
+                  })}
+                </motion.div>
+                <div className="border-t border-border bg-foreground/[0.02] px-4 py-3">
+                  <Link
+                    href="/services"
+                    className="group inline-flex items-center gap-2 text-sm font-semibold"
+                    onClick={() => setIsServicesOpen(false)}
+                  >
+                    <span className="border-b border-brand-yellow pb-0.5">View all services</span>
+                    <ArrowUpRight className="h-4 w-4 text-brand-yellow transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
