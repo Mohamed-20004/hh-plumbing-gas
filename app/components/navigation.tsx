@@ -42,6 +42,11 @@ export function Navigation() {
       hint: "Air · Ground · Hybrid",
     },
     {
+      href: "/services/air-conditioning",
+      label: "Air Conditioning",
+      hint: "Split · Multi-split",
+    },
+    {
       href: "/services/bathroom-installation",
       label: "Bathroom Installation",
       hint: "Design & full fit",

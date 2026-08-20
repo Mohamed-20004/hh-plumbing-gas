@@ -20,6 +20,12 @@ const services = [
     image: "/placeholder.svg?height=700&width=1000&text=Heat+pump",
   },
   {
+    title: "Air Conditioning",
+    tagline: "Split · Multi-split",
+    link: "/services/air-conditioning",
+    image: "/placeholder.svg?height=700&width=1000&text=Air+conditioning",
+  },
+  {
     title: "Bathroom Installation",
     tagline: "Design & full fit",
     link: "/services/bathroom-installation",

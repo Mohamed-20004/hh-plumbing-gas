@@ -39,6 +39,7 @@ export function MobileMenu() {
   const serviceLinks = [
     { href: "/services/boiler-installations", label: "Boiler Installation" },
     { href: "/services/heat-pump-installations", label: "Heat Pump Installation" },
+    { href: "/services/air-conditioning", label: "Air Conditioning" },
     { href: "/services/bathroom-installation", label: "Bathroom Installation" },
     { href: "/services/underfloor-heating-installation", label: "Underfloor Heating" },
     { href: "/services/cylinder-installation", label: "Cylinder Installation" },

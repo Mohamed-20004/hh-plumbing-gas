@@ -56,6 +56,11 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/services/air-conditioning" className="text-white/80 hover:text-brand-yellow transition-colors">
+                  Air Conditioning
+                </Link>
+              </li>
+              <li>
                 <Link href="/services/bathroom-installation" className="text-white/80 hover:text-brand-yellow transition-colors">
                   Bathroom Installation
                 </Link>
