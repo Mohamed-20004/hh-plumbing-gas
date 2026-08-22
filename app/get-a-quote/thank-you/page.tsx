@@ -5,16 +5,16 @@ import { SiteFooter } from "../../components/site-footer"
 
 const next = [
   {
-    title: "Within 24 hours",
-    desc: "We'll reach out by phone or email to confirm details and answer any questions.",
+    title: "We'll be in touch",
+    desc: "Within 24 hours we'll reach out by phone or email to book in a surveyor at a time that suits you.",
   },
   {
-    title: "Itemised quote, in writing",
-    desc: "Every quote is fixed and fully itemised — parts, labour and warranty, no surprises.",
+    title: "Surveyor visit",
+    desc: "Our surveyor comes to see the project — measuring up, checking the details and talking through your options.",
   },
   {
-    title: "Book your install",
-    desc: "Once you accept the quote we'll book a date that works for you and turn up on time.",
+    title: "Your fixed quote",
+    desc: "You get a fixed, fully itemised quote in writing — accept it and we book the work in.",
   },
 ]
 
@@ -38,10 +38,10 @@ export default function QuoteThankYouPage() {
               <Check className="h-5 w-5" />
             </span>
 
-            <h1 className="mt-8 text-balance text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.08]">Thanks — your quote request is in.</h1>
+            <h1 className="mt-8 text-balance text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.08]">Quote received.</h1>
             <p className="lead mt-5 text-pretty">
-              A Gas Safe registered engineer will review your details and come back with a fixed,
-              itemised quote shortly.
+              Thanks — we&rsquo;ll be in contact soon to book in a surveyor to come and see the
+              project.
             </p>
 
             <ol className="mt-12 border-t border-border">
