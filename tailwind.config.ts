@@ -101,7 +101,6 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "ui-serif", "serif"],
       },
       keyframes: {
         "accordion-down": {

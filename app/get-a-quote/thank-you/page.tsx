@@ -38,7 +38,7 @@ export default function QuoteThankYouPage() {
               <Check className="h-5 w-5" />
             </span>
 
-            <h1 className="mt-8 text-balance font-serif text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1]">Thanks — your quote request is in.</h1>
+            <h1 className="mt-8 text-balance text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.08]">Thanks — your quote request is in.</h1>
             <p className="lead mt-5 text-pretty">
               A Gas Safe registered engineer will review your details and come back with a fixed,
               itemised quote shortly.
