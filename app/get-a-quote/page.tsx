@@ -681,40 +681,29 @@ export default function GetAQuote() {
       <Header />
 
       <main className="flex-1">
-        {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-radial-yellow" />
-          <div className="relative container mx-auto px-4 pt-12 md:pt-16 pb-10">
-            <div>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 rounded-none border border-border bg-background/80 backdrop-blur px-3 py-1.5 text-xs font-semibold hover:border-foreground/30 transition-colors"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" />
-                Back to Home
-              </Link>
-            </div>
-            <div className="mt-6 max-w-3xl">
-              <div>
-                <span className="eyebrow">Free no-obligation quote</span>
-              </div>
-              <div>
-                <h1 className="display-lg mt-4">
-                  Get your <span className="text-foreground">tailored quote</span> in minutes.
-                </h1>
-              </div>
-              <div>
-                <p className="lead mt-4 max-w-2xl">
-                  Answer a few quick questions and we'll send a fixed, itemised quote with manufacturer-approved
-                  options.
-                </p>
-              </div>
-            </div>
+        {/* Hero band */}
+        <section className="bg-brand-black text-white">
+          <div className="container mx-auto px-4 py-16 md:py-20">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white">Get a free quote</h1>
+            <p className="mt-6 max-w-md text-lg text-white/65 leading-relaxed">
+              Answer a few quick questions and we&rsquo;ll send a fixed, itemised quote — no
+              obligation.
+            </p>
           </div>
         </section>
 
+        {/* Breadcrumb */}
+        <div className="container mx-auto px-4 pt-8 pb-2">
+          <p className="text-sm text-muted-foreground">
+            <Link href="/" className="font-medium text-foreground hover:text-brand-yellow-deep transition-colors">
+              Home
+            </Link>{" "}
+            <span aria-hidden>›</span> Get a quote
+          </p>
+        </div>
+
         {/* Quote card */}
-        <section className="container mx-auto px-4 pb-20 md:pb-28">
+        <section className="container mx-auto px-4 pt-6 pb-20 md:pb-28">
           <div>
           <div className="mx-auto max-w-5xl rounded-lg border border-border bg-card shadow-lift overflow-hidden">
             {/* Progress Steps */}
