@@ -151,7 +151,7 @@ export default function AboutUsPage() {
 
         {/* ============ ACCREDITATIONS ============ */}
         <section className="container mx-auto px-4 py-16 md:py-24">
-          <h2 className="max-w-lg font-serif text-3xl md:text-4xl font-medium leading-[1.15] text-balance">
+          <h2 className="max-w-lg text-3xl md:text-4xl font-bold tracking-tight leading-[1.15] text-balance">
             Accredited, certified and accountable.
           </h2>
           <p className="mt-5 max-w-xl text-muted-foreground leading-relaxed">
@@ -186,13 +186,13 @@ export default function AboutUsPage() {
         {/* ============ HOW WE WORK ============ */}
         <section className="bg-foreground/[0.02] border-y border-border">
           <div className="container mx-auto px-4 py-16 md:py-24">
-            <h2 className="max-w-md font-serif text-3xl md:text-4xl font-medium leading-[1.15]">
+            <h2 className="max-w-md text-3xl md:text-4xl font-bold tracking-tight leading-[1.15]">
               How we work
             </h2>
             <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {values.map((v) => (
                 <div key={v} className="bg-brand-yellow/20 p-7">
-                  <p className="font-serif text-lg md:text-xl font-medium leading-snug">{v}</p>
+                  <p className="text-lg md:text-xl font-semibold tracking-tight leading-snug">{v}</p>
                 </div>
               ))}
             </div>

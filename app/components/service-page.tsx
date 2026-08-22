@@ -54,7 +54,7 @@ export function ServicePage({
             <h1 className="max-w-3xl text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-white text-balance">
               {title}
             </h1>
-            <p className="mt-4 max-w-2xl font-serif text-2xl md:text-3xl font-medium leading-snug text-brand-yellow text-balance">
+            <p className="mt-4 max-w-2xl text-2xl md:text-3xl font-bold tracking-tight leading-snug text-brand-yellow text-balance">
               {tagline}
             </p>
             <p className="mt-5 max-w-xl text-base md:text-lg font-semibold text-white/85 leading-relaxed text-pretty">
@@ -103,7 +103,7 @@ export function ServicePage({
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-[1.12] text-balance">
                 {whatTitle}
               </h2>
-              <p className="mt-10 font-serif text-2xl font-medium">What it involves</p>
+              <p className="mt-10 text-xl font-bold tracking-tight">What it involves</p>
               {whatParas.map((para) => (
                 <p key={para.slice(0, 32)} className="mt-5 text-lg text-muted-foreground leading-relaxed">
                   {para}
@@ -141,13 +141,13 @@ export function ServicePage({
             <div className="absolute inset-0 bg-white/25" />
           </div>
           <div className="relative container mx-auto px-4 py-16 md:py-24">
-            <h2 className="max-w-md font-serif text-3xl md:text-4xl font-medium leading-[1.15] text-balance">
+            <h2 className="max-w-md text-3xl md:text-4xl font-bold tracking-tight leading-[1.15] text-balance">
               Why choose HH for this job?
             </h2>
             <div className="mt-12 grid sm:grid-cols-2 gap-5 lg:max-w-[62%]">
               {provideList.map((item) => (
                 <div key={item} className="bg-brand-yellow/20 backdrop-blur-sm p-7">
-                  <p className="font-serif text-lg md:text-xl font-medium leading-snug">{item}</p>
+                  <p className="text-lg md:text-xl font-semibold tracking-tight leading-snug">{item}</p>
                 </div>
               ))}
             </div>
@@ -156,7 +156,7 @@ export function ServicePage({
 
         {/* ============ HOW IT WORKS (numbered accordion) ============ */}
         <section className="container mx-auto px-4 py-16 md:py-24">
-          <h2 className="text-center font-serif text-3xl md:text-4xl font-medium">How it works</h2>
+          <h2 className="text-center text-3xl md:text-4xl font-bold tracking-tight">How it works</h2>
           <div className="mx-auto mt-12 max-w-3xl">
             {steps.map((step, i) => (
               <details key={step.title} className="group border-b border-foreground/25">
