@@ -3,7 +3,6 @@ import Image from "next/image"
 import { ArrowRight, Phone } from "lucide-react"
 import { Header } from "../components/header"
 import { SiteFooter } from "../components/site-footer"
-import { CtaBand } from "../components/cta-band"
 
 const stats = [
   { value: "15 years", label: "Serving London" },
@@ -199,7 +198,6 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        <CtaBand />
       </main>
 
       <SiteFooter />

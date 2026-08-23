@@ -3,7 +3,6 @@ import Image from "next/image"
 import { ArrowRight, Phone, Plus } from "lucide-react"
 import { Header } from "./header"
 import { SiteFooter } from "./site-footer"
-import { CtaBand } from "./cta-band"
 
 export type ServicePageProps = {
   name: string
@@ -176,7 +175,6 @@ export function ServicePage({
           </div>
         </section>
 
-        <CtaBand />
       </main>
 
       <SiteFooter />
