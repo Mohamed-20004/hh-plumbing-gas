@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Check, Mouse } from "lucide-react"
+import { ArrowRight, Check, Mouse, Phone } from "lucide-react"
 import { Header } from "./components/header"
 import { SiteFooter } from "./components/site-footer"
 import { CtaBand } from "./components/cta-band"
@@ -150,7 +150,7 @@ export default function Home() {
         </section>
 
         {/* =================== WHO WE ARE =================== */}
-        <section className="container mx-auto px-4 py-20 md:py-28">
+        <section className="container mx-auto px-4 pt-20 md:pt-28 pb-16 md:pb-20">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-yellow-deep">
@@ -210,13 +210,34 @@ export default function Home() {
           </div>
         </section>
 
+        {/* =================== EMERGENCY BAND =================== */}
+        <section className="bg-brand-yellow">
+          <div className="container mx-auto px-4 py-10 md:py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <p className="text-2xl md:text-3xl font-bold tracking-tight text-black">
+                Burst pipe? Gas leak? No heat?
+              </p>
+              <p className="mt-1.5 font-medium text-black/70">
+                Emergency engineers on call across London — 24 hours a day, 7 days a week.
+              </p>
+            </div>
+            <a
+              href="tel:02081021108"
+              className="inline-flex shrink-0 items-center gap-3 bg-black px-7 py-4 text-lg font-bold text-white hover:bg-black/85 transition-colors"
+            >
+              <Phone className="h-5 w-5" />
+              Call 0208 102 1108
+            </a>
+          </div>
+        </section>
+
         {/* =================== OUR SERVICES =================== */}
         <section>
           <div className="container mx-auto px-4 py-14 md:py-16 flex items-center justify-between gap-6">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Our services</h2>
             <Link
               href="/get-a-quote"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="group inline-flex shrink-0 items-center gap-2 bg-foreground px-6 py-3 text-sm font-semibold text-background hover:bg-foreground/85 transition-colors"
             >
               Get a quote
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
