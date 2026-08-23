@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { ArrowRight } from "lucide-react"
 
 const serviceLinks = [
   { href: "/services/bathroom-installation", label: "Bathroom Renovations" },
@@ -16,7 +17,26 @@ export function SiteFooter() {
   return (
     <footer className="bg-brand-black text-white">
       <div className="container mx-auto px-4 py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
+        {/* CTA row */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-b border-white/10 pb-12 md:pb-14">
+          <div>
+            <p className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+              Ready to get started?
+            </p>
+            <p className="mt-2 text-white/55">
+              We&rsquo;ll have a fixed quote back to you within the hour.
+            </p>
+          </div>
+          <Link
+            href="/get-a-quote"
+            className="inline-flex shrink-0 items-center gap-2 bg-brand-yellow px-7 py-3.5 text-sm font-semibold text-black hover:bg-[#E6BE00] transition-colors"
+          >
+            Get a free quote
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="mt-12 md:mt-14 grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
           <div>
             <Link href="/" className="inline-flex items-center gap-3" aria-label="HH Plumbing and Gas — home">
               <Image src="/images/hhpg-logo.png" alt="" width={49} height={52} className="h-12 w-auto" />

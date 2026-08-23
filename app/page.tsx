@@ -3,7 +3,6 @@ import Image from "next/image"
 import { ArrowRight, Check, Mouse, Phone } from "lucide-react"
 import { Header } from "./components/header"
 import { SiteFooter } from "./components/site-footer"
-import { CtaBand } from "./components/cta-band"
 
 const services = [
   {
@@ -302,8 +301,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =================== CTA =================== */}
-        <CtaBand />
       </main>
 
       <SiteFooter />
