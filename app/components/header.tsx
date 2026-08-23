@@ -118,7 +118,10 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
       <div className="bg-[#171614] text-white">
         <div className="container mx-auto px-4 flex h-10 items-center justify-between gap-4 text-sm">
           <p className="flex items-center gap-2.5 min-w-0">
-            <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-red-500" />
+            <span aria-hidden className="relative flex h-2 w-2 shrink-0">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+            </span>
             <span className="truncate">
               <span className="font-semibold">Emergency call-out available 24/7</span>
               <span className="hidden sm:inline text-white/60">
